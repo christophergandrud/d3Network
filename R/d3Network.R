@@ -205,6 +205,7 @@ d3.select(this).select(\"text\").transition()
   else if (!is.null(file) & isTRUE(iframe)){
     cat(PageHead, NetworkCSS, LinkData, HeightWidth, MainScript, 
         "</body>", file = file)
-    cat("<iframe src=\'", file, "\'", " height=", FrameHeight, " width=", FrameWidth, "/>", sep="")  
+    cat("<iframe src=\'", file, "\'", " height=", FrameHeight, " width=", FrameWidth, 
+        "></iframe>", sep="")  
   }
 }
