@@ -1,34 +1,34 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
+    <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>D3network by christophergandrud</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
 
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
+
+    <title>D3network by christophergandrud</title>
   </head>
+
   <body>
-    <div class="wrapper">
-      <header>
+    <header>
+      <div class="inner">
         <h1>D3network</h1>
-        <p>Tools for creating D3 JavaScript directed network graphs from R.</p>
+        <h2>Tools for creating D3 JavaScript directed network graphs from R.</h2>
+        <a href="https://github.com/christophergandrud/d3Network" class="button"><small>View project on</small>GitHub</a>
+      </div>
+    </header>
 
-        <p class="view"><a href="https://github.com/christophergandrud/d3Network">View the Project on GitHub <small>christophergandrud/d3Network</small></a></p>
-
-
-        <ul>
-          <li><a href="https://github.com/christophergandrud/d3Network/zipball/master">Download <strong>ZIP File</strong></a></li>
-          <li><a href="https://github.com/christophergandrud/d3Network/tarball/master">Download <strong>TAR Ball</strong></a></li>
-          <li><a href="https://github.com/christophergandrud/d3Network">View On <strong>GitHub</strong></a></li>
-        </ul>
-      </header>
-      <section>
-        <h1>
+    <div id="content-wrapper">
+      <div class="inner clearfix">
+        <section id="main-content">
+          <h1>
 <a name="d3network" class="anchor" href="#d3network"><span class="octicon octicon-link"></span></a>d3Network</h1>
 
 <h3>
@@ -48,135 +48,6 @@
 <a name="example" class="anchor" href="#example"><span class="octicon octicon-link"></span></a>Example</h2>
 
 <p>Click the image to see a working example:</p>
-
-  <script src="http://d3js.org/d3.v2.js?2.9.1"></script> 
-  <style> 
-  
-  .link {  
-  stroke: #666;
-  opacity: 0.6;
-  stroke-width: 1.5px; 
-  } 
-  
-  .node circle { 
-  stroke: #fff; 
-  opacity: 0.6;
-  stroke-width: 1.5px; 
-  } 
-  
-  text { 
-  font: 7px serif; 
-  pointer-events: none; 
-  } 
-  
-  </style> 
-  
-  <script> 
-  var links = [ { "source" : "A", "target" : "B" }, { "source" : "A", "target" : "C" }, { "source" : "A", "target" : "D" }, { "source" : "A", "target" : "J" }, { "source" : "B", "target" : "E" }, { "source" : "B", "target" : "F" }, { "source" : "C", "target" : "G" }, { "source" : "C", "target" : "H" }, { "source" : "D", "target" : "I" } ] ; 
- var width = 700 
- height = 300 ; 
- 
-  var nodes = {}
-  
-  // Compute the distinct nodes from the links.
-  links.forEach(function(link) {
-  link.source = nodes[link.source] || 
-  (nodes[link.source] = {name: link.source});
-  link.target = nodes[link.target] || 
-  (nodes[link.target] = {name: link.target});
-  link.value = +link.value;
-  });
-  
-  var color = d3.scale.category20();
-  
-  var force = d3.layout.force() 
-  .nodes(d3.values(nodes)) 
-  .links(links) 
-  .size([width, height]) 
-  .linkDistance(80) 
-  .charge(-400) 
-  .on("tick", tick) 
-  .start(); 
-  
-  var svg = d3.select("body").append("svg") 
-  .attr("width", width) 
-  .attr("height", height); 
-  
-  var link = svg.selectAll(".link") 
-  .data(force.links()) 
-  .enter().append("line") 
-  .attr("class", "link"); 
-  
-  var node = svg.selectAll(".node") 
-  .data(force.nodes()) 
-  .enter().append("g") 
-  .attr("class", "node") 
-  .on("mouseover", mouseover) 
-  .on("mouseout", mouseout) 
-  .on("click", click)
-  .on("dblclick", dblclick)
-  .call(force.drag); 
-  
-  node.append("circle") 
-  .attr("r", 8)
-  .style("fill", function(d) { return color(d.value); });
-  
-  node.append("text") 
-  .attr("x", 12) 
-  .attr("dy", ".35em") 
-  .style("fill", "steelblue")
-  .text(function(d) { return d.name; }); 
-  
-  function tick() { 
-  link 
-  .attr("x1", function(d) { return d.source.x; }) 
-  .attr("y1", function(d) { return d.source.y; }) 
-  .attr("x2", function(d) { return d.target.x; }) 
-  .attr("y2", function(d) { return d.target.y; }); 
-  
-  node 
-  .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; }); 
-  } 
-  
-  function mouseover() { 
-  d3.select(this).select("circle").transition() 
-  .duration(750) 
-  .attr("r", 16); 
-  } 
-  
-  function mouseout() { 
-  d3.select(this).select("circle").transition() 
-  .duration(750) 
-  .attr("r", 8); 
-  } 
-  // action to take on mouse click
-  function click() {
-  d3.select(this).select("text").transition()
-  .duration(750)
-  .attr("x", 22)
-.style("stroke-width", ".5px")
-.style("fill", "#E34A33")
-.style("font", "20px serif");
-d3.select(this).select("circle").transition()
-.duration(750)
-.style("fill", "#E34A33")
-.attr("r", 16)
-}
-
-// action to take on mouse double click
-function dblclick() {
-d3.select(this).select("circle").transition()
-.duration(750)
-.attr("r", 6)
-.style("fill", "#E34A33");
-d3.select(this).select("text").transition()
-.duration(750)
-.attr("x", 12)
-.style("stroke", "none")
-.style("fill", "#E34A33")
-.style("stroke", "none")
-.style("font", "10px serif");
-}
 
 <p><a href="http://dl.dropboxusercontent.com/u/12581470/Presentations/OddsAndEnds/NetworkD3.html"><img border="0" src="http://1.bp.blogspot.com/-gFxgVvzBSr8/UbPgDW-7fnI/AAAAAAAAGiE/an2RbjOC-68/s320/NetworkD3.png"></a></p>
 
@@ -198,14 +69,26 @@ d3.select(this).select("text").transition()
 
 <div class="highlight"><pre><span class="c">devtools::install_github("d3Network", "christophergandrud")</span>
 </pre></div>
-      </section>
-      <footer>
-        <p>This project is maintained by <a href="https://github.com/christophergandrud">christophergandrud</a></p>
-        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
-      </footer>
+        </section>
+
+        <aside id="sidebar">
+          <a href="https://github.com/christophergandrud/d3Network/zipball/master" class="button">
+            <small>Download</small>
+            .zip file
+          </a>
+          <a href="https://github.com/christophergandrud/d3Network/tarball/master" class="button">
+            <small>Download</small>
+            .tar.gz file
+          </a>
+
+          <p class="repo-owner"><a href="https://github.com/christophergandrud/d3Network"></a> is maintained by <a href="https://github.com/christophergandrud">christophergandrud</a>.</p>
+
+          <p>This page was generated by <a href="pages.github.com">GitHub Pages</a> using the Architect theme by <a href="http://twitter.com/jasonlong">Jason Long</a>.</p>
+        </aside>
+      </div>
     </div>
-    <script src="javascripts/scale.fix.js"></script>
-              <script type="text/javascript">
+
+            <script type="text/javascript">
             var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
             document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
           </script>
