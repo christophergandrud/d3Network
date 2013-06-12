@@ -1,18 +1,27 @@
 #' An R function for creating simple D3 javascript directed network graphs.
 #'
-#' d3SimpleNetwork creates simple D3 javascript network graphs.
+#' \code{d3SimpleNetwork} creates simple D3 javascript network graphs.
 #'
-#' @param data a data frame object with three columns. The first two are the names of the linked units. The third records an edge value. (Currently the third column doesn't affect the graph.)
+#' @param Data a data frame object with three columns. The first two are the names of the linked units. The third records an edge value. (Currently the third column doesn't affect the graph.)
 #' @param Source character string naming the network source variable in the data frame. If \code{Source = NULL} then the first column of the data frame is treated as the source.
 #' @param Target character string naming the network target variable in the data frame. If \code{Target = NULL} then the second column of the data frame is treated as the target.
 #' @param height numeric height for the network graph's frame area.
 #' @param width numeric width for the network graph's frame area.
-#' @param file a character string of the file name to save the resulting graph. If a file name is given a standalone webpage is created, i.e. with a header and footer. If \code{file = NULL} then just the graph is returned to the console. This is useful if you are using knitr Markdown. If you set the knitr code chunk \code{results='asis'} then the graph will be rendered in the output.
+#' @param file a character string of the file name to save the resulting graph. If a file name is given a standalone webpage is created, i.e. with a header and footer. If \code{file = NULL} then just the graph is returned to the console.
+#'
+#' @examples
+#' # Fake data
+#' Source <- c("A", "A", "A", "A", "B", "B", "C", "C", "D")
+#' Target <- c("B", "C", "D", "J", "E", "F", "G", "H", "I")
+#' NetworkData <- data.frame(Source, Target)
+#' 
+#' # Create graph
+#' d3SimpleNetwork(NetworkData, height = 300, width = 700)
 #'
 #' @source 
-#' d3.js was created by Michael Bostock. See http://d3js.org/
-#' Draws on code from: http://theweiluo.wordpress.com/2011/09/30/r-to-json-for-d3-js-and-protovis/
+#' D3.js was created by Michael Bostock. See http://d3js.org/
 #' 
+#' @export
 
 d3SimpleNetwork <- function(Data, Source = NULL, Target = NULL, height = 600, width = 900, file = NULL)
 {
@@ -28,27 +37,6 @@ d3SimpleNetwork <- function(Data, Source = NULL, Target = NULL, height = 600, wi
   }
 
   names(NetData) <- c("source", "target")
-  
-  # Function from: http://theweiluo.wordpress.com/2011/09/30/r-to-json-for-d3-js-and-protovis/
-  toJSONarray <- function(dtf){
-    clnms <- colnames(dtf)
-    
-    name.value <- function(i){
-      quote <- '';
-      if(class(dtf[, i])!='numeric'){
-        quote <- '"';
-      }
-      
-      paste('"', i, '" : ', quote, dtf[,i], quote, sep='')
-    }
-    
-    objs <- apply(sapply(clnms, name.value), 1, function(x){paste(x, collapse=', ')})
-    objs <- paste('{', objs, '}')
-    
-    res <- paste('[', paste(objs, collapse=', '), ']')
-    
-    return(res)
-  }
   
   # Convert data frame to JSON format
   LinkData <- toJSONarray(NetData)
