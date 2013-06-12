@@ -47,32 +47,28 @@
 </ul><hr><h2>
 <a name="example" class="anchor" href="#example"><span class="octicon octicon-link"></span></a>Example</h2>
 
- 
+<p>Click the image to see a working example:</p>
 
-.link {  
-stroke: #666;
-opacity: 0.6;
-stroke-width: 1.5px; 
-} 
+<p><a href="http://dl.dropboxusercontent.com/u/12581470/Presentations/OddsAndEnds/NetworkD3.html"><img border="0" src="http://1.bp.blogspot.com/-gFxgVvzBSr8/UbPgDW-7fnI/AAAAAAAAGiE/an2RbjOC-68/s320/NetworkD3.png"></a></p>
 
-.node circle { 
-stroke: #fff; 
-opacity: 0.6;
-stroke-width: 1.5px; 
-} 
+<p>This is the code to create the graph:</p>
 
-text { 
-font: 7px serif; 
-pointer-events: none; 
-} 
+<div class="highlight"><pre><span class="c"># Create fake data</span>
+<span class="c">Source &lt;- c("A", "A", "A", "A", "B", "B", "C", "C", "D")</span>
+<span class="c">Target &lt;- c("B", "C", "D", "J", "E", "F", "G", "H", "I")</span>
+<span class="c">NetworkData &lt;- data.frame(Source, Target)</span>
+
+<span class="c"># Make network graph </span>
+<span class="c">d3Network(NetworkDatad3, height = 300, width = 700)</span>
+</pre></div>
 
 <hr><h2>
 <a name="installation" class="anchor" href="#installation"><span class="octicon octicon-link"></span></a>Installation</h2>
 
 <p>You can install <em>d3Network</em> using the <a href="https://github.com/hadley/devtools">devtools</a> package and the following code:</p>
 
-<pre><code>devtools::install_github("d3Network", "christophergandrud")
-</code></pre>
+<div class="highlight"><pre><span class="c">devtools::install_github("d3Network", "christophergandrud")</span>
+</pre></div>
       </section>
       <footer>
         <p>This project is maintained by <a href="https://github.com/christophergandrud">christophergandrud</a></p>
@@ -80,6 +76,16 @@ pointer-events: none;
       </footer>
     </div>
     <script src="javascripts/scale.fix.js"></script>
-    
+              <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-41657792-1");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+
   </body>
 </html>
