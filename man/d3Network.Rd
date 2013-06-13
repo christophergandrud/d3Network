@@ -3,11 +3,15 @@
 \title{An R function for creating simple D3 javascript directed network graphs.}
 \source{
   D3.js was created by Michael Bostock. See
-  http://d3js.org/
+  <http://d3js.org/> and, more specifically for directed
+  networks
+  <https://github.com/mbostock/d3/wiki/Force-Layout>
 }
 \usage{
   d3Network(Data, Source = NULL, Target = NULL,
-    height = 600, width = 900, file = NULL, iframe = FALSE)
+    height = 600, width = 900, fontsize = 7,
+    linkDistance = 50, charge = -200, file = NULL,
+    iframe = FALSE)
 }
 \arguments{
   \item{Data}{a data frame object with three columns. The
@@ -29,7 +33,18 @@
   frame area in pixels.}
 
   \item{width}{numeric width for the network graph's frame
-  area pixels.}
+  area in pixels.}
+
+  \item{fontsize}{numeric font size in pixels for the node
+  text labels.}
+
+  \item{linkDistance}{numeric distance between the links in
+  pixels (actually arbitrary relative to the diagram's
+  size).}
+
+  \item{charge}{numeric value indicating either the
+  strength of the node repulsion (negative value) or
+  attraction (positive value).}
 
   \item{file}{a character string of the file name to save
   the resulting graph. If a file name is given a standalone
@@ -62,6 +77,6 @@ Target <- c("B", "C", "D", "J", "E", "F", "G", "H", "I")
 NetworkData <- data.frame(Source, Target)
 
 # Create graph
-d3Network(NetworkData, height = 300, width = 700)
+d3Network(NetworkData, height = 300, width = 700, fontsize = 15)
 }
 

@@ -6,7 +6,10 @@
 #' @param Source character string naming the network source variable in the data frame. If \code{Source = NULL} then the first column of the data frame is treated as the source.
 #' @param Target character string naming the network target variable in the data frame. If \code{Target = NULL} then the second column of the data frame is treated as the target.
 #' @param height numeric height for the network graph's frame area in pixels.
-#' @param width numeric width for the network graph's frame area pixels.
+#' @param width numeric width for the network graph's frame area in pixels.
+#' @param fontsize numeric font size in pixels for the node text labels.
+#' @param linkDistance numeric distance between the links in pixels (actually arbitrary relative to the diagram's size).
+#' @param charge numeric value indicating either the strength of the node repulsion (negative value) or attraction (positive value).
 #' @param file a character string of the file name to save the resulting graph. If a file name is given a standalone webpage is created, i.e. with a header and footer. If \code{file = NULL} then just the graph as HTML and JavaScript is returned to the console. 
 #' @param iframe logical. If \code{iframe = TRUE} then the graph is saved to an external file in the working directory and an HTML \code{iframe} linking to the file is printed to the console. This is useful if you are using Slidify and many other HTML slideshow framworks and want to include the graph in the resulting page. If you set the knitr code chunk \code{results='asis'} then the graph will be rendered in the output. Usually, you can use \code{iframe = FALSE} if you are creating simple knitr Markdown or HTML pages. Note: you do not need to specify the file name if \code{iframe = TRUE}, however if you do, do not include the file path.
 #'
@@ -17,14 +20,14 @@
 #' NetworkData <- data.frame(Source, Target)
 #' 
 #' # Create graph
-#' d3Network(NetworkData, height = 300, width = 700)
+#' d3Network(NetworkData, height = 300, width = 700, fontsize = 15)
 #'
 #' @source 
-#' D3.js was created by Michael Bostock. See http://d3js.org/
+#' D3.js was created by Michael Bostock. See <http://d3js.org/> and, more specifically for directed networks <https://github.com/mbostock/d3/wiki/Force-Layout>
 #' 
 #' @export
 
-d3Network <- function(Data, Source = NULL, Target = NULL, height = 600, width = 900, file = NULL, iframe = FALSE)
+d3Network <- function(Data, Source = NULL, Target = NULL, height = 600, width = 900, fontsize = 7, linkDistance = 50, charge = -200, file = NULL, iframe = FALSE)
 {
   # If no file name is specified create random name to avoid conflicts
   if (is.null(file) & isTRUE(iframe)){
@@ -60,7 +63,7 @@ d3Network <- function(Data, Source = NULL, Target = NULL, height = 600, width = 
   <meta charset=\"utf-8\">
   <body> \n"
   
-  NetworkCSS <- "
+  NetworkCSS <- paste0("
   <script src=\"http://d3js.org/d3.v2.js?2.9.1\"></script> 
   <style> 
   
@@ -77,20 +80,16 @@ d3Network <- function(Data, Source = NULL, Target = NULL, height = 600, width = 
   } 
   
   text { 
-  font: 7px serif; 
+  font: ", fontsize, "px serif; 
   pointer-events: none; 
   } 
   
   </style> 
   
-  <script> \n "
-  
-  # width and height variables
-  HeightWidth <- paste("var width =", width, "\n", 
-                       "height =", height, "; \n")
+  <script> \n ")
   
   # Main script for creating the graph
-  MainScript <- "
+  MainScript <- paste0("
   var nodes = {}
   
   // Compute the distinct nodes from the links.
@@ -101,6 +100,9 @@ d3Network <- function(Data, Source = NULL, Target = NULL, height = 600, width = 
   (nodes[link.target] = {name: link.target});
   link.value = +link.value;
   });
+
+  var width = ", width, "
+  height = ", height, ";
   
   var color = d3.scale.category20();
   
@@ -108,8 +110,8 @@ d3Network <- function(Data, Source = NULL, Target = NULL, height = 600, width = 
   .nodes(d3.values(nodes)) 
   .links(links) 
   .size([width, height]) 
-  .linkDistance(80) 
-  .charge(-400) 
+  .linkDistance(", linkDistance, ") 
+  .charge(", charge, ") 
   .on(\"tick\", tick) 
   .start(); 
   
@@ -193,17 +195,17 @@ d3.select(this).select(\"text\").transition()
 .style(\"font\", \"10px serif\");
 }
 
-</script> \n"
+</script> \n")
   
   if (is.null(file)){
-    cat(NetworkCSS, LinkData, HeightWidth, MainScript)
+    cat(NetworkCSS, LinkData, MainScript)
   } 
   else if (!is.null(file) & !isTRUE(iframe)){
-    cat(PageHead, NetworkCSS, LinkData, HeightWidth, MainScript, 
+    cat(PageHead, NetworkCSS, LinkData, MainScript, 
         "</body>", file = file)
   }
   else if (!is.null(file) & isTRUE(iframe)){
-    cat(PageHead, NetworkCSS, LinkData, HeightWidth, MainScript, 
+    cat(PageHead, NetworkCSS, LinkData, MainScript, 
         "</body>", file = file)
     cat("<iframe src=\'", file, "\'", " height=", FrameHeight, " width=", FrameWidth, 
         "></iframe>", sep="")  
