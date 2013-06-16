@@ -10,8 +10,8 @@
 \usage{
   d3Network(Data, Source = NULL, Target = NULL,
     height = 600, width = 900, fontsize = 7,
-    linkDistance = 50, charge = -200, file = NULL,
-    iframe = FALSE)
+    linkDistance = 50, charge = -200, standAlone = TRUE,
+    file = NULL, iframe = FALSE)
 }
 \arguments{
   \item{Data}{a data frame object with three columns. The
@@ -46,11 +46,15 @@
   strength of the node repulsion (negative value) or
   attraction (positive value).}
 
+  \item{standAlone}{logical, whether or not to return a
+  complete HTML document (with head and foot) or just the
+  script.}
+
   \item{file}{a character string of the file name to save
   the resulting graph. If a file name is given a standalone
   webpage is created, i.e. with a header and footer. If
-  \code{file = NULL} then just the graph as HTML and
-  JavaScript is returned to the console.}
+  \code{file = NULL} then result is returned to the
+  console.}
 
   \item{iframe}{logical. If \code{iframe = TRUE} then the
   graph is saved to an external file in the working

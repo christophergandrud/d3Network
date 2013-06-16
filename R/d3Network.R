@@ -10,7 +10,8 @@
 #' @param fontsize numeric font size in pixels for the node text labels.
 #' @param linkDistance numeric distance between the links in pixels (actually arbitrary relative to the diagram's size).
 #' @param charge numeric value indicating either the strength of the node repulsion (negative value) or attraction (positive value).
-#' @param file a character string of the file name to save the resulting graph. If a file name is given a standalone webpage is created, i.e. with a header and footer. If \code{file = NULL} then just the graph as HTML and JavaScript is returned to the console. 
+#' @param standAlone logical, whether or not to return a complete HTML document (with head and foot) or just the script.
+#' @param file a character string of the file name to save the resulting graph. If a file name is given a standalone webpage is created, i.e. with a header and footer. If \code{file = NULL} then result is returned to the console. 
 #' @param iframe logical. If \code{iframe = TRUE} then the graph is saved to an external file in the working directory and an HTML \code{iframe} linking to the file is printed to the console. This is useful if you are using Slidify and many other HTML slideshow framworks and want to include the graph in the resulting page. If you set the knitr code chunk \code{results='asis'} then the graph will be rendered in the output. Usually, you can use \code{iframe = FALSE} if you are creating simple knitr Markdown or HTML pages. Note: you do not need to specify the file name if \code{iframe = TRUE}, however if you do, do not include the file path.
 #'
 #' @examples
@@ -27,8 +28,11 @@
 #' 
 #' @export
 
-d3Network <- function(Data, Source = NULL, Target = NULL, height = 600, width = 900, fontsize = 7, linkDistance = 50, charge = -200, file = NULL, iframe = FALSE)
+d3Network <- function(Data, Source = NULL, Target = NULL, height = 600, width = 900, fontsize = 7, linkDistance = 50, charge = -200, standAlone = TRUE, file = NULL, iframe = FALSE)
 {
+  if (!isTRUE(standAlone) & isTRUE(iframe)){
+    stop("If iframe = TRUE then standAlone must be TRUE.")
+  }
   # If no file name is specified create random name to avoid conflicts
   if (is.null(file) & isTRUE(iframe)){
     Random <- paste0(sample(c(0:9, letters, LETTERS), 5, replace=TRUE), collapse="")
@@ -197,9 +201,16 @@ d3.select(this).select(\"text\").transition()
 
 </script> \n")
   
-  if (is.null(file)){
+  if (is.null(file) & !isTRUE(standAlone)){
     cat(NetworkCSS, LinkData, MainScript)
   } 
+  else if (is.null(file) & isTRUE(standAlone)){
+    cat(PageHead, NetworkCSS, LinkData, MainScript, 
+        "</body>")
+  } 
+  else if (!is.null(file) & !isTRUE(standAlone)){
+    cat(NetworkCSS, LinkData, MainScript, file = file)
+  }
   else if (!is.null(file) & !isTRUE(iframe)){
     cat(PageHead, NetworkCSS, LinkData, MainScript, 
         "</body>", file = file)
