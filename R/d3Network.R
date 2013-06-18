@@ -50,17 +50,17 @@ d3Network <- function(Data, Source = NULL, Target = NULL, Group = NULL, height =
     stop("Data must be a data frame class object.")
   }
   
-  if (is.null(Source) & is.null(Target)){
+  if (is.null(Source) & is.null(Target) & is.null(Group)){
     NetData <- Data[, 1:2]
+    names(NetData) <- c("source", "target")
   }
-  else if (!is.null(Source) & !is.null(Target)){
-    So <- Source
-    Tr <- Target
-    Data[, So]
-    NetData <- data.frame(a, b)
+  else if (!is.null(Source) & !is.null(Target) & is.null(Group)){
+    NetData <- data.frame(Data[, Source], Data[, Target])
+    names(NetData) <- c("source", "target")
+  } else if (!is.null(Source) & !is.null(Target) & !is.null(Group)){
+    NetData <- data.frame(Data[, Source], Data[, Target], Data[, Group])
+    names(NetData) <- c("source", "target", "group")
   }
-  
-  names(NetData) <- c("source", "target")
   
   # Convert data frame to JSON format
   LinkData <- toJSONarray(NetData)

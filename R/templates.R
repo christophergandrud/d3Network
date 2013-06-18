@@ -21,7 +21,7 @@ pointer-events: none;
 } 
 </style> 
 
-<script src=\"http://d3js.org/d3.v2.js?2.9.1\"></script>
+<script src=\"http://d3js.org/d3.v3.min.js\"></script>
 
 <script> \n"
 }
