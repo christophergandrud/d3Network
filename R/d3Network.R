@@ -54,8 +54,9 @@ d3Network <- function(Data, Source = NULL, Target = NULL, Group = NULL, height =
     NetData <- Data[, 1:2]
   }
   else if (!is.null(Source) & !is.null(Target)){
-    a <- Data[, Source]
-    b <- Data[, Target]
+    So <- Source
+    Tr <- Target
+    Data[, So]
     NetData <- data.frame(a, b)
   }
   
