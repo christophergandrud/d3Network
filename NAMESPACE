@@ -1,3 +1,3 @@
 export(d3Network)
 export(d3SimpleNetwork)
-export(toJSONarray)
+importFrom(whisker,whisker.render)

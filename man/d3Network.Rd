@@ -9,7 +9,7 @@
 }
 \usage{
   d3Network(Data, Source = NULL, Target = NULL,
-    height = 600, width = 900, fontsize = 7,
+    Group = NULL, height = 600, width = 900, fontsize = 7,
     linkDistance = 50, charge = -200, standAlone = TRUE,
     file = NULL, iframe = FALSE)
 }
