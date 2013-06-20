@@ -10,6 +10,11 @@
 #' @param fontsize numeric font size in pixels for the node text labels.
 #' @param linkDistance numeric distance between the links in pixels (actually arbitrary relative to the diagram's size).
 #' @param charge numeric value indicating either the strength of the node repulsion (negative value) or attraction (positive value).
+#' @param linkColour character string specifying the colour you want the link lines to be. Multiple formats supported (e.g. hexadecimal).
+#' @param nodeColour character string specifying the colour you want the node circles to be. Multiple formats supported (e.g. hexadecimal).
+#' @param nodeClickColour character string specifying the colour you want the node circles to be when they are clicked. Also changes the colour of the text. Multiple formats supported (e.g. hexadecimal).
+#' @param textColour character string specifying the colour you want the text to be before they are clicked. Multiple formats supported (e.g. hexadecimal).
+#' @param opacity numeric value of the proportion opaque you would like the graph elements to be.
 #' @param standAlone logical, whether or not to return a complete HTML document (with head and foot) or just the script.
 #' @param file a character string of the file name to save the resulting graph. If a file name is given a standalone webpage is created, i.e. with a header and footer. If \code{file = NULL} then result is returned to the console. 
 #' @param iframe logical. If \code{iframe = TRUE} then the graph is saved to an external file in the working directory and an HTML \code{iframe} linking to the file is printed to the console. This is useful if you are using Slidify and many other HTML slideshow framworks and want to include the graph in the resulting page. If you set the knitr code chunk \code{results='asis'} then the graph will be rendered in the output. Usually, you can use \code{iframe = FALSE} if you are creating simple knitr Markdown or HTML pages. Note: you do not need to specify the file name if \code{iframe = TRUE}, however if you do, do not include the file path.

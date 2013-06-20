@@ -17,6 +17,7 @@ stroke-width: 1.5px;
 } 
 text { 
 font: {{fontsize}}px serif; 
+opacity: {{opacity}};
 pointer-events: none; 
 } 
 </style> 
@@ -112,6 +113,7 @@ d3.select(this).select(\"text\").transition()
 .duration(750)
 .attr(\"x\", 22)
 .style(\"stroke-width\", \".5px\")
+.style(\"opacity\", 1)
 .style(\"fill\", \"{{nodeClickColour}}\")
 .style(\"font\", \"{{clickTextSize}}px serif\");
 d3.select(this).select(\"circle\").transition()
@@ -132,6 +134,7 @@ d3.select(this).select(\"text\").transition()
 .style(\"stroke\", \"none\")
 .style(\"fill\", \"{{nodeClickColour}}\")
 .style(\"stroke\", \"none\")
+.style(\"opacity\", {{opacity}})
 .style(\"font\", \"{{fontsize}}px serif\");
 }
 

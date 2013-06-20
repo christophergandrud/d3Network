@@ -10,8 +10,10 @@
 \usage{
   d3Network(Data, Source = NULL, Target = NULL,
     Group = NULL, height = 600, width = 900, fontsize = 7,
-    linkDistance = 50, charge = -200, standAlone = TRUE,
-    file = NULL, iframe = FALSE)
+    linkDistance = 50, charge = -200, linkColour = "#666",
+    nodeColour = "#3182bd", nodeClickColour = "#E34A33",
+    textColour = "#3182bd", opacity = 0.6,
+    standAlone = TRUE, file = NULL, iframe = FALSE)
 }
 \arguments{
   \item{Data}{a data frame object with three columns. The
@@ -46,6 +48,26 @@
   strength of the node repulsion (negative value) or
   attraction (positive value).}
 
+  \item{linkColour}{character string specifying the colour
+  you want the link lines to be. Multiple formats supported
+  (e.g. hexadecimal).}
+
+  \item{nodeColour}{character string specifying the colour
+  you want the node circles to be. Multiple formats
+  supported (e.g. hexadecimal).}
+
+  \item{nodeClickColour}{character string specifying the
+  colour you want the node circles to be when they are
+  clicked. Also changes the colour of the text. Multiple
+  formats supported (e.g. hexadecimal).}
+
+  \item{textColour}{character string specifying the colour
+  you want the text to be before they are clicked. Multiple
+  formats supported (e.g. hexadecimal).}
+
+  \item{opacity}{numeric value of the proportion opaque you
+  would like the graph elements to be.}
+
   \item{standAlone}{logical, whether or not to return a
   complete HTML document (with head and foot) or just the
   script.}
@@ -71,6 +93,7 @@
 }
 \description{
   \code{d3Network} creates D3 JavaScript force directed
-  network graphs. NOTE: it is depricated.
+  network graphs. NOTE: it is depricated. It is currently a
+  direct copy of \code{\link{d3SimpleNetwork}}
 }
 

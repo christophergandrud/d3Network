@@ -48,6 +48,26 @@
   strength of the node repulsion (negative value) or
   attraction (positive value).}
 
+  \item{linkColour}{character string specifying the colour
+  you want the link lines to be. Multiple formats supported
+  (e.g. hexadecimal).}
+
+  \item{nodeColour}{character string specifying the colour
+  you want the node circles to be. Multiple formats
+  supported (e.g. hexadecimal).}
+
+  \item{nodeClickColour}{character string specifying the
+  colour you want the node circles to be when they are
+  clicked. Also changes the colour of the text. Multiple
+  formats supported (e.g. hexadecimal).}
+
+  \item{textColour}{character string specifying the colour
+  you want the text to be before they are clicked. Multiple
+  formats supported (e.g. hexadecimal).}
+
+  \item{opacity}{numeric value of the proportion opaque you
+  would like the graph elements to be.}
+
   \item{standAlone}{logical, whether or not to return a
   complete HTML document (with head and foot) or just the
   script.}
