@@ -32,7 +32,7 @@ Target <- c("B", "C", "D", "J", "E", "F", "G", "H", "I")
 NetworkData <- data.frame(Source, Target)
 
 # Make network graph 
-d3Network(NetworkDatad3, height = 300, width = 700)
+d3SimpleNetwork(NetworkDatad3, height = 300, width = 700)
 ```
 
 ---

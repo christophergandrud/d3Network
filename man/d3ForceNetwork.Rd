@@ -10,6 +10,7 @@
 \usage{
   d3ForceNetwork(Links, Nodes, Source, Target,
     Value = NULL, NodeID, Group, height = 600, width = 900,
+    fontsize = 7, linkColour = "#666", opacity = 0.6,
     standAlone = TRUE, file = NULL, iframe = FALSE)
 }
 \arguments{
@@ -46,6 +47,13 @@
 
   \item{width}{numeric width for the network graph's frame
   area in pixels.}
+
+  \item{fontsize}{numeric font size in pixels for the node
+  text labels.}
+
+  \item{linkColour}{character string specifying the colour
+  you want the link lines to be. Multiple formats supported
+  (e.g. hexadecimal).}
 
   \item{standAlone}{logical, whether or not to return a
   complete HTML document (with head and foot) or just the

@@ -9,6 +9,8 @@
 #' @param Group character string specifying the group of each node in the \code{Nodes} data frame.
 #' @param height numeric height for the network graph's frame area in pixels.
 #' @param width numeric width for the network graph's frame area in pixels.
+#' @param fontsize numeric font size in pixels for the node text labels.
+#' @param linkColour character string specifying the colour you want the link lines to be. Multiple formats supported (e.g. hexadecimal).
 #' @param standAlone logical, whether or not to return a complete HTML document (with head and foot) or just the script.
 #' @param file a character string of the file name to save the resulting graph. If a file name is given a standalone webpage is created, i.e. with a header and footer. If \code{file = NULL} then result is returned to the console. 
 #' @param iframe logical. If \code{iframe = TRUE} then the graph is saved to an external file in the working directory and an HTML \code{iframe} linking to the file is printed to the console. This is useful if you are using Slidify and many other HTML slideshow framworks and want to include the graph in the resulting page. If you set the knitr code chunk \code{results='asis'} then the graph will be rendered in the output. Usually, you can use \code{iframe = FALSE} if you are creating simple knitr Markdown or HTML pages. Note: you do not need to specify the file name if \code{iframe = TRUE}, however if you do, do not include the file path.
@@ -21,7 +23,7 @@
 #'
 #' @export
 
-d3ForceNetwork <- function(Links, Nodes, Source, Target, Value = NULL, NodeID, Group, height = 600, width = 900, standAlone = TRUE, file = NULL, iframe = FALSE) 
+d3ForceNetwork <- function(Links, Nodes, Source, Target, Value = NULL, NodeID, Group, height = 600, width = 900, fontsize = 7, linkColour = "#666", opacity = 0.6, standAlone = TRUE, file = NULL, iframe = FALSE) 
 {
 if (!isTRUE(standAlone) & isTRUE(iframe)){
     stop("If iframe = TRUE then standAlone must be TRUE.")
@@ -58,7 +60,7 @@ if (!isTRUE(standAlone) & isTRUE(iframe)){
 	LinkData <- toJSONarray(LinksDF)
 	LinkData <- paste("var links =", LinkData, "; \n")
 
-	NodesData <- toJSONarray(NodessDF)
+	NodesData <- toJSONarray(NodesDF)
 	NodesData <- paste("var nodes =", NodesData, "; \n")
 
 	# Create webpage head
@@ -66,5 +68,29 @@ if (!isTRUE(standAlone) & isTRUE(iframe)){
 
 	# Create Style Sheet
 	NetworkCSS <- whisker.render(BasicStyleSheet())
+
+	# Main script for creating the graph
+	MainScript <- whisker.render(MainForceJS())
+
+	if (is.null(file) & !isTRUE(standAlone)){
+		cat(NetworkCSS, LinkData, NodesData, MainScript)
+	} 
+	else if (is.null(file) & isTRUE(standAlone)){
+		cat(PageHead, NetworkCSS, LinkData, NodesData, MainScript, 
+		    "</body>")
+	} 
+	else if (!is.null(file) & !isTRUE(standAlone)){
+		cat(NetworkCSS, LinkData, NodesData, MainScript, file = file)
+	}
+	else if (!is.null(file) & !isTRUE(iframe)){
+		cat(PageHead, NetworkCSS, LinkData, NodesData, MainScript, 
+		    "</body>", file = file)
+	}
+	else if (!is.null(file) & isTRUE(iframe)){
+		cat(PageHead, NetworkCSS, LinkData, NodesData, MainScript, 
+		    "</body>", file = file)
+		cat("<iframe src=\'", file, "\'", " height=", FrameHeight, " width=", FrameWidth, 
+		    "></iframe>", sep="")  
+	}
 }
 
