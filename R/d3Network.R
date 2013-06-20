@@ -55,6 +55,7 @@ d3Network <- function(Data, Source = NULL, Target = NULL, height = 600, width = 
   else if (!is.null(Source) & !is.null(Target)){
     NetData <- data.frame(Data[, Source], Data[, Target])
   }
+  names(NetData) <- c("source", "target")
   
   # Convert data frame to JSON format
   LinkData <- toJSONarray(NetData)
