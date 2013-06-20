@@ -35,14 +35,14 @@
 #' 
 #' @export
 
-d3SimpleNetwork <- function(Data, Source = NULL, Target = NULL, Group = NULL, height = 600, width = 900, fontsize = 7, linkDistance = 50, charge = -200, linkColour = "#666", nodeColour = "#3182bd", nodeClickColour = "#E34A33", textColour = "#3182bd", opacity = 0.6, standAlone = TRUE, file = NULL, iframe = FALSE)
+d3SimpleNetwork <- function(Data, Source = NULL, Target = NULL, height = 600, width = 900, fontsize = 7, linkDistance = 50, charge = -200, linkColour = "#666", nodeColour = "#3182bd", nodeClickColour = "#E34A33", textColour = "#3182bd", opacity = 0.6, standAlone = TRUE, file = NULL, iframe = FALSE)
 {
   if (!isTRUE(standAlone) & isTRUE(iframe)){
     stop("If iframe = TRUE then standAlone must be TRUE.")
   }
   # If no file name is specified create random name to avoid conflicts
   if (is.null(file) & isTRUE(iframe)){
-    Random <- paste0(sample(c(0:9, letters, LETTERS), 5, replace=TRUE), collapse="")
+    Random <- paste0(sample(c(0:9, letters, LETTERS), 5, replace=TRUE), collapse = "")
     file <- paste0("NetworkGraph", Random, ".html")
   }
   
@@ -58,16 +58,11 @@ d3SimpleNetwork <- function(Data, Source = NULL, Target = NULL, Group = NULL, he
     stop("Data must be a data frame class object.")
   }
   
-  if (is.null(Source) & is.null(Target) & is.null(Group)){
+  if (is.null(Source) & is.null(Target)){
     NetData <- Data[, 1:2]
-    names(NetData) <- c("source", "target")
   }
-  else if (!is.null(Source) & !is.null(Target) & is.null(Group)){
+  else if (!is.null(Source) & !is.null(Target)){
     NetData <- data.frame(Data[, Source], Data[, Target])
-    names(NetData) <- c("source", "target")
-  } else if (!is.null(Source) & !is.null(Target) & !is.null(Group)){
-    NetData <- data.frame(Data[, Source], Data[, Target], Data[, Group])
-    names(NetData) <- c("source", "target", "group")
   }
   
   # Convert data frame to JSON format

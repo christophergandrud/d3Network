@@ -25,7 +25,7 @@
 #' 
 #' @export
 
-d3Network <- function(Data, Source = NULL, Target = NULL, Group = NULL, height = 600, width = 900, fontsize = 7, linkDistance = 50, charge = -200, linkColour = "#666", nodeColour = "#3182bd", nodeClickColour = "#E34A33", textColour = "#3182bd", opacity = 0.6, standAlone = TRUE, file = NULL, iframe = FALSE)
+d3Network <- function(Data, Source = NULL, Target = NULL, height = 600, width = 900, fontsize = 7, linkDistance = 50, charge = -200, linkColour = "#666", nodeColour = "#3182bd", nodeClickColour = "#E34A33", textColour = "#3182bd", opacity = 0.6, standAlone = TRUE, file = NULL, iframe = FALSE)
 {
   message("NOTE: d3Network is depricated. Please use d3SimpleNetwork.")
   if (!isTRUE(standAlone) & isTRUE(iframe)){
@@ -49,27 +49,19 @@ d3Network <- function(Data, Source = NULL, Target = NULL, Group = NULL, height =
     stop("Data must be a data frame class object.")
   }
   
-  if (is.null(Source) & is.null(Target) & is.null(Group)){
+  if (is.null(Source) & is.null(Target)){
     NetData <- Data[, 1:2]
-    names(NetData) <- c("source", "target")
   }
-  else if (!is.null(Source) & !is.null(Target) & is.null(Group)){
+  else if (!is.null(Source) & !is.null(Target)){
     NetData <- data.frame(Data[, Source], Data[, Target])
-    names(NetData) <- c("source", "target")
-  } else if (!is.null(Source) & !is.null(Target) & !is.null(Group)){
-    NetData <- data.frame(Data[, Source], Data[, Target], Data[, Group])
-    names(NetData) <- c("source", "target", "group")
   }
   
   # Convert data frame to JSON format
   LinkData <- toJSONarray(NetData)
   LinkData <- paste("var links =", LinkData, "; \n")
   
-  # Create webpage
-  PageHead <- "
-  <!DOCTYPE html> 
-  <meta charset=\"utf-8\">
-  <body> \n"
+  # Create webpage head
+  PageHead <- BasicHead()
   
   # Create Style Sheet
   NetworkCSS <- whisker.render(BasicStyleSheet())

@@ -1,3 +1,14 @@
+#' Basic HTML Header
+#'
+#' @keywords internals
+#' @noRd
+
+BasicHead <- function(){
+"<!DOCTYPE html> 
+<meta charset=\"utf-8\">
+<body> \n"
+}
+
 #' Mustache basic CSS template for d3Network
 #' 
 #' @keywords internals

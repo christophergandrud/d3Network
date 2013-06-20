@@ -9,7 +9,7 @@
 }
 \usage{
   d3Network(Data, Source = NULL, Target = NULL,
-    Group = NULL, height = 600, width = 900, fontsize = 7,
+    height = 600, width = 900, fontsize = 7,
     linkDistance = 50, charge = -200, linkColour = "#666",
     nodeColour = "#3182bd", nodeClickColour = "#E34A33",
     textColour = "#3182bd", opacity = 0.6,
