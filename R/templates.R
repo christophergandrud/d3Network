@@ -6,13 +6,13 @@
 BasicStyleSheet <- function(){
 "<style> 
 .link {  
-stroke: #666;
-opacity: 0.6;
+stroke: {{linkColour}};
+opacity: {{opacity}};
 stroke-width: 1.5px; 
 } 
 .node circle { 
 stroke: #fff; 
-opacity: 0.6;
+opacity: {{opacity}};
 stroke-width: 1.5px; 
 } 
 text { 
@@ -46,8 +46,6 @@ link.value = +link.value;
 var width = {{width}}
 height = {{height}};
 
-var color = d3.scale.category20();
-
 var force = d3.layout.force() 
 .nodes(d3.values(nodes)) 
 .links(links) 
@@ -78,12 +76,12 @@ var node = svg.selectAll(\".node\")
 
 node.append(\"circle\") 
 .attr(\"r\", 8)
-.style(\"fill\", function(d) { return color(d.value); });
+.style(\"fill\", \"{{nodeColour}}\");
 
 node.append(\"text\") 
 .attr(\"x\", 12) 
 .attr(\"dy\", \".35em\") 
-.style(\"fill\", \"steelblue\")
+.style(\"fill\", \"{{textColour}}\")
 .text(function(d) { return d.name; }); 
 
 function tick() { 
@@ -114,11 +112,11 @@ d3.select(this).select(\"text\").transition()
 .duration(750)
 .attr(\"x\", 22)
 .style(\"stroke-width\", \".5px\")
-.style(\"fill\", \"#E34A33\")
-.style(\"font\", \"20px serif\");
+.style(\"fill\", \"{{nodeClickColour}}\")
+.style(\"font\", \"{{clickTextSize}}px serif\");
 d3.select(this).select(\"circle\").transition()
 .duration(750)
-.style(\"fill\", \"#E34A33\")
+.style(\"fill\", \"{{nodeClickColour}}\")
 .attr(\"r\", 16)
 }
 
@@ -127,14 +125,14 @@ function dblclick() {
 d3.select(this).select(\"circle\").transition()
 .duration(750)
 .attr(\"r\", 6)
-.style(\"fill\", \"#E34A33\");
+.style(\"fill\", \"{{nodeClickColour}}\");
 d3.select(this).select(\"text\").transition()
 .duration(750)
 .attr(\"x\", 12)
 .style(\"stroke\", \"none\")
-.style(\"fill\", \"#E34A33\")
+.style(\"fill\", \"{{nodeClickColour}}\")
 .style(\"stroke\", \"none\")
-.style(\"font\", \"10px serif\");
+.style(\"font\", \"{{fontsize}}px serif\");
 }
 
 </script>\n"

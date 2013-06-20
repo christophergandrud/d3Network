@@ -1,3 +1,4 @@
+export(d3ForceNetwork)
 export(d3Network)
 export(d3SimpleNetwork)
 importFrom(whisker,whisker.render)

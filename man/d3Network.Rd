@@ -1,11 +1,11 @@
 \name{d3Network}
 \alias{d3Network}
-\title{An R function for creating simple D3 javascript directed network graphs.}
+\title{An R function for creating simple D3 JavaScript force directed network graphs.}
 \source{
   D3.js was created by Michael Bostock. See
-  <http://d3js.org/> and, more specifically for directed
-  networks
-  <https://github.com/mbostock/d3/wiki/Force-Layout>
+  \url{http://d3js.org/} and, more specifically for
+  directed networks
+  \url{https://github.com/mbostock/d3/wiki/Force-Layout}
 }
 \usage{
   d3Network(Data, Source = NULL, Target = NULL,
@@ -70,17 +70,7 @@
   you do, do not include the file path.}
 }
 \description{
-  \code{d3Network} creates D3 javascript network graphs. It
-  is much more customisable than
-  \code{\link{d3SimpleNetwork}}
-}
-\examples{
-# Fake data
-Source <- c("A", "A", "A", "A", "B", "B", "C", "C", "D")
-Target <- c("B", "C", "D", "J", "E", "F", "G", "H", "I")
-NetworkData <- data.frame(Source, Target)
-
-# Create graph
-d3Network(NetworkData, height = 300, width = 700, fontsize = 15)
+  \code{d3Network} creates D3 JavaScript force directed
+  network graphs. NOTE: it is depricated.
 }
 

@@ -1,10 +1,9 @@
 #' Internal function from Wei Luo to convert a data frame to a JSON array
 #' 
 #' @param dtf a data frame object.
-#' @source Function from: <http://theweiluo.wordpress.com/2011/09/30/r-to-json-for-d3-js-and-protovis/>
+#' @source Function from: \url{http://theweiluo.wordpress.com/2011/09/30/r-to-json-for-d3-js-and-protovis/}
 #' @keywords internal
-#' @noRD
-
+#' @noRd
 toJSONarray <- function(dtf){
   clnms <- colnames(dtf)
   
@@ -26,7 +25,7 @@ toJSONarray <- function(dtf){
 
 #' Read a text file into a single string
 #' 
-#' @source Code taken directly from Ramnath Vaidyanathan's Slidify <https://github.com/ramnathv/slidify>.
+#' @source Code taken directly from Ramnath Vaidyanathan's Slidify \url{https://github.com/ramnathv/slidify}.
 #' @param doc path to text document
 #' @return string with document contents
 #' @keywords internal
