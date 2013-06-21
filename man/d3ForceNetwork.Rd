@@ -55,6 +55,9 @@
   you want the link lines to be. Multiple formats supported
   (e.g. hexadecimal).}
 
+  \item{opacity}{numeric value of the proportion opaque you
+  would like the graph elements to be.}
+
   \item{standAlone}{logical, whether or not to return a
   complete HTML document (with head and foot) or just the
   script.}
@@ -80,5 +83,18 @@
 }
 \description{
   Create a D3 JavaScript force directed network graph.
+}
+\examples{
+# dontrun
+# Load data JSON formated data into two R data frames
+# library(RCurl)
+# MisJson <- getURL("https://raw.github.com/christophergandrud/d3Network/Mustache/data/miserables.json")
+# MisLinks <- JSONtoDF(jsonStr = MisJson, array = "links")
+# MisNodes <- JSONtoDF(jsonStr = MisJson, array = "nodes")
+
+# Create graph
+# d3ForceNetwork(Links = MisLinks, Nodes = MisNodes, Source = "source",
+#                Target = "target", Value = "value", NodeID = "name",
+#                Group = "group", opacity = 0.4)
 }
 

@@ -187,6 +187,7 @@ var node = svg.selectAll(\".node\")
 .attr(\"class\", \"node\")
 .attr(\"r\", 5)
 .style(\"fill\", function(d) { return color(d.group); })
+.style(\"opacity\", {{opacity}})
 .call(force.drag);
 
 node.append(\"title\")

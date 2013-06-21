@@ -11,9 +11,23 @@
 #' @param width numeric width for the network graph's frame area in pixels.
 #' @param fontsize numeric font size in pixels for the node text labels.
 #' @param linkColour character string specifying the colour you want the link lines to be. Multiple formats supported (e.g. hexadecimal).
+#' @param opacity numeric value of the proportion opaque you would like the graph elements to be.
 #' @param standAlone logical, whether or not to return a complete HTML document (with head and foot) or just the script.
 #' @param file a character string of the file name to save the resulting graph. If a file name is given a standalone webpage is created, i.e. with a header and footer. If \code{file = NULL} then result is returned to the console. 
 #' @param iframe logical. If \code{iframe = TRUE} then the graph is saved to an external file in the working directory and an HTML \code{iframe} linking to the file is printed to the console. This is useful if you are using Slidify and many other HTML slideshow framworks and want to include the graph in the resulting page. If you set the knitr code chunk \code{results='asis'} then the graph will be rendered in the output. Usually, you can use \code{iframe = FALSE} if you are creating simple knitr Markdown or HTML pages. Note: you do not need to specify the file name if \code{iframe = TRUE}, however if you do, do not include the file path.
+#'
+#' @examples
+#' # dontrun
+#' # Load data JSON formated data into two R data frames
+#' # library(RCurl)
+#' # MisJson <- getURL("https://raw.github.com/christophergandrud/d3Network/Mustache/data/miserables.json")
+#' # MisLinks <- JSONtoDF(jsonStr = MisJson, array = "links")
+#' # MisNodes <- JSONtoDF(jsonStr = MisJson, array = "nodes")
+#' 
+#' # Create graph
+#' # d3ForceNetwork(Links = MisLinks, Nodes = MisNodes, Source = "source",
+#' #                Target = "target", Value = "value", NodeID = "name",
+#' #                Group = "group", opacity = 0.4)
 #'
 #' @source 
 #' D3.js was created by Michael Bostock. See \url{http://d3js.org/} and, more specifically for directed networks \url{https://github.com/mbostock/d3/wiki/Force-Layout}
