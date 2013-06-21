@@ -1,4 +1,4 @@
-#' An R function for creating simple D3 JavaScript force directed network graphs.
+#' Function for creating simple D3 JavaScript force directed network graphs. DEPRICATED, USE d3SimpleNetwork
 #'
 #' \code{d3Network} creates D3 JavaScript force directed network graphs. NOTE: it is depricated. It is currently a direct copy of \code{\link{d3SimpleNetwork}}
 #'

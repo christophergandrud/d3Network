@@ -1,6 +1,6 @@
 \name{d3Network}
 \alias{d3Network}
-\title{An R function for creating simple D3 JavaScript force directed network graphs.}
+\title{Function for creating simple D3 JavaScript force directed network graphs. DEPRICATED, USE d3SimpleNetwork}
 \source{
   D3.js was created by Michael Bostock. See
   \url{http://d3js.org/} and, more specifically for
