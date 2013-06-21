@@ -34,17 +34,37 @@ Currently **d3Network** only supports [force directed](http://en.wikipedia.org/w
 
 First let's make up some fake data. 
 
+```{r}
+Source <- c("A", "A", "A", "A", "B", "B", "C", "C", "D")
+Target <- c("B", "C", "D", "J", "E", "F", "G", "H", "I")
+NetworkData <- data.frame(Source, Target)
+```
+
+We can simple stick the `NetworkData` data frame into `d2SimpleNetwork`:
+
+```{r eval=FALSE}
+d3SimpleNetwork(NetworkData)
+```
+
+And here is the result:
+
+```{r, echo=FALSE, results='asis'}
+library(d3Network)
+d3SimpleNetwork(NetworkData, iframe = TRUE, file = "img/FirstNetwork.html")
+```
+
 <h3 id="forceDirect"><code>d3ForceDirected</code><h3>
 
 
 ## Installation
 
-You can install *d3Network* using the [devtools](https://github.com/hadley/devtools) package and the following code:
+You can install **d3Network** using the [devtools](https://github.com/hadley/devtools) package and the following code:
 
-```
+```{r eval=FALSE}
 devtools::install_github("d3Network", "christophergandrud")
 ```
 
 </section>
 
-<script src="assets/js/highlight.min.js?20120730"></script>
+<script src="assets/js/d3.min.js" type="text/javascript></script>
+
