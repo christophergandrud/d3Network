@@ -55,8 +55,7 @@ And here is the result:
 ```{r, echo=FALSE, results='asis'}
 library(d3Network)
 d3SimpleNetwork(NetworkData, width = 400, height = 250,
-                iframe = TRUE, file = "img/FirstNetwork.html",
-                d3Script = "/git_repositories/d3Network/assets/js/d3.min.js")
+                iframe = TRUE, file = "img/FirstNetwork.html")
 ```
 
 There are many options for to customising the look and feel of the graph. For example we can change the colour of the links, nodes, and text. We can also change the opacity of the graph elements:
@@ -71,8 +70,7 @@ library(d3Network)
 d3SimpleNetwork(NetworkData, width = 400, height = 250,
                 iframe = TRUE, file = "img/SecondNetwork.html", 
                 textColour = "red", linkColour = "orange", nodeColour = "red",
-                opacity = 0.9,
-                d3Script = "/git_repositories/d3Network/assets/js/d3.min.js")
+                opacity = 0.9)
 ```
 
 Other important ways to customise a force directed graph is to change the *link distance* and *charge*. Link distance is simply the distance between the nodes. Charge specifies how strong the force either repelling or pulling together the nodes is. Here is an example with a charge of -50: 
@@ -88,8 +86,7 @@ library(d3Network)
 d3SimpleNetwork(NetworkData, width = 400, height = 250,
                 iframe = TRUE, file = "img/ThirdNetwork.html", 
                 textColour = "red", linkColour = "orange", nodeColour = "red",
-                opacity = 0.9, charge = -50,
-                d3Script = "/git_repositories/d3Network/assets/js/d3.min.js")
+                opacity = 0.9, charge = -50)
 ```
 
 This is a weaker charge than we have seen so far (the default is -200). A weak negative charge means that the nodes do not repel each other as strongly. So, they are closer together than if there was a larger negative charge. Using a positive number would make the nodes actually attracted to one another. Basically, you will get a clump of nodes.
