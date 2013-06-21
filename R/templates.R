@@ -33,7 +33,7 @@ pointer-events: none;
 } 
 </style> 
 
-<script src=\"http://d3js.org/d3.v3.min.js\"></script>
+<script src={{d3Script}}></script>
 
 <script> \n"
 }
