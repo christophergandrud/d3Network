@@ -38,6 +38,38 @@ pointer-events: none;
 <script> \n"
 }
 
+#' Mustache CSS template for d3ForceNetwork
+#' 
+#' @keywords internals
+#' @noRd
+
+ForceMainStyleSheet <- function(){
+"<style> 
+.link {  
+stroke: {{linkColour}};
+opacity: {{opacity}};
+stroke-width: 1.5px; 
+} 
+.node circle { 
+stroke: #fff; 
+opacity: {{opacity}};
+stroke-width: 1.5px; 
+} 
+.node:not(:hover) .nodetext {
+display: none;
+}
+text { 
+font: {{fontsize}}px serif; 
+opacity: {{opacity}};
+pointer-events: none; 
+} 
+</style> 
+
+<script src=\"http://d3js.org/d3.v3.min.js\"></script>
+
+<script> \n"
+}
+
 #' Mustache basic Force Directed Network template for d3SimpleNetwork
 #' 
 #' @keywords internals
@@ -103,8 +135,7 @@ link
 .attr(\"x2\", function(d) { return d.target.x; }) 
 .attr(\"y2\", function(d) { return d.target.y; }); 
 
-node 
-.attr(\"transform\", function(d) { return \"translate(\" + d.x + \",\" + d.y + \")\"; }); 
+node.attr(\"transform\", function(d) { return \"translate(\" + d.x + \",\" + d.y + \")\"; }); 
 } 
 
 function mouseover() { 
@@ -167,8 +198,9 @@ var force = d3.layout.force()
 .nodes(d3.values(nodes)) 
 .links(links) 
 .size([width, height]) 
-.linkDistance(3) 
-.charge(-120) 
+.linkDistance({{linkDistance}}) 
+.charge({{charge}}) 
+.on(\"tick\", tick) 
 .start(); 
 
 var svg = d3.select(\"body\").append(\"svg\")
@@ -183,25 +215,50 @@ var link = svg.selectAll(\".link\")
 
 var node = svg.selectAll(\".node\")
 .data(force.nodes())
-.enter().append(\"circle\")
+.enter().append(\"g\") 
 .attr(\"class\", \"node\")
-.attr(\"r\", 5)
 .style(\"fill\", function(d) { return color(d.group); })
 .style(\"opacity\", {{opacity}})
+.on(\"mouseover\", mouseover) 
+.on(\"mouseout\", mouseout) 
 .call(force.drag);
 
-node.append(\"title\")
-.text(function(d) { return d.name; });
+node.append(\"circle\") 
+.attr(\"r\", 6)
 
-force.on(\"tick\", function() {
-link.attr(\"x1\", function(d) { return d.source.x; })
-.attr(\"y1\", function(d) { return d.source.y; })
-.attr(\"x2\", function(d) { return d.target.x; })
-.attr(\"y2\", function(d) { return d.target.y; });
+node.append(\"svg:text\")
+.attr(\"class\", \"nodetext\")
+.attr(\"dx\", 12)
+.attr(\"dy\", \".35em\")
+.text(function(d) { return d.name });
 
-node.attr(\"cx\", function(d) { return d.x; })
-.attr(\"cy\", function(d) { return d.y; });
-});
+function tick() { 
+link 
+.attr(\"x1\", function(d) { return d.source.x; }) 
+.attr(\"y1\", function(d) { return d.source.y; }) 
+.attr(\"x2\", function(d) { return d.target.x; }) 
+.attr(\"y2\", function(d) { return d.target.y; }); 
+
+node.attr(\"transform\", function(d) { return \"translate(\" + d.x + \",\" + d.y + \")\"; }); 
+} 
+
+function mouseover() { 
+d3.select(this).select(\"circle\").transition() 
+.duration(750) 
+.attr(\"r\", 16);
+d3.select(this).select(\"text\").transition()
+.duration(750)
+.attr(\"x\", 13)
+.style(\"stroke-width\", \".5px\")
+.style(\"font\", \"{{clickTextSize}}px serif\")
+.style(\"opacity\", 1); 
+} 
+
+function mouseout() { 
+d3.select(this).select(\"circle\").transition() 
+.duration(750) 
+.attr(\"r\", 8); 
+} 
 
 </script>\n"
 }

@@ -10,6 +10,8 @@
 #' @param height numeric height for the network graph's frame area in pixels.
 #' @param width numeric width for the network graph's frame area in pixels.
 #' @param fontsize numeric font size in pixels for the node text labels.
+#' @param linkDistance numeric distance between the links in pixels (actually arbitrary relative to the diagram's size).
+#' @param charge numeric value indicating either the strength of the node repulsion (negative value) or attraction (positive value).
 #' @param linkColour character string specifying the colour you want the link lines to be. Multiple formats supported (e.g. hexadecimal).
 #' @param opacity numeric value of the proportion opaque you would like the graph elements to be.
 #' @param standAlone logical, whether or not to return a complete HTML document (with head and foot) or just the script.
@@ -37,7 +39,7 @@
 #'
 #' @export
 
-d3ForceNetwork <- function(Links, Nodes, Source, Target, Value = NULL, NodeID, Group, height = 600, width = 900, fontsize = 7, linkColour = "#666", opacity = 0.6, standAlone = TRUE, file = NULL, iframe = FALSE) 
+d3ForceNetwork <- function(Links, Nodes, Source, Target, Value = NULL, NodeID, Group, height = 600, width = 900, fontsize = 7, linkDistance = 50, charge = -120, linkColour = "#666", opacity = 0.6, standAlone = TRUE, file = NULL, iframe = FALSE) 
 {
 if (!isTRUE(standAlone) & isTRUE(iframe)){
     stop("If iframe = TRUE then standAlone must be TRUE.")
@@ -51,6 +53,9 @@ if (!isTRUE(standAlone) & isTRUE(iframe)){
 	# Create iframe dimensions larger than graph dimensions
 	FrameHeight <- height + height * 0.07
 	FrameWidth <- width + width * 0.03
+
+	# Create click text size
+	clickTextSize <- fontsize * 2.5
 
 	# Subset data frames for network graph
 	if (class(Links) != "data.frame"){
@@ -81,7 +86,7 @@ if (!isTRUE(standAlone) & isTRUE(iframe)){
   	PageHead <- BasicHead()
 
 	# Create Style Sheet
-	NetworkCSS <- whisker.render(BasicStyleSheet())
+	NetworkCSS <- whisker.render(ForceMainStyleSheet())
 
 	# Main script for creating the graph
 	MainScript <- whisker.render(MainForceJS())

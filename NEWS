@@ -1,3 +1,13 @@
+v0.2
+
+Added `d3ForceNetwork` for creating force directed network graphs where link distance and group changes the graphs attributes.
+
+`d3SimpleNetwork` and `d3Network` are now the same and have improved aesthetic customisability. `d3Network` is depricated. This is in advance of creating functions for force directed and other types of networks.
+
+`JSONtoDF` command added for reading a JSON data file into R. It converts a specified array in the JSON data  into a data frame.
+
+Documentation and minor bug fixes.
+
 v0.1.2
 
 Internal improvements using whisker templating.

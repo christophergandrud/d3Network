@@ -10,8 +10,9 @@
 \usage{
   d3ForceNetwork(Links, Nodes, Source, Target,
     Value = NULL, NodeID, Group, height = 600, width = 900,
-    fontsize = 7, linkColour = "#666", opacity = 0.6,
-    standAlone = TRUE, file = NULL, iframe = FALSE)
+    fontsize = 7, linkDistance = 50, charge = -120,
+    linkColour = "#666", opacity = 0.6, standAlone = TRUE,
+    file = NULL, iframe = FALSE)
 }
 \arguments{
   \item{Links}{a data frame object with the links between
@@ -50,6 +51,14 @@
 
   \item{fontsize}{numeric font size in pixels for the node
   text labels.}
+
+  \item{linkDistance}{numeric distance between the links in
+  pixels (actually arbitrary relative to the diagram's
+  size).}
+
+  \item{charge}{numeric value indicating either the
+  strength of the node repulsion (negative value) or
+  attraction (positive value).}
 
   \item{linkColour}{character string specifying the colour
   you want the link lines to be. Multiple formats supported
