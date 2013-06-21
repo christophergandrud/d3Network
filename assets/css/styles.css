@@ -30,7 +30,6 @@ h2 a {
 
 section {
   width:80%;
-  float:middle;
   padding-bottom:50px;
 }
 
@@ -118,6 +117,7 @@ aside,
 
 iframe {
   border: 1px solid #DEDEDE;
+  float:middle;
 }
 
 @media print, screen and (max-width: 960px) {

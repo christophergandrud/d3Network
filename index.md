@@ -42,21 +42,40 @@ NetworkData <- data.frame(Source, Target)
 ```
 
 
-We can simple stick the `NetworkData` data frame into `d2SimpleNetwork`:
+It's important to note that the *Source* variable is the first variable and the *Target* is the second. We can use the `Source` and `Target` arguments to specify which variables are which, if the data is in another order.  
+
+Now we can simply stick the `NetworkData` data frame into `d3SimpleNetwork`:
 
 
 ```r
-d3SimpleNetwork(NetworkData)
+d3SimpleNetwork(NetworkData, width = 400, height = 250)
 ```
 
+
+You'll notice that I added the `width` and `height` arguments. These change the size of the graph area. They are in pixels.
 
 And here is the result:
 
 <iframe src='img/FirstNetwork.html' height=267.5 width=412></iframe>
 
 
+There are many options for to customising the look and feel of the graph. For example we can change the colour of the links, nodes, and text. We can also change the opacity of the graph elements:
+
+
+```r
+d3SimpleNetwork(NetworkData, width = 400, height = 250, textColour = "orange",
+                linkColour = "red", nodeColor = "orange", opacity = 0.9)
+```
+
+
+<iframe src='img/SecondNetwork.html' height=267.5 width=412></iframe>
+
+
+
 <h3 id="forceDirect"><code>d3ForceDirected</code><h3>
 
+
+## d3Network in dynamic reproducible documents
 
 ## Installation
 

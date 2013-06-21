@@ -40,11 +40,15 @@ Target <- c("B", "C", "D", "J", "E", "F", "G", "H", "I")
 NetworkData <- data.frame(Source, Target)
 ```
 
-We can simple stick the `NetworkData` data frame into `d2SimpleNetwork`:
+It's important to note that the *Source* variable is the first variable and the *Target* is the second. We can use the `Source` and `Target` arguments to specify which variables are which, if the data is in another order.  
+
+Now we can simply stick the `NetworkData` data frame into `d3SimpleNetwork`:
 
 ```{r eval=FALSE}
-d3SimpleNetwork(NetworkData)
+d3SimpleNetwork(NetworkData, width = 400, height = 250)
 ```
+
+You'll notice that I added the `width` and `height` arguments. These change the size of the graph area. They are in pixels.
 
 And here is the result:
 
@@ -55,8 +59,27 @@ d3SimpleNetwork(NetworkData, width = 400, height = 250,
                 d3Script = "/git_repositories/d3Network/assets/js/d3.min.js")
 ```
 
+There are many options for to customising the look and feel of the graph. For example we can change the colour of the links, nodes, and text. We can also change the opacity of the graph elements:
+
+```{r eval=FALSE, tidy=FALSE}
+d3SimpleNetwork(NetworkData, width = 400, height = 250, textColour = "orange",
+                linkColour = "red", nodeColor = "orange", opacity = 0.9)
+```
+
+```{r, echo=FALSE, results='asis'}
+library(d3Network)
+d3SimpleNetwork(NetworkData, width = 400, height = 250,
+                iframe = TRUE, file = "img/SecondNetwork.html", 
+                textColour = "red", linkColour = "orange", nodeColour = "red",
+                opacity = 0.9,
+                d3Script = "/git_repositories/d3Network/assets/js/d3.min.js")
+```
+
+
 <h3 id="forceDirect"><code>d3ForceDirected</code><h3>
 
+
+## d3Network in dynamic reproducible documents
 
 ## Installation
 
