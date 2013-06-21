@@ -6,6 +6,8 @@ Added `d3ForceNetwork` for creating force directed network graphs where link dis
 
 `JSONtoDF` command added for reading a JSON data file into R. It converts a specified array in the JSON data  into a data frame.
 
+Improvements to the internal workings of the commands. Now uses mustache templates to create the graphs.
+
 Documentation and minor bug fixes.
 
 v0.1.2
