@@ -28,9 +28,11 @@ Currently **d3Network** only supports [force directed](http://en.wikipedia.org/w
 
 **d3Network** currently has two basic commands for creating network graphs: <a href="#simple"><code>d3SimpleNetwork</code></a> and <a href="#forceDirect"><code>d3ForceDirected</code></a>. 
 
-<h3 id="simple"><code>d3SimpleNetwork</code><h3>
+<h3 id="simple"><code>d3SimpleNetwork</code></h3>
 
+`d3SimpleNetwork` is designed to take a simple data frame that has two columns specifying the *sources* and *targets* of the nodes in a network and turn it into a graph. You can easily customise the look and feel of the graph. Let's do create an example. 
 
+First let's make up some fake data. 
 
 <h3 id="forceDirect"><code>d3ForceDirected</code><h3>
 
