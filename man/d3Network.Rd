@@ -13,7 +13,8 @@
     linkDistance = 50, charge = -200, linkColour = "#666",
     nodeColour = "#3182bd", nodeClickColour = "#E34A33",
     textColour = "#3182bd", opacity = 0.6,
-    standAlone = TRUE, file = NULL, iframe = FALSE)
+    standAlone = TRUE, file = NULL, iframe = FALSE,
+    d3Script = "http://d3js.org/d3.v3.min.js")
 }
 \arguments{
   \item{Data}{a data frame object with three columns. The
@@ -90,6 +91,11 @@
   knitr Markdown or HTML pages. Note: you do not need to
   specify the file name if \code{iframe = TRUE}, however if
   you do, do not include the file path.}
+
+  \item{d3Script}{a character string that allows you to
+  specify the location of the d3.js script you would like
+  to use. The default is
+  \url{http://d3js.org/d3.v3.min.js}.}
 }
 \description{
   \code{d3Network} creates D3 JavaScript force directed
