@@ -50,7 +50,9 @@ And here is the result:
 
 ```{r, echo=FALSE, results='asis'}
 library(d3Network)
-d3SimpleNetwork(NetworkData, iframe = TRUE, file = "img/FirstNetwork.html")
+d3SimpleNetwork(NetworkData, width = 400, height = 250,
+                iframe = TRUE, file = "img/FirstNetwork.html",
+                d3Script = "/git_repositories/d3Network/assets/js/d3.min.js")
 ```
 
 <h3 id="forceDirect"><code>d3ForceDirected</code><h3>

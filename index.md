@@ -52,7 +52,7 @@ d3SimpleNetwork(NetworkData)
 
 And here is the result:
 
-<iframe src='img/FirstNetwork.html' height=642 width=927></iframe>
+<iframe src='img/FirstNetwork.html' height=267.5 width=412></iframe>
 
 
 <h3 id="forceDirect"><code>d3ForceDirected</code><h3>
