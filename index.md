@@ -71,9 +71,26 @@ d3SimpleNetwork(NetworkData, width = 400, height = 250, textColour = "orange",
 <iframe src='img/SecondNetwork.html' height=267.5 width=412></iframe>
 
 
+Other important ways to customise a force directed graph is to change the *link distance* and *charge*. Link distance is simply the distance between the nodes. Charge specifies how strong the force either repelling or pulling together the nodes is. Here is an example with a charge of -50: 
 
-<h3 id="forceDirect"><code>d3ForceDirected</code><h3>
 
+```r
+d3SimpleNetwork(NetworkData, width = 400, height = 250, textColour = "orange",
+                linkColour = "red", nodeColor = "orange", opacity = 0.9,
+                charge = -50)
+```
+
+
+<iframe src='img/ThirdNetwork.html' height=267.5 width=412></iframe>
+
+
+This is a weaker charge than we have seen so far (the default is -200). A weak negative charge means that the nodes do not repel each other as strongly. So, they are closer together than if there was a larger negative charge. Using a positive number would make the nodes actually attracted to one another. Basically, you will get a clump of nodes.
+
+Have a look at the `d3SimpleNetwork` documentation for more customisation options.
+
+<h3 id="forceDirect"><code>d3ForceDirected</code></h3>
+
+If you want to make more complex force directed graph structures use `d3ForceNetwork`. It allows you want to use individual link and node properties to change the distance between individual nodes and the colour of the nodes depending on membership in specific groups.
 
 ## d3Network in dynamic reproducible documents
 
