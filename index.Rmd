@@ -37,4 +37,14 @@ First let's make up some fake data.
 <h3 id="forceDirect"><code>d3ForceDirected</code><h3>
 
 
+## Installation
+
+You can install *d3Network* using the [devtools](https://github.com/hadley/devtools) package and the following code:
+
+```
+devtools::install_github("d3Network", "christophergandrud")
+```
+
 </section>
+
+<script src="assets/js/highlight.min.js?20120730"></script>
