@@ -8,7 +8,7 @@
 
 <section>
 
-<h1 id="top">d3Network</h1>
+<h1 id="top">d3Network</h1> <img src="img/Logo.png"></img>
 
 ### Tools for creating D3 JavaScript directed network graphs from R.
 
@@ -17,18 +17,27 @@
 
 ---
 
+<div id="navcontainer">
+<ul id="navlist">
+<li><a href="#commands">Commands</a></li> 
+<li><a href="#standAlone">Output</a></li> 
+<li><a href="#install">Install</a></li>
+</ul>
+</div>
+
+---
+
 [Mike Bostock](http://bost.ocks.org/mike/)'s [D3.js](http://d3js.org/) is great for creating [interactive network graphs](http://bl.ocks.org/mbostock/4062045) with JavaScript.  The [d3Network](https://github.com/christophergandrud/d3Network) package makes it easy to create these network graphs from [R](http://www.r-project.org/). The main idea is that you should able to take an R data frame of information about the relationships between members of a network and create full network graphs with one command.
 
 Currently **d3Network** only supports [force directed](http://en.wikipedia.org/wiki/Force-directed_graph_drawing) network graphs. Basically, D3 assigns forces to the nodes and edges (links between the nodes) to arrange their placement and simulate movement. We'll see of examples below that make this concept intuitive sense. 
 
-
-## Commands
+<h2 id="commands">Commands</h2>
 
 **d3Network** currently has two basic commands for creating network graphs: <a href="#simple"><code>d3SimpleNetwork</code></a> and <a href="#forceDirect"><code>d3ForceDirected</code></a>. 
 
 <h3 id="simple"><code>d3SimpleNetwork</code></h3>
 
-`d3SimpleNetwork` is designed to take a simple data frame that has two columns specifying the *sources* and *targets* of the nodes in a network and turn it into a graph. You can easily customise the look and feel of the graph. Let's do create an example. 
+`d3SimpleNetwork` is designed to take a simple data frame that has two columns specifying the *sources* and *targets* of the nodes in a network and turn it into a graph. You can easily customise the look and feel of the graph. Let's create an example. 
 
 First let's make up some fake data. 
 
@@ -180,11 +189,11 @@ d3SimpleNetwork(NetworkData, file = "ExampleGraph.html")
 
 This will create a new file called `ExampleGraph.html` in your working directory.
 
-## d3Network in dynamic reproducible documents
+<h2 id="rep">d3Network in dynamic reproducible documents</h2>
 
 If you would like to include network graphs in a [knitr](http://yihui.name/knitr/) [Markdown](http://daringfireball.net/projects/markdown/) dynamically reproducible document just place your *d3Network* code in a code chunk with the option `results='asis'`. Also set the argument `iframe = TRUE` and specify a file name with `file` as before. 
 
-## Installation
+<h2 id="install">Install</h2>
 
 You can install **d3Network** using the [devtools](https://github.com/hadley/devtools) package and the following code:
 
@@ -193,8 +202,29 @@ You can install **d3Network** using the [devtools](https://github.com/hadley/dev
 devtools::install_github("d3Network", "christophergandrud")
 ```
 
+<br>
+<br>
+<br>
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+var disqus_shortname = 'd3network'; // required: replace example with your forum shortname
+
+/* * * DON'T EDIT BELOW THIS LINE * * */
+(function() {
+var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
 
 </section>
+
+---
 
 <footer>
 
@@ -202,8 +232,21 @@ devtools::install_github("d3Network", "christophergandrud")
 
 [Christopher Gandrud](http://christophergandrud.blogspot.com/p/biocontact.html)
 
-<a href="https://twitter.com/ChrisGandrud"><img src="https://raw.github.com/christophergandrud/RepResR-RStudio/gh-pages/img/twitter-bird-Logo.png" alt="@ChrisGandrud" height="45" width="45"></a> <a href="https://github.com/christophergandrud"><img src="https://raw.github.com/christophergandrud/RepResR-RStudio/gh-pages/img/Octocat.png" alt="Gandrud GitHub page" height="35" width="37"></a>
+<a href="https://twitter.com/ChrisGandrud"><img src="https://raw.github.com/christophergandrud/RepResR-RStudio/gh-pages/img/twitter-bird-Logo.png" alt="@ChrisGandrud" height="45" width="45"></a> <a href="https://github.com/christophergandrud"><img src="https://raw.github.com/christophergandrud/RepResR-RStudio/gh-pages/img/Octocat.png" alt="Gandrud GitHub page" height="33" width="37"></a>
 
 </footer>
 
+<script type="text/javascript">
+
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-41657792-1']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+
+</script>
 

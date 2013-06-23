@@ -29,7 +29,7 @@ h2 a {
 }
 
 section {
-  width:80%;
+  width:95%;
   padding-bottom:50px;
 }
 
@@ -59,6 +59,12 @@ blockquote {
 
 li {
   width: 680px;
+}
+
+#navlist li {
+  display: inline;
+  list-style-type: none;
+  padding-right: 20%;
 }
 
 a {
@@ -173,6 +179,9 @@ iframe {
   pre, code {
     word-wrap:normal;
   }
+  #navlist li {
+    padding-right: 10%;
+  }
 }
 
 @media print, screen and (max-width: 480px) {
@@ -185,6 +194,9 @@ iframe {
   }
   iframe{
     margin-left: 0;
+  }
+  #navlist li {
+    padding-right: 5%;
   }
 }
 
