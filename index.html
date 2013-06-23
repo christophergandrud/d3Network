@@ -290,9 +290,9 @@ iframe {
 
 <hr/>
 
-<p><a href="http://bost.ocks.org/mike/">Mike Bostock</a>&#39;s <a href="http://d3js.org/">D3.js</a> is great for creating <a href="http://bl.ocks.org/mbostock/4062045">interactive network graphs</a> with JavaScript.  The <a href="https://github.com/christophergandrud/d3Network">d3Network</a> package makes it easy to create these network graphs from <a href="http://www.r-project.org/">R</a>. The main idea is that you should able to take an R data frame of information about the relationships between members of a network and create full network graphs with one command.</p>
+<p><a href="http://bost.ocks.org/mike/">Mike Bostock</a>&#39;s <a href="http://d3js.org/">D3.js</a> is great for creating <a href="http://bl.ocks.org/mbostock/4062045">interactive network graphs</a> with JavaScript.  The <a href="https://github.com/christophergandrud/d3Network">d3Network</a> package makes it easy to create these network graphs from <a href="http://www.r-project.org/">R</a>. The main idea is that you should able to take an R data frame with information about the relationships between members of a network and create full network graphs with one command.</p>
 
-<p>Currently <strong>d3Network</strong> only supports <a href="http://en.wikipedia.org/wiki/Force-directed_graph_drawing">force directed</a> network graphs. Basically, D3 assigns forces to the nodes and edges (links between the nodes) to arrange their placement and simulate movement. We&#39;ll see of examples below that make this concept intuitive sense. </p>
+<p>Currently <strong>d3Network</strong> only supports <a href="http://en.wikipedia.org/wiki/Force-directed_graph_drawing">force directed</a> network graphs. This basically means that D3 assigns &#39;forces&#39; to the nodes and edges (links between the nodes) to arrange their placement and simulate movement. </p>
 
 <h2 id="commands">Commands</h2>
 
@@ -300,29 +300,29 @@ iframe {
 
 <h3 id="simple"><code>d3SimpleNetwork</code></h3>
 
-<p><code>d3SimpleNetwork</code> is designed to take a simple data frame that has two columns specifying the <em>sources</em> and <em>targets</em> of the nodes in a network and turn it into a graph. You can easily customise the look and feel of the graph. Let&#39;s create an example. </p>
+<p><code>d3SimpleNetwork</code> is designed to take a simple data frame that has two columns specifying the <em>sources</em> and <em>targets</em> of the nodes in a network and turn it into a graph. You can easily customise the look and feel of the graph. Let&#39;s do an example. </p>
 
-<p>First let&#39;s make up some fake data. </p>
+<p>First make some fake data. </p>
 
 <pre><code class="r">Source &lt;- c(&quot;A&quot;, &quot;A&quot;, &quot;A&quot;, &quot;A&quot;, &quot;B&quot;, &quot;B&quot;, &quot;C&quot;, &quot;C&quot;, &quot;D&quot;)
 Target &lt;- c(&quot;B&quot;, &quot;C&quot;, &quot;D&quot;, &quot;J&quot;, &quot;E&quot;, &quot;F&quot;, &quot;G&quot;, &quot;H&quot;, &quot;I&quot;)
 NetworkData &lt;- data.frame(Source, Target)
 </code></pre>
 
-<p>It&#39;s important to note that the <em>Source</em> variable is the first variable and the <em>Target</em> is the second. We can use the <code>Source</code> and <code>Target</code> arguments to specify which variables are which, if the data is in another order.  </p>
+<p>It&#39;s important to note that the <em>Source</em> variable is the first variable and the <em>Target</em> is the second. We can use <code>d3SimpleNetwork</code>&#39;s <code>Source</code> and <code>Target</code> arguments to specify which variables are which, if the data is in another order.  </p>
 
 <p>Now we can simply stick the <code>NetworkData</code> data frame into <code>d3SimpleNetwork</code>:</p>
 
 <pre><code class="r">d3SimpleNetwork(NetworkData, width = 400, height = 250)
 </code></pre>
 
-<p>You&#39;ll notice that I added the <code>width</code> and <code>height</code> arguments. These change the size of the graph area. They are in pixels.</p>
-
-<p>And here is the result:</p>
+<p>You&#39;ll notice that I added the <code>width</code> and <code>height</code> arguments. These change the size of the graph area. They are in pixels. Here is the result:</p>
 
 <iframe src='img/FirstNetwork.html' height=267.5 width=412></iframe>
 
-<p>There are many options for to customising the look and feel of the graph. For example we can change the colour of the links, nodes, and text. We can also change the opacity of the graph elements:</p>
+<p>Play around with this graph. Notice that when you click on the nodes the text expands and changes colour.</p>
+
+<p>There are many options for customising the look and feel of the graph. For example we can change the colour of the links, nodes, and text. We can also change the opacity of the graph elements:</p>
 
 <pre><code class="r">d3SimpleNetwork(NetworkData, width = 400, height = 250, 
                 textColour = &quot;orange&quot;, linkColour = &quot;red&quot;, 
@@ -331,7 +331,7 @@ NetworkData &lt;- data.frame(Source, Target)
 
 <iframe src='img/SecondNetwork.html' height=267.5 width=412></iframe>
 
-<p>There are many different ways you can use to specify the colours other than just their names (as in this example). One way to select more specific colour is with <a href="http://en.wikipedia.org/wiki/Web_colors#Shorthand_hexadecimal_form">hexadecimal colour values</a>. A nice resource for choosing colour pallets is the <a href="http://colorbrewer2.org/">Color Brewer</a> website. The next example uses hexadecimal colour values.</p>
+<p>There are many different ways you can specify the colours other than just their names (as in this example). One way to select more specific colours is with <a href="http://en.wikipedia.org/wiki/Web_colors#Shorthand_hexadecimal_form">hexadecimal colour values</a>. A nice resource for choosing colour palates is the <a href="http://colorbrewer2.org/">Color Brewer</a> website. The next example uses hexadecimal colour values.</p>
 
 <p>Other important ways to customise a force directed graph are to change the <em>link distance</em> and <em>charge</em>. Link distance is simply the distance between the nodes. Charge specifies how strong the force either repelling or pulling together the nodes is. Here is an example with a charge of -50: </p>
 
@@ -343,7 +343,7 @@ NetworkData &lt;- data.frame(Source, Target)
 
 <iframe src='img/ThirdNetwork.html' height=267.5 width=412></iframe>
 
-<p>This is a weaker charge than we have seen so far (the default is -200). A weak negative charge means that the nodes do not repel each other as strongly. So, they are closer together than if there was a larger negative charge. Using a positive number would make the nodes actually attracted to one another. Basically, you will get a clump of nodes. The text was a little small so I increased the <em>fontsize</em> to 12.</p>
+<p>This is a weaker charge than what we have seen so far (the default is -200). A weak negative charge means that the nodes do not repel each other as strongly. They are closer together than if there was a larger negative charge. Positive charges make the nodes attracted to one another. Basically, you will get a clump of nodes. Also, in the above example the text was a little small so I increased the <em>font size</em> to 12.</p>
 
 <p>Have a look at the <code>d3SimpleNetwork</code> documentation for more customisation options.</p>
 
@@ -351,9 +351,9 @@ NetworkData &lt;- data.frame(Source, Target)
 
 <p>If you want to make more complex force directed graph structures use <code>d3ForceNetwork</code>. It allows you to use individual link and node properties to change the distance between individual nodes and the colour of the nodes depending on their membership in specific groups.</p>
 
-<p>Maybe it&#39;s better to understand this with an example. We&#39;ll use <code>d3ForceDirected</code>  to recreate <a href="http://bl.ocks.org/mbostock/4062045">this example</a> by Mike Bostock&#39;s. The network graph shows <em>Les Misérables</em>&#39; charcters co-occurance (the original data was gathered by <a href="http://www-cs-faculty.stanford.edu/%7Euno/sgb.html">Donald Knuth</a>. The link distances are based on how close the characters are and the colours symbolise how different character groups.</p>
+<p>Maybe it&#39;s better to understand this with an example. We&#39;ll use <code>d3ForceDirected</code>  to recreate an <a href="http://bl.ocks.org/mbostock/4062045">example</a> by Mike Bostock. The network graph will show <em>Les Misérables</em>&#39; charcters co-occurance (the original data was gathered by <a href="http://www-cs-faculty.stanford.edu/%7Euno/sgb.html">Donald Knuth</a>). The link distances are based on how close the characters are to one another and the colours symbolise different character groups.</p>
 
-<p>To start out with let&#39;s gather the basic data and create two data frames. One of the data frames will have information in the links, similar to what we have worked with so far. The other will have information on individaul nodes (in this case <em>Les Misérables</em> characters).</p>
+<p>To start out let&#39;s gather the data and create two data frames with it. One of the data frames will have information on the links, similar to what we have worked with so far. The other will have information on individaul nodes; in this case <em>Les Misérables</em> characters.</p>
 
 <pre><code class="r"># Load RCurl package for downloading the data
 library(RCurl)
@@ -369,8 +369,7 @@ MisNodes &lt;- JSONtoDF(jsonStr = MisJson, array = &quot;nodes&quot;)
 
 <p>In this example we converted a <a href="http://en.wikipedia.org/wiki/JSON">JSON</a>-formatted file into two data frames. You can of course just work with R data frames. Now let&#39;s look inside these data frames:</p>
 
-<pre><code class="r"># Show data frame structures
-head(MisLinks)
+<pre><code class="r">head(MisLinks)
 </code></pre>
 
 <pre><code>##   source target value
@@ -395,35 +394,37 @@ head(MisNodes)
 ## 6        Geborand     1
 </code></pre>
 
-<p>You can see in the <code>MisLinks</code> data frame that we again have <code>source</code> and <code>target</code> columns as before. Notice that the data frame is sorted by <code>source</code>. We have a new column: <code>value</code>. This will be used to determine the link distances.</p>
+<p>You can see in the <code>MisLinks</code> data frame that we again have <code>source</code> and <code>target</code> columns. Notice that the data frame is sorted by <code>source</code>. We also have a new column: <code>value</code>. This will be used to determine the link distances.</p>
 
 <p>In the <code>MisNodes</code> data frame we have two columns: <code>name</code> and <code>group</code>. There is one record for each character (node) in the network. They are in the same order as the <code>source</code> column in <code>MisLinks</code>. The <code>group</code> column simply specifies what group each character is in. This will be used to set the nodes&#39; colours.</p>
 
-<p>To make the network graph we just need to tell <code>d3ForceNetork</code> where the data frames and these nodes are:</p>
+<p>To make the network graph we just need to tell <code>d3ForceNetork</code> where the data frames and columns are:</p>
 
 <pre><code class="r">d3ForceNetwork(Links = MisLinks, Nodes = MisNodes, 
                Source = &quot;source&quot;, Target = &quot;target&quot;, 
                Value = &quot;value&quot;, NodeID = &quot;name&quot;, 
-               Group = &quot;group&quot;, width = 550, height = 425, 
+               Group = &quot;group&quot;, width = 550, height = 400, 
                opacity = 0.9,)
 </code></pre>
 
-<iframe src='img/Forced.html' height=454.8 width=566.5></iframe>
+<iframe src='img/Forced.html' height=428 width=566.5></iframe>
 
 <p>Mouse over the nodes to see the characters&#39; names.</p>
 
 <h2 id="standAlone">d3Network in stand alone documents</h2>
 
-<p>So far we have only seen the basic syntax for how to create the network graphs. If you&#39;ve been following along you&#39;ll notice that running a <code>d3Network</code> command spits out the HTML and JavaScript code to create the graph into your R console. If you want to save it to a file creating an stand alone HTML file (i.e. you can just double click on it an the graph will open in your browser) use the <code>file</code> option. For example:</p>
+<p>So far we have only seen the basic syntax for how to create the network graphs. If you&#39;ve been following along you&#39;ll notice that running a <strong>d3Network</strong> command spits out the HTML and JavaScript code needed to create the graph into your R console. If you want to save it to a file creating a stand alone HTML file (i.e. one you can just double click on and it will open in your browser) use the <code>file</code> option. For example:</p>
 
 <pre><code class="r">d3SimpleNetwork(NetworkData, file = &quot;ExampleGraph.html&quot;)
 </code></pre>
 
 <p>This will create a new file called <code>ExampleGraph.html</code> in your working directory.</p>
 
+<p>You can open this file in any text editor and modify the code however you like. See the <a href="https://github.com/mbostock/d3/wiki/Force-Layout">D3 Force Layout Wiki</a> for more customisation options.</p>
+
 <h2 id="rep">d3Network in dynamic reproducible documents</h2>
 
-<p>If you would like to include network graphs in a <a href="http://yihui.name/knitr/">knitr</a> <a href="http://daringfireball.net/projects/markdown/">Markdown</a> dynamically reproducible document just place your <em>d3Network</em> code in a code chunk with the option <code>results=&#39;asis&#39;</code>. Also set the argument <code>iframe = TRUE</code> and specify a file name with <code>file</code> as before. </p>
+<p>If you would like to include network graphs in a <a href="http://yihui.name/knitr/">knitr</a> <a href="http://daringfireball.net/projects/markdown/">Markdown</a> dynamically reproducible document just place your <strong>d3Network</strong> code in a code chunk with the option <code>results=&#39;asis&#39;</code>. Also set the argument <code>iframe = TRUE</code> and specify a file name with <code>file</code> as before. </p>
 
 <h2 id="install">Install</h2>
 
