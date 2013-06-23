@@ -204,8 +204,6 @@ devtools::install_github("d3Network", "christophergandrud")
 ```
 
 
-</section>
-
 <br>
 <br>
 <br>
@@ -226,7 +224,7 @@ dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
 <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
     
 
-
+</section>
 
 ---
 
