@@ -8,7 +8,7 @@
 
 <section>
 
-# d3Network
+<h1 id="top">d3Network</h1>
 
 ### Tools for creating D3 JavaScript directed network graphs from R.
 
@@ -16,8 +16,6 @@
 
 
 ---
-
-<blockquote>Site Under Construction</blockquote>
 
 [Mike Bostock](http://bost.ocks.org/mike/)'s [D3.js](http://d3js.org/) is great for creating [interactive network graphs](http://bl.ocks.org/mbostock/4062045) with JavaScript.  The [d3Network](https://github.com/christophergandrud/d3Network) package makes it easy to create these network graphs from [R](http://www.r-project.org/). The main idea is that you should able to take an R data frame of information about the relationships between members of a network and create full network graphs with one command.
 
@@ -119,7 +117,7 @@ MisLinks <- JSONtoDF(jsonStr = MisJson, array = "links")
 MisNodes <- JSONtoDF(jsonStr = MisJson, array = "nodes")
 ```
 
-Let's look inside these data frames:
+In this example we converted a [JSON](http://en.wikipedia.org/wiki/JSON)-formatted file into two data frames. You can of course just work with R data frames. Now let's look inside these data frames:
 
 ```{r}
 # Show data frame structures
@@ -138,20 +136,32 @@ To make the network graph we just need to tell `d3ForceNetork` where the data fr
 d3ForceNetwork(Links = MisLinks, Nodes = MisNodes, 
                Source = "source", Target = "target", 
                Value = "value", NodeID = "name", 
-               Group = "group", width = 550, height = 450, 
+               Group = "group", width = 550, height = 425, 
                opacity = 0.9,)
 ```
 
 ```{r, echo=FALSE, results='asis'}
 d3ForceNetwork(Links = MisLinks, Nodes = MisNodes, Source = "source",
                 Target = "target", Value = "value", NodeID = "name",
-                Group = "group", width = 550, height = 450, opacity = 0.9,
+                Group = "group", width = 550, height = 425, opacity = 0.9,
                file = "img/Forced.html", iframe = TRUE)
 ```
 
 Mouse over the nodes to see the characters' names.
 
+<h2 id="standAlone">d3Network in stand alone documents</h2>
+
+So far we have only seen the basic syntax for how to create the network graphs. If you've been following along you'll notice that running a `d3Network` command spits out the HTML and JavaScript code to create the graph into your R console. If you want to save it to a file creating an stand alone HTML file (i.e. you can just double click on it an the graph will open in your browser) use the `file` option. For example:
+
+```{r eval=FALSE}
+d3SimpleNetwork(NetworkData, file = "ExampleGraph.html")
+```
+
+This will create a new file called `ExampleGraph.html` in your working directory.
+
 ## d3Network in dynamic reproducible documents
+
+If you would like to include network graphs in a [knitr](http://yihui.name/knitr/) [Markdown](http://daringfireball.net/projects/markdown/) dynamically reproducible document just place your *d3Network* code in a code chunk with the option `results='asis'`. Also set the argument `iframe = TRUE` and specify a file name with `file` as before. 
 
 ## Installation
 
@@ -163,5 +173,14 @@ devtools::install_github("d3Network", "christophergandrud")
 
 </section>
 
-<script src="assets/js/d3.min.js" type="text/javascript></script>
+<footer>
+
+<div style="float:right"><a href="#top">Back to Top</a></div>
+
+[Christopher Gandrud](http://christophergandrud.blogspot.com/p/biocontact.html)
+
+<a href="https://twitter.com/ChrisGandrud"><img src="https://raw.github.com/christophergandrud/RepResR-RStudio/gh-pages/img/twitter-bird-Logo.png" alt="@ChrisGandrud" height="45" width="45"></a> <a href="https://github.com/christophergandrud"><img src="https://raw.github.com/christophergandrud/RepResR-RStudio/gh-pages/img/Octocat.png" alt="Gandrud GitHub page" height="35" width="37"></a>
+
+</footer>
+
 
