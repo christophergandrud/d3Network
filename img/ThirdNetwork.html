@@ -4,7 +4,7 @@
   <body> 
  <style> 
 .link {  
-stroke: orange;
+stroke: #FEC44F;
 opacity: 0.9;
 stroke-width: 1.5px; 
 } 
@@ -14,7 +14,7 @@ opacity: 0.9;
 stroke-width: 1.5px; 
 } 
 text { 
-font: 7px serif; 
+font: 12px serif; 
 opacity: 0.9;
 pointer-events: none; 
 } 
@@ -43,7 +43,7 @@ var force = d3.layout.force()
 .links(links) 
 .size([width, height]) 
 .linkDistance(50) 
-.charge(-50) 
+.charge(-300) 
 .on("tick", tick) 
 .start(); 
 
@@ -68,12 +68,12 @@ var node = svg.selectAll(".node")
 
 node.append("circle") 
 .attr("r", 8)
-.style("fill", "red");
+.style("fill", "#D95F0E");
 
 node.append("text") 
 .attr("x", 12) 
 .attr("dy", ".35em") 
-.style("fill", "red")
+.style("fill", "#D95F0E")
 .text(function(d) { return d.name; }); 
 
 function tick() { 
@@ -105,7 +105,7 @@ d3.select(this).select("text").transition()
 .style("stroke-width", ".5px")
 .style("opacity", 1)
 .style("fill", "#E34A33")
-.style("font", "17.5px serif");
+.style("font", "30px serif");
 d3.select(this).select("circle").transition()
 .duration(750)
 .style("fill", "#E34A33")
@@ -125,7 +125,7 @@ d3.select(this).select("text").transition()
 .style("fill", "#E34A33")
 .style("stroke", "none")
 .style("opacity", 0.9)
-.style("font", "7px serif");
+.style("font", "12px serif");
 }
 
 </script>

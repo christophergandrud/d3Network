@@ -82,7 +82,7 @@ pre {
   border-left: solid 2px #ccc;
   padding-left: 18px;
   margin: 2em 0 2em -20px;
-  width: 960px;
+  width: 99%;
   overflow-x: auto;
 }
 
@@ -117,7 +117,7 @@ aside,
 
 iframe {
   border: 1px solid #DEDEDE;
-  float:middle;
+  margin-left: 13%;
 }
 
 @media print, screen and (max-width: 960px) {
@@ -152,6 +152,9 @@ iframe {
     right:50px;
     top:52px;
   }
+  iframe{
+    margin-left: 0;
+  }
 }
 
 @media print, screen and (max-width: 720px) {
@@ -179,6 +182,9 @@ iframe {
   
   header ul {
     display:none;
+  }
+  iframe{
+    margin-left: 0;
   }
 }
 
