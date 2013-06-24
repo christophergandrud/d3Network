@@ -1,7 +1,7 @@
 Package: d3Network
 Title: Tools for creating D3 JavaScript directed network graphs from R
 Description: This packages is intended to make it easy to create D3 JavaScript
-    directed network graphs from R using R data frames.
+    directed network graphs from R using data frames.
 Version: 0.2
 Date: 2013-06-20
 Author: Christopher Gandrud

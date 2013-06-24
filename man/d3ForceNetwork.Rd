@@ -103,7 +103,7 @@
 # dontrun
 # Load data JSON formated data into two R data frames
 # library(RCurl)
-# MisJson <- getURL("https://raw.github.com/christophergandrud/d3Network/master/JSONdata/miserables.json")
+# MisJson <- getURL("http://bit.ly/1cc3anB")
 # MisLinks <- JSONtoDF(jsonStr = MisJson, array = "links")
 # MisNodes <- JSONtoDF(jsonStr = MisJson, array = "nodes")
 

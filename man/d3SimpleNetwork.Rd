@@ -108,6 +108,7 @@ Target <- c("B", "C", "D", "J", "E", "F", "G", "H", "I")
 NetworkData <- data.frame(Source, Target)
 
 # Create graph
-d3Network(NetworkData, height = 300, width = 700, fontsize = 15)
+d3SimpleNetwork(NetworkData, height = 300, width = 700,
+                 fontsize = 15)
 }
 

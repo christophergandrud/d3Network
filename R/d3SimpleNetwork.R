@@ -27,7 +27,8 @@
 #' NetworkData <- data.frame(Source, Target)
 #' 
 #' # Create graph
-#' d3Network(NetworkData, height = 300, width = 700, fontsize = 15)
+#' d3SimpleNetwork(NetworkData, height = 300, width = 700, 
+#'                  fontsize = 15)
 #'
 #' @source 
 #' D3.js was created by Michael Bostock. See \url{http://d3js.org/} and, more specifically for directed networks \url{https://github.com/mbostock/d3/wiki/Force-Layout}
