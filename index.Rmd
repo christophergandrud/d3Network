@@ -98,7 +98,7 @@ d3SimpleNetwork(NetworkData, width = 400, height = 250,
                 iframe = TRUE, file = "img/ThirdNetwork.html", 
                 textColour = "#D95F0E", linkColour = "#FEC44F", 
                 nodeColour = "#D95F0E", opacity = 0.9,
-                charge = -300, fontsize = 12)
+                charge = -50, fontsize = 12)
 ```
 
 This is a weaker charge than what we have seen so far (the default is -200). A weak negative charge means that the nodes do not repel each other as strongly. They are closer together than if there was a larger negative charge. Positive charges make the nodes attracted to one another. Basically, you will get a clump of nodes. Also, in the above example the text was a little small so I increased the *font size* to 12.
