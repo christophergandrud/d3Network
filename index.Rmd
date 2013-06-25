@@ -175,7 +175,7 @@ If you would like to include network graphs in a [knitr](http://yihui.name/knitr
 
 <h2 id="install">Install</h2>
 
-You can install **d3Network** using the [devtools](https://github.com/hadley/devtools) package and the following code:
+**d3Network** is available for download on [CRAN](http://cran.r-project.org/web/packages/d3Network/). You can also install the latest development build using the [devtools](https://github.com/hadley/devtools) package and the following code:
 
 ```{r eval=FALSE}
 devtools::install_github("d3Network", "christophergandrud")
