@@ -213,9 +213,8 @@ If you would like to include network graphs in a [knitr](http://yihui.name/knitr
 
 <h2 id="install">Install</h2>
 
-**d3Network** is on [CRAN](http://cran.r-project.org/web/packages/d3Network/index.html) and can be installed in the normal R way.
+**d3Network** is available for download on [CRAN](http://cran.r-project.org/web/packages/d3Network/). You can also install the latest development build using the [devtools](https://github.com/hadley/devtools) package and the following code:
 
-You can also install the most recent version of **d3Network** using the [devtools](https://github.com/hadley/devtools) package and the following code:
 
 
 ```r
