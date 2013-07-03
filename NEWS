@@ -1,6 +1,6 @@
 v0.2.1
 
-Added ability to zoom into and out of graphs with `zoom` option.
+Added ability to zoom into and out of graphs with `zoom` option for `d3ForceNetwork`.
 
 v0.2
 
