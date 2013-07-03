@@ -12,7 +12,7 @@
 
 ### Tools for creating D3 JavaScript force directed network graphs from R.
 
-### v0.2
+### v0.2.1
 
 
 ---
@@ -176,6 +176,23 @@ d3ForceNetwork(Links = MisLinks, Nodes = MisNodes,
 
 Mouse over the nodes to see the characters' names.
 
+### Zooming
+
+You can also use the `zoom` option to create a graph that you can zoom in and out of with your mouse scroll-wheel:
+
+
+```r
+d3ForceNetwork(Links = MisLinks, Nodes = MisNodes, 
+               Source = "source", Target = "target", 
+               Value = "value", NodeID = "name", 
+               Group = "group", width = 550, height = 400, 
+               opacity = 0.9, zoom = TRUE)
+```
+
+
+<iframe src='img/ForcedZoom.html' height=428 width=566.5></iframe>
+
+
 <h2 id="standAlone">d3Network in stand alone documents</h2>
 
 So far we have only seen the basic syntax for how to create the network graphs. If you've been following along you'll notice that running a **d3Network** command spits out the HTML and JavaScript code needed to create the graph into your R console. If you want to save it to a file creating a stand alone HTML file (i.e. one you can just double click on and it will open in your browser) use the `file` option. For example:
@@ -196,7 +213,9 @@ If you would like to include network graphs in a [knitr](http://yihui.name/knitr
 
 <h2 id="install">Install</h2>
 
-You can install **d3Network** using the [devtools](https://github.com/hadley/devtools) package and the following code:
+**d3Network** is on [CRAN](http://cran.r-project.org/web/packages/d3Network/index.html) and can be installed in the normal R way.
+
+You can also install the most recent version of **d3Network** using the [devtools](https://github.com/hadley/devtools) package and the following code:
 
 
 ```r

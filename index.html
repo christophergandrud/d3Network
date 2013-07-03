@@ -276,7 +276,7 @@ iframe {
 
 <h3>Tools for creating D3 JavaScript force directed network graphs from R.</h3>
 
-<h3>v0.2</h3>
+<h3>v0.2.1</h3>
 
 <hr/>
 
@@ -318,7 +318,7 @@ NetworkData &lt;- data.frame(Source, Target)
 
 <p>You&#39;ll notice that I added the <code>width</code> and <code>height</code> arguments. These change the size of the graph area. They are in pixels. Here is the result:</p>
 
-<iframe src='img/FirstNetwork.html' height=300 width=412></iframe>
+<iframe src='img/FirstNetwork.html' height=267.5 width=412></iframe>
 
 <p>Play around with this graph. Notice that when you click on the nodes the text expands and changes colour.</p>
 
@@ -329,7 +329,7 @@ NetworkData &lt;- data.frame(Source, Target)
                 nodeColor = &quot;orange&quot;, opacity = 0.9)
 </code></pre>
 
-<iframe src='img/SecondNetwork.html' height=300 width=412></iframe>
+<iframe src='img/SecondNetwork.html' height=267.5 width=412></iframe>
 
 <p>There are many different ways you can specify the colours other than just their names (as in this example). One way to select more specific colours is with <a href="http://en.wikipedia.org/wiki/Web_colors#Shorthand_hexadecimal_form">hexadecimal colour values</a>. A nice resource for choosing colour palates is the <a href="http://colorbrewer2.org/">Color Brewer</a> website. The next example uses hexadecimal colour values.</p>
 
@@ -341,7 +341,7 @@ NetworkData &lt;- data.frame(Source, Target)
                 charge = -50, fontsize = 12)
 </code></pre>
 
-<iframe src='img/ThirdNetwork.html' height=300 width=412></iframe>
+<iframe src='img/ThirdNetwork.html' height=267.5 width=412></iframe>
 
 <p>This is a weaker charge than what we have seen so far (the default is -200). A weak negative charge means that the nodes do not repel each other as strongly. They are closer together than if there was a larger negative charge. Positive charges make the nodes attracted to one another. Basically, you will get a clump of nodes. Also, in the above example the text was a little small so I increased the <em>font size</em> to 12.</p>
 
@@ -411,6 +411,19 @@ head(MisNodes)
 
 <p>Mouse over the nodes to see the characters&#39; names.</p>
 
+<h3>Zooming</h3>
+
+<p>You can also use the <code>zoom</code> option to create a graph that you can zoom in and out of with your mouse scroll-wheel:</p>
+
+<pre><code class="r">d3ForceNetwork(Links = MisLinks, Nodes = MisNodes, 
+               Source = &quot;source&quot;, Target = &quot;target&quot;, 
+               Value = &quot;value&quot;, NodeID = &quot;name&quot;, 
+               Group = &quot;group&quot;, width = 550, height = 400, 
+               opacity = 0.9, zoom = TRUE)
+</code></pre>
+
+<iframe src='img/ForcedZoom.html' height=428 width=566.5></iframe>
+
 <h2 id="standAlone">d3Network in stand alone documents</h2>
 
 <p>So far we have only seen the basic syntax for how to create the network graphs. If you&#39;ve been following along you&#39;ll notice that running a <strong>d3Network</strong> command spits out the HTML and JavaScript code needed to create the graph into your R console. If you want to save it to a file creating a stand alone HTML file (i.e. one you can just double click on and it will open in your browser) use the <code>file</code> option. For example:</p>
@@ -428,7 +441,9 @@ head(MisNodes)
 
 <h2 id="install">Install</h2>
 
-<p>You can install <strong>d3Network</strong> using the <a href="https://github.com/hadley/devtools">devtools</a> package and the following code:</p>
+<p><strong>d3Network</strong> is on <a href="http://cran.r-project.org/web/packages/d3Network/index.html">CRAN</a> and can be installed in the normal R way.</p>
+
+<p>You can also install the most recent version of <strong>d3Network</strong> using the <a href="https://github.com/hadley/devtools">devtools</a> package and the following code:</p>
 
 <pre><code class="r">devtools::install_github(&quot;d3Network&quot;, &quot;christophergandrud&quot;)
 </code></pre>
