@@ -11,8 +11,8 @@
   d3ForceNetwork(Links, Nodes, Source, Target,
     Value = NULL, NodeID, Group, height = 600, width = 900,
     fontsize = 7, linkDistance = 50, charge = -120,
-    linkColour = "#666", opacity = 0.6, standAlone = TRUE,
-    file = NULL, iframe = FALSE,
+    linkColour = "#666", opacity = 0.6, zoom = FALSE,
+    standAlone = TRUE, file = NULL, iframe = FALSE,
     d3Script = "http://d3js.org/d3.v3.min.js")
 }
 \arguments{
@@ -67,6 +67,10 @@
 
   \item{opacity}{numeric value of the proportion opaque you
   would like the graph elements to be.}
+
+  \item{zoom}{logical, whether or not to enable the ability
+  to use the mouse scroll-wheel to zoom in and out of the
+  graph.}
 
   \item{standAlone}{logical, whether or not to return a
   complete HTML document (with head and foot) or just the
