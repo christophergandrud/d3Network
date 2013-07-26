@@ -360,7 +360,7 @@ library(RCurl)
 
 # Gather raw JSON formatted data
 URL &lt;- &quot;https://raw.github.com/christophergandrud/d3Network/master/JSONdata/miserables.json&quot;
-MisJson &lt;- getURL(URL)
+MisJson &lt;- getURL(URL, ssl.verifypeer = FALSE)
 
 # Convert JSON arrays into data frames
 MisLinks &lt;- JSONtoDF(jsonStr = MisJson, array = &quot;links&quot;)
