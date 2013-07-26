@@ -119,7 +119,7 @@ library(RCurl)
 
 # Gather raw JSON formatted data
 URL <- "https://raw.github.com/christophergandrud/d3Network/master/JSONdata/miserables.json"
-MisJson <- getURL(URL)
+MisJson <- getURL(URL, ssl.verifypeer = FALSE)
 
 # Convert JSON arrays into data frames
 MisLinks <- JSONtoDF(jsonStr = MisJson, array = "links")
