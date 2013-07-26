@@ -2,6 +2,8 @@ v0.2.1
 
 Added ability to zoom into and out of graphs with `zoom` option for `d3ForceNetwork`.
 
+`d3ForceNetwork` example now uses tabular data. 
+
 v0.2
 
 Added `d3ForceNetwork` for creating force directed network graphs where link distance and group changes the graphs attributes.

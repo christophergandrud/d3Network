@@ -21,7 +21,18 @@
 #' @param d3Script a character string that allows you to specify the location of the d3.js script you would like to use. The default is \url{http://d3js.org/d3.v3.min.js}.
 #'
 #' @examples
+#' #### Tabular data example.
+#' # Load data
+#' data(MisLinks)
+#' data(MisNodes)
+#' 
+#' # Create graph
+#' d3ForceNetwork(Links = MisLinks, Nodes = MisNodes, Source = "source",
+#'                Target = "target", Value = "value", NodeID = "name",
+#'                Group = "group", opacity = 0.4)
+#' 
 #' # dontrun
+#' #### JSON Data Example
 #' # Load data JSON formated data into two R data frames
 #' # library(RCurl)
 #' # MisJson <- getURL("http://bit.ly/1cc3anB")

@@ -104,7 +104,18 @@
   Create a D3 JavaScript force directed network graph.
 }
 \examples{
+#### Tabular data example.
+# Load data
+data(MisLinks)
+data(MisNodes)
+
+# Create graph
+d3ForceNetwork(Links = MisLinks, Nodes = MisNodes, Source = "source",
+               Target = "target", Value = "value", NodeID = "name",
+               Group = "group", opacity = 0.4)
+
 # dontrun
+#### JSON Data Example
 # Load data JSON formated data into two R data frames
 # library(RCurl)
 # MisJson <- getURL("http://bit.ly/1cc3anB")
