@@ -437,6 +437,8 @@ var node = svg.selectAll(\".node\")
 .enter().append(\"g\")
 .attr(\"class\", \"node\")
 .attr(\"transform\", function(d) { return \"rotate(\" + (d.x - 90) + \")translate(\" + d.y + \")\"; })
+.on(\"mouseover\", mouseover) 
+.on(\"mouseout\", mouseout);
 
 node.append(\"circle\")
 .attr(\"r\", 4.5)
@@ -448,6 +450,33 @@ node.append(\"text\")
 .attr(\"transform\", function(d) { return d.x < 180 ? \"translate(8)\" : \"rotate(180)translate(-8)\"; })
 .style(\"fill\", \"{{textColour}}\")
 .text(function(d) { return d.name; });
+
+function mouseover() { 
+d3.select(this).select(\"circle\").transition() 
+.duration(750) 
+.attr(\"r\", 9)
+d3.select(this).select(\"text\").transition()
+.duration(750)
+.attr(\"dy\", \".31em\")
+.attr(\"text-anchor\", function(d) { return d.x < 180 ? \"start\" : \"end\"; })
+.attr(\"transform\", function(d) { return d.x < 180 ? \"translate(8)\" : \"rotate(180)translate(-8)\"; })
+.style(\"stroke-width\", \".5px\")
+.style(\"font\", \"{{fontsizeBig}}px serif\")
+.style(\"opacity\", 1); 
+} 
+
+function mouseout() { 
+d3.select(this).select(\"circle\").transition() 
+.duration(750) 
+.attr(\"r\", 4.5)
+d3.select(this).select(\"text\").transition()
+.duration(750)
+.attr(\"dy\", \".31em\")
+.attr(\"text-anchor\", function(d) { return d.x < 180 ? \"start\" : \"end\"; })
+.attr(\"transform\", function(d) { return d.x < 180 ? \"translate(8)\" : \"rotate(180)translate(-8)\"; })
+.style(\"font\", \"{{fontsize}}px serif\")
+.style(\"opacity\", {{opacity}}); 
+} 
 
 d3.select(self.frameElement).style(\"height\", diameter - 150 + \"px\");
 
@@ -515,6 +544,8 @@ var node = vis.selectAll(\".node\")
 .enter().append(\"g\")
 .attr(\"class\", \"node\")
 .attr(\"transform\", function(d) { return \"rotate(\" + (d.x - 90) + \")translate(\" + d.y + \")\"; })
+.on(\"mouseover\", mouseover) 
+.on(\"mouseout\", mouseout)
 
 node.append(\"circle\")
 .attr(\"r\", 4.5)
@@ -526,6 +557,33 @@ node.append(\"svg:text\")
 .attr(\"transform\", function(d) { return d.x < 180 ? \"translate(8)\" : \"rotate(180)translate(-8)\"; })
 .style(\"fill\", \"{{textColour}}\")
 .text(function(d) { return d.name; });
+
+function mouseover() { 
+d3.select(this).select(\"circle\").transition() 
+.duration(750) 
+.attr(\"r\", 9)
+d3.select(this).select(\"text\").transition()
+.duration(750)
+.attr(\"dy\", \".31em\")
+.attr(\"text-anchor\", function(d) { return d.x < 180 ? \"start\" : \"end\"; })
+.attr(\"transform\", function(d) { return d.x < 180 ? \"translate(8)\" : \"rotate(180)translate(-8)\"; })
+.style(\"stroke-width\", \".5px\")
+.style(\"font\", \"{{fontsizeBig}}px serif\")
+.style(\"opacity\", 1); 
+} 
+
+function mouseout() { 
+d3.select(this).select(\"circle\").transition() 
+.duration(750) 
+.attr(\"r\", 4.5)
+d3.select(this).select(\"text\").transition()
+.duration(750)
+.attr(\"dy\", \".31em\")
+.attr(\"text-anchor\", function(d) { return d.x < 180 ? \"start\" : \"end\"; })
+.attr(\"transform\", function(d) { return d.x < 180 ? \"translate(8)\" : \"rotate(180)translate(-8)\"; })
+.style(\"font\", \"{{fontsize}}px serif\")
+.style(\"opacity\", {{opacity}}); 
+} 
 
 d3.select(self.frameElement).style(\"height\", diameter - 150 + \"px\");
 

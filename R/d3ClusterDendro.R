@@ -29,7 +29,7 @@
 #' 
 #' # Recreate Bostock example from http://bl.ocks.org/mbostock/4063570
 #' d3ClusterDendro(List = Flare, 
-#'		file = "FlareCluster.html", 
+#'		file = "FlareCluster.html", zoom = TRUE,
 #'        fontsize = 10, opacity = 0.9)
 #' 
 #' @source 

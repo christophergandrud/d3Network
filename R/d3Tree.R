@@ -56,6 +56,9 @@ d3Tree <- function(List, height = 600, width = 900, fontsize = 10, linkColour = 
 	# Create link opacity at 50% of overall opacity
 	linkOpacity <- opacity * 0.5
 
+	# Create mouseover font size
+	fontsizeBig <- fontsize * 1.9
+
 	# Convert hierarchical list to JSON
 	if (class(List) != "list"){
 		stop("List must be a list class object.")
