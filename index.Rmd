@@ -297,7 +297,7 @@ d3ClusterDendro(List = CanadaPC)
 ```
 
 ```{r echo=FALSE, results='asis'}
-d3ClusterDendro(List = CanadaPC, width = 500, height = 500,
+d3ClusterDendro(List = CanadaPC, width = 525, height = 550,
        file = "img/DendroFlare.html", iframe = TRUE)
 ```
 

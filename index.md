@@ -306,7 +306,7 @@ d3ClusterDendro(List = CanadaPC)
 ```
 
 
-<iframe src='img/DendroFlare.html' height=535 width=515></iframe>
+<iframe src='img/DendroFlare.html' height=588.5 width=540.8></iframe>
 
 
 It currently doesn't support mouse over zooming, but I plan to add it in an upcoming release.
