@@ -80,7 +80,7 @@ TreeStyleSheet <- function(){
 .link {  
 fill: none; 
 stroke: {{linkColour}};
-opacity: {{opacity}};
+opacity: {{linkOpacity}};
 stroke-width: 1.5px; 
 } 
 .node circle { 

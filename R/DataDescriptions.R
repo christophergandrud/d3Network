@@ -17,3 +17,13 @@ NULL
 #'  @name MisLinks 
 #'
 NULL
+
+#' JSON data file of the Flare class hierarchy.
+#'
+#' @docType data
+#' @source See Mike Bostock \url{http://bl.ocks.org/mbostock/4063550}.
+#' @keywords datasets
+#' @format A JSON file with two arrays \code{name} and \code{children}.
+#' @name flare
+#' 
+NULL
