@@ -531,3 +531,139 @@ d3.select(self.frameElement).style(\"height\", diameter - 150 + \"px\");
 
 </script>\n"
 }
+
+#' Mustache Main (1) Cluster Dendrogram graphs template for d3Cluster.
+#' 
+#' @keywords internals
+#' @noRd
+
+MainClusterDendro1 <- function(){
+"var width = {{width}}
+height = {{height}};
+
+var cluster = d3.layout.cluster()
+.size([height, width - 160]);
+
+var diagonal = d3.svg.diagonal()
+.projection(function(d) { return [d.y, d.x]; });
+
+var svg = d3.select(\"body\").append(\"svg\")
+.attr(\"width\", width)
+.attr(\"height\", height)
+.append(\"g\")
+.attr(\"transform\", \"translate(40,0)\");
+\n"
+}
+
+#' Mustache Main (2) Cluster Dendrogram graphs template for d3Cluster.
+#' 
+#' @keywords internals
+#' @noRd
+
+MainClusterDendro2 <- function(){
+"var nodes = cluster.nodes(root),
+links = cluster.links(nodes);
+
+var link = svg.selectAll(\".link\")
+.data(links)
+.enter().append(\"path\")
+.attr(\"class\", \"link\")
+.attr(\"d\", diagonal);
+
+var node = svg.selectAll(\".node\")
+.data(nodes)
+.enter().append(\"g\")
+.attr(\"class\", \"node\")
+.attr(\"transform\", function(d) { return \"translate(\" + d.y + \",\" + d.x + \")\"; })
+
+node.append(\"circle\")
+.attr(\"r\", 4.5)
+.style(\"fill\", \"{{nodeColour}}\");
+
+node.append(\"text\")
+.attr(\"dx\", function(d) { return d.children ? -8 : 8; })
+.attr(\"dy\", 3)
+.style(\"text-anchor\", function(d) { return d.children ? \"end\" : \"start\"; })
+.style(\"fill\", \"{{textColour}}\")
+.text(function(d) { return d.name; });
+
+d3.select(self.frameElement).style(\"height\", height + \"px\");
+
+</script>
+\n"
+}
+
+#' Mustache Zoom (1) Cluster Dendrogram graphs template for d3Cluster.
+#' 
+#' @keywords internals
+#' @noRd
+
+ZoomClusterDendro1 <- function(){
+"var width = {{width}}
+height = {{height}};
+
+var cluster = d3.layout.cluster()
+.size([height, width - 160]);
+
+var diagonal = d3.svg.diagonal()
+.projection(function(d) { return [d.y, d.x]; });
+
+var svg = d3.select(\"body\").append(\"svg\")
+.attr(\"width\", width)
+.attr(\"height\", height)
+.attr(\"pointer-events\", \"all\")
+.call(d3.behavior.zoom().on(\"zoom\", redraw));
+
+var vis = svg
+.append(\"svg:g\");
+
+vis.append(\"svg:rect\")
+.attr(\"width\", width)
+.attr(\"height\", height)
+.attr(\"fill\", 'white');
+
+function redraw() {
+vis.attr(\"transform\",
+\"translate(\" + d3.event.translate + \")\"
++ \" scale(\" + d3.event.scale + \")\");
+}
+\n"
+}
+
+#' Mustache Zoom (2) Cluster Dendrogram graphs template for d3Cluster.
+#' 
+#' @keywords internals
+#' @noRd
+
+ZoomClusterDendro2 <- function(){
+"var nodes = cluster.nodes(root),
+links = cluster.links(nodes);
+
+var link = vis.selectAll(\".link\")
+.data(links)
+.enter().append(\"path\")
+.attr(\"class\", \"link\")
+.attr(\"d\", diagonal);
+
+var node = vis.selectAll(\".node\")
+.data(nodes)
+.enter().append(\"g\")
+.attr(\"class\", \"node\")
+.attr(\"transform\", function(d) { return \"translate(\" + d.y + \",\" + d.x + \")\"; })
+
+node.append(\"circle\")
+.attr(\"r\", 4.5)
+.style(\"fill\", \"{{nodeColour}}\");
+
+node.append(\"svg:text\")
+.attr(\"dx\", function(d) { return d.children ? -8 : 8; })
+.attr(\"dy\", 3)
+.style(\"text-anchor\", function(d) { return d.children ? \"end\" : \"start\"; })
+.style(\"fill\", \"{{textColour}}\")
+.text(function(d) { return d.name; });
+
+d3.select(self.frameElement).style(\"height\", height + \"px\");
+
+</script>
+\n"
+}

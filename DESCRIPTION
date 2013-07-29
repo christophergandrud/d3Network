@@ -19,8 +19,9 @@ Suggests:
     RCurl
 Collate:
     'DataDescriptions.R'
-    'd3SimpleNetwork.R'
     'd3ForceNetwork.R'
+    'd3ClusterDendro.R'
+    'd3SimpleNetwork.R'
     'd3Tree.R'
     'd3Network.R'
     'templates.R'

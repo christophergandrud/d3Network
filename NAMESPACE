@@ -1,4 +1,5 @@
 export(JSONtoDF)
+export(d3ClusterDendro)
 export(d3ForceNetwork)
 export(d3Network)
 export(d3SimpleNetwork)

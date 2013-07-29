@@ -1,6 +1,8 @@
 v0.3
 
-Add Reingold–Tilford Tree graph with `d3Tree`.
+Added Reingold–Tilford Tree graph with `d3Tree`.
+
+Added Cluster Denograms with `d3ClusterDeno`.
 
 v0.2.1
 

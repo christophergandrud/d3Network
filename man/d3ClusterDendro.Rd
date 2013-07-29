@@ -1,19 +1,15 @@
-\name{d3Tree}
-\alias{d3Tree}
-\title{Create a D3 JavaScript Reingold-Tilford Tree network graphs.}
+\name{d3ClusterDendro}
+\alias{d3ClusterDendro}
+\title{Create a D3 JavaScript Cluster Dendrogram graphs.}
 \source{
-  Reingold. E. M., and Tilford, J. S. (1981). Tidier
-  Drawings of Trees. IEEE Transactions on Software
-  Engineering, SE-7(2), 223-228.
-
-  Mike Bostock \url{http://bl.ocks.org/mbostock/4063550}.
+  Mike Bostock \url{http://bl.ocks.org/mbostock/4063570}.
 }
 \usage{
-  d3Tree(List, height = 600, width = 900, fontsize = 10,
-    linkColour = "#ccc", nodeColour = "#3182bd",
-    textColour = "#3182bd", opacity = 0.8, diameter = 980,
-    zoom = FALSE, standAlone = TRUE, file = NULL,
-    iframe = FALSE,
+  d3ClusterDendro(List, height = 2200, width = 900,
+    fontsize = 10, linkColour = "#ccc",
+    nodeColour = "#3182bd", textColour = "#3182bd",
+    opacity = 0.8, diameter = 980, zoom = FALSE,
+    standAlone = TRUE, file = NULL, iframe = FALSE,
     d3Script = "http://d3js.org/d3.v3.min.js")
 }
 \arguments{
@@ -80,8 +76,7 @@
   \url{http://d3js.org/d3.v3.min.js}.}
 }
 \description{
-  Create a D3 JavaScript Reingold-Tilford Tree network
-  graphs.
+  Create a D3 JavaScript Cluster Dendrogram graphs.
 }
 \examples{
 # Download JSON data
@@ -92,8 +87,9 @@ Flare <- getURL(URL)
 # Convert to list format
 Flare <- rjson::fromJSON(Flare)
 
-# Recreate Bostock example from http://bl.ocks.org/mbostock/4063550
-d3Tree(List = Flare, file = "Flare.html",
-       fontsize = 10, opacity = 0.9, diameter = 1000)
+# Recreate Bostock example from http://bl.ocks.org/mbostock/4063570
+d3ClusterDendro(List = Flare,
+		file = "FlareCluster.html",
+       fontsize = 10, opacity = 0.9)
 }
 

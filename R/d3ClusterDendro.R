@@ -1,4 +1,4 @@
-#' Create a D3 JavaScript Reingold-Tilford Tree network graphs.
+#' Create a D3 JavaScript Cluster Dendrogram graphs.
 #'
 #'
 #' @param List a hierarchical list object with a root node and children.
@@ -27,19 +27,20 @@
 #' # Convert to list format
 #' Flare <- rjson::fromJSON(Flare)
 #' 
-#' # Recreate Bostock example from http://bl.ocks.org/mbostock/4063550
-#' d3Tree(List = Flare, file = "Flare.html", 
-#'        fontsize = 10, opacity = 0.9, diameter = 1000)
+#' # Recreate Bostock example from http://bl.ocks.org/mbostock/4063570
+#' d3ClusterDendro(List = Flare, 
+#'		file = "FlareCluster.html", 
+#'        fontsize = 10, opacity = 0.9)
 #' 
-#' @source Reingold. E. M., and Tilford, J. S. (1981). Tidier Drawings of Trees. IEEE Transactions on Software Engineering, SE-7(2), 223-228.
+#' @source 
 #' 
-#' Mike Bostock \url{http://bl.ocks.org/mbostock/4063550}.
+#' Mike Bostock \url{http://bl.ocks.org/mbostock/4063570}.
 #' 
 #' @importFrom whisker whisker.render
 #' @importFrom rjson toJSON
 #' @export
 #' 
-d3Tree <- function(List, height = 600, width = 900, fontsize = 10, linkColour = "#ccc", nodeColour = "#3182bd", textColour = "#3182bd", opacity = 0.8, diameter = 980, zoom = FALSE, standAlone = TRUE, file = NULL, iframe = FALSE, d3Script = "http://d3js.org/d3.v3.min.js"){
+d3ClusterDendro <- function(List, height = 2200, width = 900, fontsize = 10, linkColour = "#ccc", nodeColour = "#3182bd", textColour = "#3182bd", opacity = 0.8, diameter = 980, zoom = FALSE, standAlone = TRUE, file = NULL, iframe = FALSE, d3Script = "http://d3js.org/d3.v3.min.js"){
 	if (!isTRUE(standAlone) & isTRUE(iframe)){
 		stop("If iframe = TRUE then standAlone must be TRUE.")
 	}
@@ -71,12 +72,12 @@ d3Tree <- function(List, height = 600, width = 900, fontsize = 10, linkColour = 
 
 	# Main scripts for creating the graph
 	if (!isTRUE(zoom)){
-		MainScript1 <- whisker.render(MainRTTree1())
-		MainScript2 <- whisker.render(MainRTTree2())
+		MainScript1 <- whisker.render(MainClusterDendro1())
+		MainScript2 <- whisker.render(MainClusterDendro2())
 	} 
 	else if (isTRUE(zoom)){
-		MainScript1 <- whisker.render(ZoomRTTree1())
-		MainScript2 <- whisker.render(ZoomRTTree2())		
+		MainScript1 <- whisker.render(ZoomClusterDendro1())
+		MainScript2 <- whisker.render(ZoomClusterDendro2())		
 	}
 
 	if (is.null(file) & !isTRUE(standAlone)){
