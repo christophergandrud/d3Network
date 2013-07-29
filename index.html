@@ -50,211 +50,7 @@ hljs.initHighlightingOnLoad();
 
 
 <style type="text/css">
-
-body {
-  font-family: "Helvetica Neue", Helvetica, sans-serif;
-  margin: 1em auto 4em auto;
-  position: relative;
-  width: 80%;
-}
-
-h1 {
-  font-size: 64px;
-  font-weight: 300;
-  letter-spacing: -2px;
-  margin: .3em 0 .1em 0;
-}
-
-h2 {
-  margin-top: 2em;
-  font-size: 30px;
-}
-
-h1, h2 {
-  text-rendering: optimizeLegibility;
-}
-
-h2 a {
-  color: #ccc;
-  left: -20px;
-  position: absolute;
-  width: 80%;
-}
-
-section {
-  width:95%;
-  padding-bottom:50px;
-}
-
-footer {
-  font-size: small;
-  margin-top: 8em;
-}
-
-aside {
-  font-size: small;
-  left: 85%;
-  position: absolute;
-  text-align: right;
-  width: 180px;
-}
-
-p {
-  line-height: 1.75em;
-  width: 99%;
-  font-size: 17px;
-}
-
-blockquote {
-  width: 99%;
-  font-size: 30px;
-}
-
-li {
-  width: 680px;
-}
-
-#navlist li {
-  display: inline;
-  list-style-type: none;
-  padding-right: 20%;
-}
-
-a {
-  color: #E34A33;
-}
-
-a:not(:hover) {
-  text-decoration: none;
-}
-
-pre, code, textarea {
-  font-family: "Menlo", monospace;
-  line-height: normal;
-}
-
-textarea {
-  font-size: 100%;
-}
-
-pre {
-  border-left: solid 2px #ccc;
-  padding-left: 18px;
-  margin: 2em 0 2em -20px;
-  width: 99%;
-  overflow-x: auto;
-}
-
-.html .value,
-.javascript .string,
-.javascript .regexp {
-  color: #756bb1;
-}
-
-.html .tag,
-.css .tag,
-.javascript .keyword {
-  color: #3182bd;
-}
-
-aside,
-.comment {
-  color: #636363;
-}
-
-.html .doctype,
-.javascript .number {
-  color: #31a354;
-}
-
-.html .attribute,
-.css .attribute,
-.javascript .class,
-.javascript .special {
-  color: #e6550d;
-}
-
-iframe {
-  border: 1px solid #DEDEDE;
-  margin-left: 13%;
-}
-
-@media print, screen and (max-width: 960px) {
-  
-  header, section, footer {
-    float:none;
-    position:static;
-    width:auto;
-  }
-  
-  header {
-    padding-right:320px;
-  }
-  
-  section {
-    border:1px solid #e5e5e5;
-    border-width:1px 0;
-    padding:20px 0;
-  }
-  
-  header a small {
-    display:inline;
-  }
-  
-  header ul {
-    position:absolute;
-    right:50px;
-    top:52px;
-  }
-  iframe{
-    margin-left: 0;
-  }
-}
-
-@media print, screen and (max-width: 720px) {
-  body {
-    word-wrap:break-word;
-  }
-  
-  header {
-    padding:0;
-  }
-  
-  header ul, header p.view {
-    position:static;
-  }
-  
-  pre, code {
-    word-wrap:normal;
-  }
-  #navlist li {
-    padding-right: 10%;
-  }
-}
-
-@media print, screen and (max-width: 480px) {
-  body {
-    padding:15px;
-  }
-  
-  header ul {
-    display:none;
-  }
-  iframe{
-    margin-left: 0;
-  }
-  #navlist li {
-    padding-right: 5%;
-  }
-}
-
-@media print {
-  body {
-    padding:0.4in;
-    font-size:12pt;
-    color:#444;
-  }
-}
+assets/css/style.css
 </style>
 
 
@@ -276,7 +72,7 @@ iframe {
 
 <h3>Tools for creating D3 JavaScript force directed network graphs from R.</h3>
 
-<h3>v0.2.1</h3>
+<h3>v0.3</h3>
 
 <hr/>
 
@@ -296,7 +92,16 @@ iframe {
 
 <h2 id="commands">Commands</h2>
 
-<p><strong>d3Network</strong> currently has two basic commands for creating network graphs: <a href="#simple"><code>d3SimpleNetwork</code></a> and <a href="#forceDirect"><code>d3ForceDirected</code></a>. </p>
+<p><strong>d3Network</strong> currently has four commands for creating network graphs: </p>
+
+<ul>
+<li><p><a href="#simple"><code>d3SimpleNetwork</code></a></p></li>
+<li><p><a href="#forceDirect"><code>d3ForceDirected</code></a> </p></li>
+<li><p><a href="#RTTree"><code>d3Tree</code></a> </p></li>
+<li><p><a href="#ClusterDendro"><code>d3ClusterDendro</code></a> </p></li>
+</ul>
+
+<p><br></p>
 
 <h3 id="simple"><code>d3SimpleNetwork</code></h3>
 
@@ -346,6 +151,9 @@ NetworkData &lt;- data.frame(Source, Target)
 <p>This is a weaker charge than what we have seen so far (the default is -200). A weak negative charge means that the nodes do not repel each other as strongly. They are closer together than if there was a larger negative charge. Positive charges make the nodes attracted to one another. Basically, you will get a clump of nodes. Also, in the above example the text was a little small so I increased the <em>font size</em> to 12.</p>
 
 <p>Have a look at the <code>d3SimpleNetwork</code> documentation for more customisation options.</p>
+
+<p><br>
+<br></p>
 
 <h3 id="forceDirect"><code>d3ForceDirected</code></h3>
 
@@ -411,7 +219,7 @@ head(MisNodes)
 
 <p>Mouse over the nodes to see the characters&#39; names.</p>
 
-<h3>Zooming</h3>
+<h4>Zooming</h4>
 
 <p>You can also use the <code>zoom</code> option to create a graph that you can zoom in and out of with your mouse scroll-wheel:</p>
 
@@ -423,6 +231,88 @@ head(MisNodes)
 </code></pre>
 
 <iframe src='img/ForcedZoom.html' height=428 width=566.5></iframe>
+
+<p><br>
+<br></p>
+
+<h3 id="RTTree"><code>d3Tree</code></h3>
+
+<p>A clean way to present hierarchical data is with a modified <a href="http://ieeexplore.ieee.org/xpl/login.jsp?tp=&amp;arnumber=1702828&amp;userType=&amp;url=http%3A%2F%2Fieeexplore.ieee.org%2Fstamp%2Fstamp.jsp%3Ftp%3D%26arnumber%3D1702828%26userType%3D">Reingold-Tilford</a> Tree (. Use these types of trees when you have a single root connected to hierarchically organized child nodes. </p>
+
+<p>Use the <code>d3Tree</code> command to create these trees. Many of the aesthetic arguments are the same as the force directed commands above. Zooming is allowed with <code>zoom = TRUE</code>. The major difference is that there is only one data argument <code>List</code>. This is a list type object that has a particular stucture that we&#39;ll look at later. Instead of <code>charge</code> <code>linkDistance</code> the spacing of <code>d3Tree</code> nodes can be set by changing the diameter of the whole graph with the <code>diameter</code> argument.</p>
+
+<p>Let&#39;s recreate Mike Bostock&#39;s <a href="http://bl.ocks.org/mbostock/4063550">Reingold-Tilford tree example</a>, using JSON formatted data. The data shows the <a href="http://flare.prefuse.org/">Flare</a> class hierarchy.</p>
+
+<pre><code class="r"># Download JSON data
+library(RCurl)
+URL &lt;- &quot;https://raw.github.com/christophergandrud/d3Network/master/JSONdata/flare.json&quot;
+Flare &lt;- getURL(URL)
+
+# Convert to list format
+Flare &lt;- rjson::fromJSON(Flare)
+
+# Create Graph
+d3Tree(List = Flare, fontsize = 8, diameter = 800)
+</code></pre>
+
+<iframe src='img/FlareTree.html' height=695.5 width=721></iframe>
+
+<p>Mouse over the nodes to enlarge the label.</p>
+
+<h3 id="TreeDataSt">Data structure</h3>
+
+<p>Creating data in the proper structure for <code>d3Tree</code> can be a bit tedious. You need to create a hierarchical list with one root node and a number of children. All nodes need to be labeled as <code>name</code> and all <code>children</code> need to be a lists. Maybe the best way to understand this is to look at a simple example. The following <code>CanadaPC</code> object is a list where the root is Canada. The first level of child nodes are the provinces and territories. These have further children which are capitals/principle cities of each provice/territory:</p>
+
+<pre><code class="r">CanadaPC &lt;- list(name = &quot;Canada&quot;, 
+             children = list(list(name = &quot;Newfoundland&quot;,
+                                  children = list(list(name = &quot;St. John&#39;s&quot;))),
+                             list(name = &quot;PEI&quot;,
+                                  children = list(list(name = &quot;Charlottetown&quot;))),
+                             list(name = &quot;Nova Scotia&quot;,
+                                  children = list(list(name = &quot;Halifax&quot;))),
+                             list(name = &quot;New Brunswick&quot;,
+                                  children = list(list(name = &quot;Fredericton&quot;))),
+                             list(name = &quot;Quebec&quot;,
+                                  children = list(list(name = &quot;Montreal&quot;),
+                                                  list(name = &quot;Quebec City&quot;))),
+                             list(name = &quot;Ontario&quot;, 
+                                  children = list(list(name = &quot;Toronto&quot;), 
+                                                  list(name = &quot;Ottawa&quot;))),
+                             list(name = &quot;Manitoba&quot;,
+                                  children = list(list(name = &quot;Winnipeg&quot;))),
+                             list(name = &quot;Saskatchewan&quot;,
+                                  children = list(list(name = &quot;Regina&quot;))),
+                             list(name = &quot;Nunavuet&quot;,
+                                  children = list(list(name = &quot;Iqaluit&quot;))),
+                             list(name = &quot;NWT&quot;,
+                                  children = list(list(name = &quot;Yellowknife&quot;))),
+                             list(name = &quot;Alberta&quot;,
+                                  children = list(list(name = &quot;Edmonton&quot;))),
+                             list(name = &quot;British Columbia&quot;,
+                                  children = list(list(name = &quot;Victoria&quot;),
+                                                  list(name = &quot;Vancouver&quot;))),
+                             list(name = &quot;Yukon&quot;,
+                                  children = list(list(name = &quot;Whitehorse&quot;)))
+             ))
+</code></pre>
+
+<p>Clearly, R doesn&#39;t make it super easy to create these types of lists. As we saw in the previous example, you can always just import correctly formatted JSON file into R and use that instead.</p>
+
+<p>Anyways, let&#39;s create a Tree graph for the <code>CanadaPC</code> data:</p>
+
+<pre><code class="r">d3Tree(List = CanadaPC, fontsize = 9, diameter = 500,
+       textColour = &quot;#D95F0E&quot;, linkColour = &quot;#FEC44F&quot;, nodeColour = &quot;#D95F0E&quot;)
+</code></pre>
+
+<iframe src='img/CanadaTree.html' height=481.5 width=515></iframe>
+
+<p><br>
+<br></p>
+
+<h3 id="ClusterDendro><code>d3ClusterDendro</code></h3>
+
+<p><br>
+<br></p>
 
 <h2 id="standAlone">d3Network in stand alone documents</h2>
 

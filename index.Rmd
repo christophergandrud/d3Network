@@ -12,7 +12,7 @@
 
 ### Tools for creating D3 JavaScript force directed network graphs from R.
 
-### v0.2.1
+### v0.3
 
 
 ---
@@ -33,7 +33,18 @@ Currently **d3Network** only supports [force directed](http://en.wikipedia.org/w
 
 <h2 id="commands">Commands</h2>
 
-**d3Network** currently has two basic commands for creating network graphs: <a href="#simple"><code>d3SimpleNetwork</code></a> and <a href="#forceDirect"><code>d3ForceDirected</code></a>. 
+**d3Network** currently has four commands for creating network graphs: 
+
+- <a href="#simple"><code>d3SimpleNetwork</code></a>
+
+- <a href="#forceDirect"><code>d3ForceDirected</code></a> 
+
+- <a href="#RTTree"><code>d3Tree</code></a> 
+
+- <a href="#ClusterDendro"><code>d3ClusterDendro</code></a> 
+
+
+<br>
 
 <h3 id="simple"><code>d3SimpleNetwork</code></h3>
 
@@ -105,6 +116,9 @@ This is a weaker charge than what we have seen so far (the default is -200). A w
 
 Have a look at the `d3SimpleNetwork` documentation for more customisation options.
 
+<br>
+<br>
+
 <h3 id="forceDirect"><code>d3ForceDirected</code></h3>
 
 If you want to make more complex force directed graph structures use `d3ForceNetwork`. It allows you to use individual link and node properties to change the distance between individual nodes and the colour of the nodes depending on their membership in specific groups.
@@ -157,7 +171,7 @@ d3ForceNetwork(Links = MisLinks, Nodes = MisNodes, Source = "source",
 
 Mouse over the nodes to see the characters' names.
 
-### Zooming
+#### Zooming
 
 You can also use the `zoom` option to create a graph that you can zoom in and out of with your mouse scroll-wheel:
 
@@ -175,6 +189,109 @@ d3ForceNetwork(Links = MisLinks, Nodes = MisNodes, Source = "source",
                 Group = "group", width = 550, height = 400, opacity = 0.9,
                file = "img/ForcedZoom.html", iframe = TRUE, zoom = TRUE)
 ```
+
+<br>
+<br>
+
+<h3 id="RTTree"><code>d3Tree</code></h3>
+
+A clean way to present hierarchical data is with a modified [Reingold-Tilford](http://ieeexplore.ieee.org/xpl/login.jsp?tp=&arnumber=1702828&userType=&url=http%3A%2F%2Fieeexplore.ieee.org%2Fstamp%2Fstamp.jsp%3Ftp%3D%26arnumber%3D1702828%26userType%3D) Tree (. Use these types of trees when you have a single root connected to hierarchically organized child nodes. 
+
+Use the `d3Tree` command to create these trees. Many of the aesthetic arguments are the same as the force directed commands above. Zooming is allowed with `zoom = TRUE`. The major difference is that there is only one data argument `List`. This is a list type object that has a particular stucture that we'll look at later. Instead of `charge` `linkDistance` the spacing of `d3Tree` nodes can be set by changing the diameter of the whole graph with the `diameter` argument.
+
+Let's recreate Mike Bostock's [Reingold-Tilford tree example](http://bl.ocks.org/mbostock/4063550), using JSON formatted data. The data shows the [Flare](http://flare.prefuse.org/) class hierarchy.
+
+```{r eval=FALSE, tidy=FALSE}
+# Download JSON data
+library(RCurl)
+URL <- "https://raw.github.com/christophergandrud/d3Network/master/JSONdata/flare.json"
+Flare <- getURL(URL)
+
+# Convert to list format
+Flare <- rjson::fromJSON(Flare)
+
+# Create Graph
+d3Tree(List = Flare, fontsize = 8, diameter = 800)
+```
+
+```{r echo=FALSE, results='asis'}
+# Download JSON data
+library(RCurl)
+URL <- "https://raw.github.com/christophergandrud/d3Network/master/JSONdata/flare.json"
+Flare <- getURL(URL)
+
+# Convert to list format
+Flare <- rjson::fromJSON(Flare)
+
+# Create Graph
+d3Tree(List = Flare, fontsize = 8, width = 700, height = 650, diameter = 800,
+               file = "img/FlareTree.html", iframe = TRUE)
+```
+
+Mouse over the nodes to enlarge the label.
+
+<h3 id="TreeDataSt">Data structure</h3>
+
+Creating data in the proper structure for `d3Tree` can be a bit tedious. You need to create a hierarchical list with one root node and a number of children. All nodes need to be labeled as `name` and all `children` need to be a lists. Maybe the best way to understand this is to look at a simple example. The following `CanadaPC` object is a list where the root is Canada. The first level of child nodes are the provinces and territories. These have further children which are capitals/principle cities of each provice/territory:
+
+```{r, tidy=FALSE}
+CanadaPC <- list(name = "Canada", 
+             children = list(list(name = "Newfoundland",
+                                  children = list(list(name = "St. John's"))),
+                             list(name = "PEI",
+                                  children = list(list(name = "Charlottetown"))),
+                             list(name = "Nova Scotia",
+                                  children = list(list(name = "Halifax"))),
+                             list(name = "New Brunswick",
+                                  children = list(list(name = "Fredericton"))),
+                             list(name = "Quebec",
+                                  children = list(list(name = "Montreal"),
+                                                  list(name = "Quebec City"))),
+                             list(name = "Ontario", 
+                                  children = list(list(name = "Toronto"), 
+                                                  list(name = "Ottawa"))),
+                             list(name = "Manitoba",
+                                  children = list(list(name = "Winnipeg"))),
+                             list(name = "Saskatchewan",
+                                  children = list(list(name = "Regina"))),
+                             list(name = "Nunavuet",
+                                  children = list(list(name = "Iqaluit"))),
+                             list(name = "NWT",
+                                  children = list(list(name = "Yellowknife"))),
+                             list(name = "Alberta",
+                                  children = list(list(name = "Edmonton"))),
+                             list(name = "British Columbia",
+                                  children = list(list(name = "Victoria"),
+                                                  list(name = "Vancouver"))),
+                             list(name = "Yukon",
+                                  children = list(list(name = "Whitehorse")))
+             ))
+```
+
+Clearly, R doesn't make it super easy to create these types of lists. As we saw in the previous example, you can always just import correctly formatted JSON file into R and use that instead.
+
+Anyways, let's create a Tree graph for the `CanadaPC` data:
+
+```{r eval=FALSE, tidy=FALSE}
+d3Tree(List = CanadaPC, fontsize = 10, diameter = 500,
+       textColour = "#D95F0E", linkColour = "#FEC44F", nodeColour = "#D95F0E")
+```
+
+```{r echo=FALSE, results='asis'}
+d3Tree(List = CanadaPC, fontsize = 10, diameter = 500,
+       textColour = "#D95F0E", linkColour = "#FEC44F", nodeColour = "#D95F0E",
+       width = 500, height = 450,
+       file = "img/CanadaTree.html", iframe = TRUE)
+```
+
+<br>
+<br>
+
+<h3 id="ClusterDendro><code>d3ClusterDendro</code></h3>
+
+<br>
+<br>
+
 
 <h2 id="standAlone">d3Network in stand alone documents</h2>
 
