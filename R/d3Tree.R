@@ -8,6 +8,7 @@
 #' @param fontsize numeric font size in pixels for the node text labels.
 #' @param linkColour character string specifying the colour you want the link lines to be. Multiple formats supported (e.g. hexadecimal).
 #' @param nodeColour character string specifying the colour you want the node circles to be. Multiple formats supported (e.g. hexadecimal).
+#' @param textColour character string specifying the colour you want the text to be before they are clicked. Multiple formats supported (e.g. hexadecimal).
 #' @param opacity numeric value of the proportion opaque you would like the graph elements to be.
 #' @param diameter numeric diameter for the network in pixels.
 #' @param standAlone logical, whether or not to return a complete HTML document (with head and foot) or just the script.
@@ -23,7 +24,7 @@
 #' @importFrom rjson toJSON
 #' @export
 #' 
-d3Tree <- function(List, height = 600, width = 900, fontsize = 10, linkColour = "#666", nodeColour = "#3182bd", opacity = 0.6, diameter = 980, standAlone = TRUE, file = NULL, iframe = FALSE, d3Script = "http://d3js.org/d3.v3.min.js"){
+d3Tree <- function(List, height = 600, width = 900, fontsize = 10, linkColour = "#ccc", nodeColour = "#3182bd", textColour = "#3182bd", opacity = 0.8, diameter = 980, standAlone = TRUE, file = NULL, iframe = FALSE, d3Script = "http://d3js.org/d3.v3.min.js"){
 	if (!isTRUE(standAlone) & isTRUE(iframe)){
 		stop("If iframe = TRUE then standAlone must be TRUE.")
 	}
@@ -48,7 +49,7 @@ d3Tree <- function(List, height = 600, width = 900, fontsize = 10, linkColour = 
   	PageHead <- BasicHead()
 
 	# Create Style Sheet
-	NetworkCSS <- whisker.render(ForceMainStyleSheet())
+	NetworkCSS <- whisker.render(TreeStyleSheet())
 
 	# Main scripts for creating the graph
 	MainScript1 <- whisker.render(MainRTTree1())

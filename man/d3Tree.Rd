@@ -10,9 +10,9 @@
 }
 \usage{
   d3Tree(List, height = 600, width = 900, fontsize = 10,
-    linkColour = "#666", nodeColour = "#3182bd",
-    opacity = 0.6, diameter = 980, standAlone = TRUE,
-    file = NULL, iframe = FALSE,
+    linkColour = "#ccc", nodeColour = "#3182bd",
+    textColour = "#3182bd", opacity = 0.8, diameter = 980,
+    standAlone = TRUE, file = NULL, iframe = FALSE,
     d3Script = "http://d3js.org/d3.v3.min.js")
 }
 \arguments{
@@ -35,6 +35,10 @@
   \item{nodeColour}{character string specifying the colour
   you want the node circles to be. Multiple formats
   supported (e.g. hexadecimal).}
+
+  \item{textColour}{character string specifying the colour
+  you want the text to be before they are clicked. Multiple
+  formats supported (e.g. hexadecimal).}
 
   \item{opacity}{numeric value of the proportion opaque you
   would like the graph elements to be.}

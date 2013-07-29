@@ -70,6 +70,39 @@ pointer-events: none;
 <script> \n"
 }
 
+#' Mustache CSS template for d3ForceNetwork
+#' 
+#' @keywords internals
+#' @noRd
+
+TreeStyleSheet <- function(){
+"<style> 
+.link {  
+fill: none; 
+stroke: {{linkColour}};
+opacity: {{opacity}};
+stroke-width: 1.5px; 
+} 
+.node circle { 
+stroke: #fff; 
+opacity: {{opacity}};
+stroke-width: 1.5px; 
+} 
+.node:not(:hover) .nodetext {
+display: none;
+}
+text { 
+font: {{fontsize}}px serif; 
+opacity: {{opacity}};
+pointer-events: none; 
+} 
+</style> 
+
+<script src={{d3Script}}></script>
+
+<script> \n"
+}
+
 #' Mustache basic Force Directed Network template for d3SimpleNetwork
 #' 
 #' @keywords internals
@@ -408,6 +441,7 @@ node.append(\"text\")
 .attr(\"dy\", \".31em\")
 .attr(\"text-anchor\", function(d) { return d.x < 180 ? \"start\" : \"end\"; })
 .attr(\"transform\", function(d) { return d.x < 180 ? \"translate(8)\" : \"rotate(180)translate(-8)\"; })
+.style(\"fill\", \"{{textColour}}\")
 .text(function(d) { return d.name; });
 
 d3.select(self.frameElement).style(\"height\", diameter - 150 + \"px\");
