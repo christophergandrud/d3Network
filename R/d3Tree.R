@@ -1,4 +1,4 @@
-#' Create a D3 JavaScript force directed Reingold–Tilford Tree network graph.
+#' Create a D3 JavaScript force directed Reingold-Tilford Tree network graph.
 #'
 #'
 #' @param List a hierarchical list object with a root node and children.
@@ -17,17 +17,20 @@
 #' @param d3Script a character string that allows you to specify the location of the d3.js script you would like to use. The default is \url{http://d3js.org/d3.v3.min.js}.
 #'
 #' 
-#' @example
+#' @examples
 #' # Download JSON data
 #' library(RCurl)
-#' URL <- "https://github.com/christophergandrud/d3Network/blob/master/JSONdata/flare.json"
+#' URL <- "https://raw.github.com/christophergandrud/d3Network/master/JSONdata/flare.json"
 #' Flare <- getURL(URL)
 #' 
-#' # Recreate Bostock example from http://bl.ocks.org/mbostock/4063550
-#' d3Tree(List = Flair, file = "~/Desktop/RTreeTest.html", 
-#'        fontsize = 13, opacity = 1, diameter = 900)
+#' # Convert to list format
+#' Flare <- rjson::fromJSON(Flare)
 #' 
-#' @source Reingold, E. M., & Tilford, J. S. (1981). Tidier Drawings of Trees. IEEE Transactions on Software Engineering, SE-7(2), 223–228.
+#' # Recreate Bostock example from http://bl.ocks.org/mbostock/4063550
+#' d3Tree(List = Flare, file = "Flare.html", 
+#'        fontsize = 10, opacity = 0.9, diameter = 1000)
+#' 
+#' @source Reingold. E. M., and Tilford, J. S. (1981). Tidier Drawings of Trees. IEEE Transactions on Software Engineering, SE-7(2), 223-228.
 #' 
 #' Mike Bostock \url{http://bl.ocks.org/mbostock/4063550}.
 #' 
