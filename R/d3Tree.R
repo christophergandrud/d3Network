@@ -16,6 +16,17 @@
 #' @param iframe logical. If \code{iframe = TRUE} then the graph is saved to an external file in the working directory and an HTML \code{iframe} linking to the file is printed to the console. This is useful if you are using Slidify and many other HTML slideshow framworks and want to include the graph in the resulting page. If you set the knitr code chunk \code{results='asis'} then the graph will be rendered in the output. Usually, you can use \code{iframe = FALSE} if you are creating simple knitr Markdown or HTML pages. Note: you do not need to specify the file name if \code{iframe = TRUE}, however if you do, do not include the file path.
 #' @param d3Script a character string that allows you to specify the location of the d3.js script you would like to use. The default is \url{http://d3js.org/d3.v3.min.js}.
 #'
+#' 
+#' @example
+#' # Download JSON data
+#' library(RCurl)
+#' URL <- "https://github.com/christophergandrud/d3Network/blob/master/JSONdata/flare.json"
+#' Flare <- getURL(URL)
+#' 
+#' # Recreate Bostock example from http://bl.ocks.org/mbostock/4063550
+#' d3Tree(List = Flair, file = "~/Desktop/RTreeTest.html", 
+#'        fontsize = 13, opacity = 1, diameter = 900)
+#' 
 #' @source Reingold, E. M., & Tilford, J. S. (1981). Tidier Drawings of Trees. IEEE Transactions on Software Engineering, SE-7(2), 223–228.
 #' 
 #' Mike Bostock \url{http://bl.ocks.org/mbostock/4063550}.
