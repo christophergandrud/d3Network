@@ -11,7 +11,7 @@
 \usage{
   d3Tree(List, height = 600, width = 900, fontsize = 10,
     linkColour = "#ccc", nodeColour = "#3182bd",
-    textColour = "#3182bd", opacity = 0.8, diameter = 980,
+    textColour = "#3182bd", opacity = 0.9, diameter = 980,
     zoom = FALSE, standAlone = TRUE, file = NULL,
     iframe = FALSE,
     d3Script = "http://d3js.org/d3.v3.min.js")
