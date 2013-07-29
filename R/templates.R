@@ -364,7 +364,7 @@ d3.select(this).select(\"circle\").transition()
 #' @keywords internals
 #' @noRd
 
-MainRTTree <- function(){
+MainRTTree1 <- function(){
 "var width = {{width}}
 height = {{height}};
 
@@ -381,10 +381,11 @@ var svg = d3.select(\"body\").append(\"svg\")
 .attr(\"width\", diameter)
 .attr(\"height\", diameter - 150)
 .append(\"g\")
-.attr(\"transform\", \"translate(\" + diameter / 2 + \",\" + diameter / 2 + \")\");
+.attr(\"transform\", \"translate(\" + diameter / 2 + \",\" + diameter / 2 + \")\"); \n"
+}
 
-var root = {{RootList}};
-var nodes = tree.nodes(root),
+MainRTTree2 <- function(){
+"var nodes = tree.nodes(root),
 links = tree.links(nodes);
 
 var link = svg.selectAll(\".link\")
@@ -400,7 +401,8 @@ var node = svg.selectAll(\".node\")
 .attr(\"transform\", function(d) { return \"rotate(\" + (d.x - 90) + \")translate(\" + d.y + \")\"; })
 
 node.append(\"circle\")
-.attr(\"r\", 4.5);
+.attr(\"r\", 4.5)
+.style(\"fill\", \"{{nodeColour}}\");
 
 node.append(\"text\")
 .attr(\"dy\", \".31em\")

@@ -7,6 +7,7 @@
 #' @param width numeric width for the network graph's frame area in pixels.
 #' @param fontsize numeric font size in pixels for the node text labels.
 #' @param linkColour character string specifying the colour you want the link lines to be. Multiple formats supported (e.g. hexadecimal).
+#' @param nodeColour character string specifying the colour you want the node circles to be. Multiple formats supported (e.g. hexadecimal).
 #' @param opacity numeric value of the proportion opaque you would like the graph elements to be.
 #' @param diameter numeric diameter for the network in pixels.
 #' @param standAlone logical, whether or not to return a complete HTML document (with head and foot) or just the script.
@@ -22,7 +23,7 @@
 #' @importFrom rjson toJSON
 #' @export
 #' 
-d3Tree <- function(List, height = 600, width = 900, fontsize = 7, linkColour = "#666", opacity = 0.6, diameter = 980, standAlone = TRUE, file = NULL, iframe = FALSE, d3Script = "http://d3js.org/d3.v3.min.js"){
+d3Tree <- function(List, height = 600, width = 900, fontsize = 10, linkColour = "#666", nodeColour = "#3182bd", opacity = 0.6, diameter = 980, standAlone = TRUE, file = NULL, iframe = FALSE, d3Script = "http://d3js.org/d3.v3.min.js"){
 	if (!isTRUE(standAlone) & isTRUE(iframe)){
 		stop("If iframe = TRUE then standAlone must be TRUE.")
 	}
@@ -41,6 +42,7 @@ d3Tree <- function(List, height = 600, width = 900, fontsize = 7, linkColour = "
 		stop("List must be a list class object.")
 	}
 	RootList <- toJSON(List)
+	RootList <- paste("var root =", RootList, "; \n")
 
 	# Create webpage head
   	PageHead <- BasicHead()
@@ -48,28 +50,30 @@ d3Tree <- function(List, height = 600, width = 900, fontsize = 7, linkColour = "
 	# Create Style Sheet
 	NetworkCSS <- whisker.render(ForceMainStyleSheet())
 
-	# Main script for creating the graph
-	MainScript <- whisker.render(MainRTTree())
+	# Main scripts for creating the graph
+	MainScript1 <- whisker.render(MainRTTree1())
+	MainScript2 <- whisker.render(MainRTTree2())
 
 	if (is.null(file) & !isTRUE(standAlone)){
-		cat(NetworkCSS, LinkData, NodesData, MainScript)
+		cat(NetworkCSS, MainScript1, RootList, 
+			MainScript2)
 	} 
 	else if (is.null(file) & isTRUE(standAlone)){
-		cat(PageHead, NetworkCSS, LinkData, NodesData, MainScript, 
-		    "</body>")
+		cat(PageHead, NetworkCSS, MainScript1, RootList, 
+			MainScript2, "</body>")
 	} 
 	else if (!is.null(file) & !isTRUE(standAlone)){
-		cat(NetworkCSS, LinkData, NodesData, MainScript, file = file)
+		cat(NetworkCSS, MainScript1, RootList, 
+			MainScript2, file = file)
 	}
 	else if (!is.null(file) & !isTRUE(iframe)){
-		cat(PageHead, NetworkCSS, LinkData, NodesData, MainScript, 
-		    "</body>", file = file)
+		cat(PageHead, NetworkCSS, MainScript1, RootList, 
+			MainScript2, "</body>", file = file)
 	}
 	else if (!is.null(file) & isTRUE(iframe)){
-		cat(PageHead, NetworkCSS, LinkData, NodesData, MainScript, 
-		    "</body>", file = file)
+		cat(PageHead, NetworkCSS, MainScript1, RootList, 
+			MainScript2, "</body>", file = file)
 		cat("<iframe src=\'", file, "\'", " height=", FrameHeight, " width=", FrameWidth, 
 		    "></iframe>", sep="")  
 	}
 }
-

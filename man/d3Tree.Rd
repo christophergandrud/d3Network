@@ -9,9 +9,10 @@
   Mike Bostock \url{http://bl.ocks.org/mbostock/4063550}.
 }
 \usage{
-  d3Tree(List, height = 600, width = 900, fontsize = 7,
-    linkColour = "#666", opacity = 0.6, diameter = 980,
-    standAlone = TRUE, file = NULL, iframe = FALSE,
+  d3Tree(List, height = 600, width = 900, fontsize = 10,
+    linkColour = "#666", nodeColour = "#3182bd",
+    opacity = 0.6, diameter = 980, standAlone = TRUE,
+    file = NULL, iframe = FALSE,
     d3Script = "http://d3js.org/d3.v3.min.js")
 }
 \arguments{
@@ -30,6 +31,10 @@
   \item{linkColour}{character string specifying the colour
   you want the link lines to be. Multiple formats supported
   (e.g. hexadecimal).}
+
+  \item{nodeColour}{character string specifying the colour
+  you want the node circles to be. Multiple formats
+  supported (e.g. hexadecimal).}
 
   \item{opacity}{numeric value of the proportion opaque you
   would like the graph elements to be.}
