@@ -392,7 +392,7 @@ d3.select(this).select(\"circle\").transition()
 </script>\n"
 }
 
-#' Mustache main Reingold–Tilford Tree network graph template for d3Tree.
+#' Mustache main (1) Reingold–Tilford Tree network graph template for d3Tree.
 #' 
 #' @keywords internals
 #' @noRd
@@ -417,6 +417,11 @@ var svg = d3.select(\"body\").append(\"svg\")
 .attr(\"transform\", \"translate(\" + diameter / 2 + \",\" + diameter / 2 + \")\"); \n"
 }
 
+#' Mustache main (2) Reingold–Tilford Tree network graph template for d3Tree.
+#' 
+#' @keywords internals
+#' @noRd
+
 MainRTTree2 <- function(){
 "var nodes = tree.nodes(root),
 links = tree.links(nodes);
@@ -438,6 +443,84 @@ node.append(\"circle\")
 .style(\"fill\", \"{{nodeColour}}\");
 
 node.append(\"text\")
+.attr(\"dy\", \".31em\")
+.attr(\"text-anchor\", function(d) { return d.x < 180 ? \"start\" : \"end\"; })
+.attr(\"transform\", function(d) { return d.x < 180 ? \"translate(8)\" : \"rotate(180)translate(-8)\"; })
+.style(\"fill\", \"{{textColour}}\")
+.text(function(d) { return d.name; });
+
+d3.select(self.frameElement).style(\"height\", diameter - 150 + \"px\");
+
+</script>\n"
+}
+
+#' Mustache Zooming (1) Reingold–Tilford Tree network graph template for d3Tree.
+#' 
+#' @keywords internals
+#' @noRd
+
+ZoomRTTree1 <- function(){
+"var width = {{width}}
+height = {{height}};
+
+var diameter = {{diameter}};
+
+var tree = d3.layout.tree()
+.size([360, diameter / 2 - 120])
+.separation(function(a, b) { return (a.parent == b.parent ? 1 : 2) / a.depth; });
+
+var diagonal = d3.svg.diagonal.radial()
+.projection(function(d) { return [d.y, d.x / 180 * Math.PI]; });
+
+var svg = d3.select(\"body\").append(\"svg\")
+.attr(\"width\", width)
+.attr(\"height\", height)
+.attr(\"pointer-events\", \"all\")
+.call(d3.behavior.zoom().on(\"zoom\", redraw));
+
+var vis = svg
+.append(\"svg:g\");
+
+vis.append(\"svg:rect\")
+.attr(\"width\", width)
+.attr(\"height\", height)
+.attr(\"fill\", 'white');
+
+function redraw() {
+vis.attr(\"transform\",
+\"translate(\" + d3.event.translate + \")\"
++ \" scale(\" + d3.event.scale + \")\");
+}
+
+\n"
+}
+
+#' Mustache Zooming (2) Reingold–Tilford Tree network graph template for d3Tree.
+#' 
+#' @keywords internals
+#' @noRd
+
+ZoomRTTree2 <- function(){
+"var nodes = tree.nodes(root),
+links = tree.links(nodes);
+
+var link = vis.selectAll(\".link\")
+.data(links)
+.enter().append(\"path\")
+.attr(\"class\", \"link\")
+.attr(\"d\", diagonal);
+
+var node = vis.selectAll(\".node\")
+.data(nodes)
+.enter().append(\"g\")
+.attr(\"class\", \"node\")
+.attr(\"transform\", function(d) { return \"rotate(\" + (d.x - 90) + \")translate(\" + d.y + \")\"; })
+
+node.append(\"circle\")
+.attr(\"r\", 4.5)
+.style(\"fill\", \"{{nodeColour}}\");
+
+node.append(\"svg:text\")
 .attr(\"dy\", \".31em\")
 .attr(\"text-anchor\", function(d) { return d.x < 180 ? \"start\" : \"end\"; })
 .attr(\"transform\", function(d) { return d.x < 180 ? \"translate(8)\" : \"rotate(180)translate(-8)\"; })

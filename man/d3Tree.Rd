@@ -12,7 +12,8 @@
   d3Tree(List, height = 600, width = 900, fontsize = 10,
     linkColour = "#ccc", nodeColour = "#3182bd",
     textColour = "#3182bd", opacity = 0.8, diameter = 980,
-    standAlone = TRUE, file = NULL, iframe = FALSE,
+    zoom = FALSE, standAlone = TRUE, file = NULL,
+    iframe = FALSE,
     d3Script = "http://d3js.org/d3.v3.min.js")
 }
 \arguments{
@@ -45,6 +46,10 @@
 
   \item{diameter}{numeric diameter for the network in
   pixels.}
+
+  \item{zoom}{logical, whether or not to enable the ability
+  to use the mouse scroll-wheel to zoom in and out of the
+  graph.}
 
   \item{standAlone}{logical, whether or not to return a
   complete HTML document (with head and foot) or just the
