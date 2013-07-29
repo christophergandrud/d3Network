@@ -224,7 +224,7 @@ Flare <- getURL(URL)
 Flare <- rjson::fromJSON(Flare)
 
 # Create Graph
-d3Tree(List = Flare, fontsize = 8, width = 700, height = 650, diameter = 800,
+d3Tree(List = Flare, fontsize = 8, width = 725, height = 750, diameter = 800,
                file = "img/FlareTree.html", iframe = TRUE)
 ```
 
@@ -281,7 +281,7 @@ d3Tree(List = CanadaPC, fontsize = 10, diameter = 500,
 ```{r echo=FALSE, results='asis'}
 d3Tree(List = CanadaPC, fontsize = 10, diameter = 500,
        textColour = "#D95F0E", linkColour = "#FEC44F", nodeColour = "#D95F0E",
-       width = 550, height = 525,
+       width = 575, height = 600,
        file = "img/CanadaTree.html", iframe = TRUE)
 ```
 

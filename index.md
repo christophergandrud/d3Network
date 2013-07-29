@@ -233,7 +233,7 @@ d3Tree(List = Flare, fontsize = 8, diameter = 800)
 ```
 
 
-<iframe src='img/FlareTree.html' height=695.5 width=721></iframe>
+<iframe src='img/FlareTree.html' height=802.5 width=746.8></iframe>
 
 
 Mouse over the nodes to enlarge the labels.
@@ -290,7 +290,7 @@ d3Tree(List = CanadaPC, fontsize = 10, diameter = 500,
 ```
 
 
-<iframe src='img/CanadaTree.html' height=561.8 width=566.5></iframe>
+<iframe src='img/CanadaTree.html' height=642 width=592.2></iframe>
 
 
 <br>
