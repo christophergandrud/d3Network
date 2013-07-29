@@ -1,0 +1,75 @@
+#' Create a D3 JavaScript force directed Reingold–Tilford Tree network graph.
+#'
+#'
+#' @param List a hierarchical list object with a root node and children.
+
+#' @param height numeric height for the network graph's frame area in pixels.
+#' @param width numeric width for the network graph's frame area in pixels.
+#' @param fontsize numeric font size in pixels for the node text labels.
+#' @param linkColour character string specifying the colour you want the link lines to be. Multiple formats supported (e.g. hexadecimal).
+#' @param opacity numeric value of the proportion opaque you would like the graph elements to be.
+#' @param diameter numeric diameter for the network in pixels.
+#' @param standAlone logical, whether or not to return a complete HTML document (with head and foot) or just the script.
+#' @param file a character string of the file name to save the resulting graph. If a file name is given a standalone webpage is created, i.e. with a header and footer. If \code{file = NULL} then result is returned to the console. 
+#' @param iframe logical. If \code{iframe = TRUE} then the graph is saved to an external file in the working directory and an HTML \code{iframe} linking to the file is printed to the console. This is useful if you are using Slidify and many other HTML slideshow framworks and want to include the graph in the resulting page. If you set the knitr code chunk \code{results='asis'} then the graph will be rendered in the output. Usually, you can use \code{iframe = FALSE} if you are creating simple knitr Markdown or HTML pages. Note: you do not need to specify the file name if \code{iframe = TRUE}, however if you do, do not include the file path.
+#' @param d3Script a character string that allows you to specify the location of the d3.js script you would like to use. The default is \url{http://d3js.org/d3.v3.min.js}.
+#'
+#' @source Reingold, E. M., & Tilford, J. S. (1981). Tidier Drawings of Trees. IEEE Transactions on Software Engineering, SE-7(2), 223–228.
+#' 
+#' Mike Bostock \url{http://bl.ocks.org/mbostock/4063550}.
+#' 
+#' @importFrom whisker whisker.render
+#' @importFrom rjson toJSON
+#' @export
+#' 
+d3Tree <- function(List, height = 600, width = 900, fontsize = 7, linkColour = "#666", opacity = 0.6, diameter = 980, standAlone = TRUE, file = NULL, iframe = FALSE, d3Script = "http://d3js.org/d3.v3.min.js"){
+	if (!isTRUE(standAlone) & isTRUE(iframe)){
+		stop("If iframe = TRUE then standAlone must be TRUE.")
+	}
+	# If no file name is specified create random name to avoid conflicts
+	if (is.null(file) & isTRUE(iframe)){
+		Random <- paste0(sample(c(0:9, letters, LETTERS), 5, replace=TRUE), collapse = "")
+		file <- paste0("NetworkGraph", Random, ".html")
+	}
+
+	# Create iframe dimensions larger than graph dimensions
+	FrameHeight <- height + height * 0.07
+	FrameWidth <- width + width * 0.03
+
+	# Convert hierarchical list to JSON
+	if (class(List) != "list"){
+		stop("List must be a list class object.")
+	}
+	RootList <- toJSON(List)
+
+	# Create webpage head
+  	PageHead <- BasicHead()
+
+	# Create Style Sheet
+	NetworkCSS <- whisker.render(ForceMainStyleSheet())
+
+	# Main script for creating the graph
+	MainScript <- whisker.render(MainRTTree())
+
+	if (is.null(file) & !isTRUE(standAlone)){
+		cat(NetworkCSS, LinkData, NodesData, MainScript)
+	} 
+	else if (is.null(file) & isTRUE(standAlone)){
+		cat(PageHead, NetworkCSS, LinkData, NodesData, MainScript, 
+		    "</body>")
+	} 
+	else if (!is.null(file) & !isTRUE(standAlone)){
+		cat(NetworkCSS, LinkData, NodesData, MainScript, file = file)
+	}
+	else if (!is.null(file) & !isTRUE(iframe)){
+		cat(PageHead, NetworkCSS, LinkData, NodesData, MainScript, 
+		    "</body>", file = file)
+	}
+	else if (!is.null(file) & isTRUE(iframe)){
+		cat(PageHead, NetworkCSS, LinkData, NodesData, MainScript, 
+		    "</body>", file = file)
+		cat("<iframe src=\'", file, "\'", " height=", FrameHeight, " width=", FrameWidth, 
+		    "></iframe>", sep="")  
+	}
+}
+

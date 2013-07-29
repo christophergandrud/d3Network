@@ -3,7 +3,7 @@
 \title{Create a D3 JavaScript force directed network graph.}
 \source{
   D3.js was created by Michael Bostock. See
-  \url{http://d3js.org/} and, more specifically for
+  \url{http://d3js.org/} and, more specifically for force
   directed networks
   \url{https://github.com/mbostock/d3/wiki/Force-Layout}
 }

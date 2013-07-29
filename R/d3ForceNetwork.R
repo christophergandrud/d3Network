@@ -45,7 +45,7 @@
 #' #                Group = "group", opacity = 0.4)
 #'
 #' @source 
-#' D3.js was created by Michael Bostock. See \url{http://d3js.org/} and, more specifically for directed networks \url{https://github.com/mbostock/d3/wiki/Force-Layout}
+#' D3.js was created by Michael Bostock. See \url{http://d3js.org/} and, more specifically for force directed networks \url{https://github.com/mbostock/d3/wiki/Force-Layout}
 #' 
 #' @importFrom whisker whisker.render
 #' 
@@ -72,7 +72,7 @@ if (!isTRUE(standAlone) & isTRUE(iframe)){
 
 	# Subset data frames for network graph
 	if (class(Links) != "data.frame"){
-	stop("Links must be a data frame class object.")
+		stop("Links must be a data frame class object.")
 	}
 	if (class(Nodes) != "data.frame"){
 		stop("Nodes must be a data frame class object.")

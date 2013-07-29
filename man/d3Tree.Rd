@@ -1,0 +1,72 @@
+\name{d3Tree}
+\alias{d3Tree}
+\title{Create a D3 JavaScript force directed Reingold–Tilford Tree network graph.}
+\source{
+  Reingold, E. M., & Tilford, J. S. (1981). Tidier Drawings
+  of Trees. IEEE Transactions on Software Engineering,
+  SE-7(2), 223–228.
+
+  Mike Bostock \url{http://bl.ocks.org/mbostock/4063550}.
+}
+\usage{
+  d3Tree(List, height = 600, width = 900, fontsize = 7,
+    linkColour = "#666", opacity = 0.6, diameter = 980,
+    standAlone = TRUE, file = NULL, iframe = FALSE,
+    d3Script = "http://d3js.org/d3.v3.min.js")
+}
+\arguments{
+  \item{List}{a hierarchical list object with a root node
+  and children.}
+
+  \item{height}{numeric height for the network graph's
+  frame area in pixels.}
+
+  \item{width}{numeric width for the network graph's frame
+  area in pixels.}
+
+  \item{fontsize}{numeric font size in pixels for the node
+  text labels.}
+
+  \item{linkColour}{character string specifying the colour
+  you want the link lines to be. Multiple formats supported
+  (e.g. hexadecimal).}
+
+  \item{opacity}{numeric value of the proportion opaque you
+  would like the graph elements to be.}
+
+  \item{diameter}{numeric diameter for the network in
+  pixels.}
+
+  \item{standAlone}{logical, whether or not to return a
+  complete HTML document (with head and foot) or just the
+  script.}
+
+  \item{file}{a character string of the file name to save
+  the resulting graph. If a file name is given a standalone
+  webpage is created, i.e. with a header and footer. If
+  \code{file = NULL} then result is returned to the
+  console.}
+
+  \item{iframe}{logical. If \code{iframe = TRUE} then the
+  graph is saved to an external file in the working
+  directory and an HTML \code{iframe} linking to the file
+  is printed to the console. This is useful if you are
+  using Slidify and many other HTML slideshow framworks and
+  want to include the graph in the resulting page. If you
+  set the knitr code chunk \code{results='asis'} then the
+  graph will be rendered in the output. Usually, you can
+  use \code{iframe = FALSE} if you are creating simple
+  knitr Markdown or HTML pages. Note: you do not need to
+  specify the file name if \code{iframe = TRUE}, however if
+  you do, do not include the file path.}
+
+  \item{d3Script}{a character string that allows you to
+  specify the location of the d3.js script you would like
+  to use. The default is
+  \url{http://d3js.org/d3.v3.min.js}.}
+}
+\description{
+  Create a D3 JavaScript force directed Reingold–Tilford
+  Tree network graph.
+}
+
