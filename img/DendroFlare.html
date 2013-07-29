@@ -1,0 +1,75 @@
+<!DOCTYPE html> 
+<meta charset="utf-8">
+<body> 
+ <style> 
+.link {  
+fill: none; 
+stroke: #ccc;
+opacity: 0.4;
+stroke-width: 1.5px; 
+} 
+.node circle { 
+stroke: #fff; 
+opacity: 0.8;
+stroke-width: 1.5px; 
+} 
+.node:not(:hover) .nodetext {
+display: none;
+}
+text { 
+font: 10px serif; 
+opacity: 0.8;
+pointer-events: none; 
+} 
+</style> 
+
+<script src=http://d3js.org/d3.v3.min.js></script>
+
+<script> 
+ var width = 500
+height = 500;
+
+var cluster = d3.layout.cluster()
+.size([height, width - 160]);
+
+var diagonal = d3.svg.diagonal()
+.projection(function(d) { return [d.y, d.x]; });
+
+var svg = d3.select("body").append("svg")
+.attr("width", width)
+.attr("height", height)
+.append("g")
+.attr("transform", "translate(40,0)");
+
+ var root = {"name":"Canada","children":[{"name":"Newfoundland","children":[{"name":"St. John's"}]},{"name":"PEI","children":[{"name":"Charlottetown"}]},{"name":"Nova Scotia","children":[{"name":"Halifax"}]},{"name":"New Brunswick","children":[{"name":"Fredericton"}]},{"name":"Quebec","children":[{"name":"Montreal"},{"name":"Quebec City"}]},{"name":"Ontario","children":[{"name":"Toronto"},{"name":"Ottawa"}]},{"name":"Manitoba","children":[{"name":"Winnipeg"}]},{"name":"Saskatchewan","children":[{"name":"Regina"}]},{"name":"Nunavuet","children":[{"name":"Iqaluit"}]},{"name":"NWT","children":[{"name":"Yellowknife"}]},{"name":"Alberta","children":[{"name":"Edmonton"}]},{"name":"British Columbia","children":[{"name":"Victoria"},{"name":"Vancouver"}]},{"name":"Yukon","children":[{"name":"Whitehorse"}]}]} ; 
+ var nodes = cluster.nodes(root),
+links = cluster.links(nodes);
+
+var link = svg.selectAll(".link")
+.data(links)
+.enter().append("path")
+.attr("class", "link")
+.attr("d", diagonal);
+
+var node = svg.selectAll(".node")
+.data(nodes)
+.enter().append("g")
+.attr("class", "node")
+.attr("transform", function(d) { return "translate(" + d.y + "," + d.x + ")"; })
+
+node.append("circle")
+.attr("r", 4.5)
+.style("fill", "#3182bd");
+
+node.append("text")
+.attr("dx", function(d) { return d.children ? -8 : 8; })
+.attr("dy", 3)
+.style("text-anchor", function(d) { return d.children ? "end" : "start"; })
+.style("fill", "#3182bd")
+.text(function(d) { return d.name; });
+
+d3.select(self.frameElement).style("height", height + "px");
+
+</script>
+
+ </body>

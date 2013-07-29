@@ -17,7 +17,7 @@ stroke-width: 1.5px;
 display: none;
 }
 text { 
-font: 11px serif; 
+font: 10px serif; 
 opacity: 0.9;
 pointer-events: none; 
 } 
@@ -82,7 +82,7 @@ d3.select(this).select("text").transition()
 .attr("text-anchor", function(d) { return d.x < 180 ? "start" : "end"; })
 .attr("transform", function(d) { return d.x < 180 ? "translate(8)" : "rotate(180)translate(-8)"; })
 .style("stroke-width", ".5px")
-.style("font", "20.9px serif")
+.style("font", "19px serif")
 .style("opacity", 1); 
 } 
 
@@ -95,7 +95,7 @@ d3.select(this).select("text").transition()
 .attr("dy", ".31em")
 .attr("text-anchor", function(d) { return d.x < 180 ? "start" : "end"; })
 .attr("transform", function(d) { return d.x < 180 ? "translate(8)" : "rotate(180)translate(-8)"; })
-.style("font", "11px serif")
+.style("font", "10px serif")
 .style("opacity", 0.9); 
 } 
 

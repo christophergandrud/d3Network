@@ -35,13 +35,13 @@ Currently **d3Network** only supports [force directed](http://en.wikipedia.org/w
 
 **d3Network** currently has four commands for creating network graphs: 
 
-- <a href="#simple"><code>d3SimpleNetwork</code></a>
+- <a href="#simple"><code>d3SimpleNetwork</code></a>: simple force directed networks.
 
-- <a href="#forceDirect"><code>d3ForceDirected</code></a> 
+- <a href="#forceDirect"><code>d3ForceDirected</code></a>: grouped force directed networks
 
-- <a href="#RTTree"><code>d3Tree</code></a> 
+- <a href="#RTTree"><code>d3Tree</code></a>: Reingold-Tilford trees
 
-- <a href="#ClusterDendro"><code>d3ClusterDendro</code></a> 
+- <a href="#ClusterDendro"><code>d3ClusterDendro</code></a>: cluster dendogram
 
 
 <br>
@@ -119,7 +119,7 @@ If you want to make more complex force directed graph structures use `d3ForceNet
 
 Maybe it's better to understand this with an example. We'll use `d3ForceDirected`  to recreate an [example](http://bl.ocks.org/mbostock/4062045) by Mike Bostock. The network graph will show *Les Misérables*' charcters co-occurance (the original data was gathered by [Donald Knuth](http://www-cs-faculty.stanford.edu/~uno/sgb.html)). The link distances are based on how close the characters are to one another and the colours symbolise different character groups.
 
-To start out let's gather the data and create two data frames with it. One of the data frames will have information on the links, similar to what we have worked with so far. The other will have information on individaul nodes; in this case *Les Misérables* characters.
+To start out let's gather the data and create two data frames with it. One of the data frames will have information on the links, similar to what we have worked with so far. The other will have information on individual nodes; in this case *Les Misérables* characters.
 
 
 ```r
@@ -212,9 +212,9 @@ d3ForceNetwork(Links = MisLinks, Nodes = MisNodes,
 
 <h3 id="RTTree"><code>d3Tree</code></h3>
 
-A clean way to present hierarchical data is with a modified [Reingold-Tilford](http://ieeexplore.ieee.org/xpl/login.jsp?tp=&arnumber=1702828&userType=&url=http%3A%2F%2Fieeexplore.ieee.org%2Fstamp%2Fstamp.jsp%3Ftp%3D%26arnumber%3D1702828%26userType%3D) Tree (. Use these types of trees when you have a single root connected to hierarchically organized child nodes. 
+A clean way to present hierarchical data is with modified [Reingold-Tilford](http://ieeexplore.ieee.org/xpl/login.jsp?tp=&arnumber=1702828&userType=&url=http%3A%2F%2Fieeexplore.ieee.org%2Fstamp%2Fstamp.jsp%3Ftp%3D%26arnumber%3D1702828%26userType%3D) Trees. Use these types of trees when you have a single root connected to hierarchically organized child nodes. 
 
-Use the `d3Tree` command to create these trees. Many of the aesthetic arguments are the same as the force directed commands above. Zooming is allowed with `zoom = TRUE`. The major difference is that there is only one data argument `List`. This is a list type object that has a particular stucture that we'll look at later. Instead of `charge` `linkDistance` the spacing of `d3Tree` nodes can be set by changing the diameter of the whole graph with the `diameter` argument.
+Use the `d3Tree` command to create the trees. Many of the aesthetic arguments are the same as with the force directed commands above. Zooming is allowed as above. The major difference is that there is only one data argument `List`. This is a list type object that has a particular structure that we'll look at <a href="#TreeDataSt">later</a>. Also, instead of `charge` and `linkDistance` the spacing of `d3Tree` nodes can be set by changing the diameter of the whole graph with the `diameter` argument.
 
 Let's recreate Mike Bostock's [Reingold-Tilford tree example](http://bl.ocks.org/mbostock/4063550), using JSON formatted data. The data shows the [Flare](http://flare.prefuse.org/) class hierarchy.
 
@@ -236,11 +236,11 @@ d3Tree(List = Flare, fontsize = 8, diameter = 800)
 <iframe src='img/FlareTree.html' height=695.5 width=721></iframe>
 
 
-Mouse over the nodes to enlarge the label.
+Mouse over the nodes to enlarge the labels.
 
 <h3 id="TreeDataSt">Data structure</h3>
 
-Creating data in the proper structure for `d3Tree` can be a bit tedious. You need to create a hierarchical list with one root node and a number of children. All nodes need to be labeled as `name` and all `children` need to be a lists. Maybe the best way to understand this is to look at a simple example. The following `CanadaPC` object is a list where the root is Canada. The first level of child nodes are the provinces and territories. These have further children which are capitals/principle cities of each provice/territory:
+Data for `d3Tree` needs to be in a hierarchical list with one root node and a number of children. All nodes need to be labeled as `name` and all `children` need to be further lists of `name`d nodes. Maybe the best way to understand this is to look at a simple example. The following `CanadaPC` object is a list where the root is Canada. The first level of child nodes are the provinces and territories. These have further children which are capitals/principle cities of each province/territory:
 
 
 ```r
@@ -278,14 +278,15 @@ CanadaPC <- list(name = "Canada",
 ```
 
 
-Clearly, R doesn't make it super easy to create these types of lists. As we saw in the previous example, you can always just import correctly formatted JSON file into R and use that instead.
+Clearly, R doesn't make it super easy to create these types of lists. As we saw in the previous example, you can always just import correctly formatted JSON files into R and use those instead.
 
-Anyways, let's create a Tree graph for the `CanadaPC` data:
+Anyways, let's create a tree graph for the `CanadaPC` data:
 
 
 ```r
-d3Tree(List = CanadaPC, fontsize = 9, diameter = 500,
-       textColour = "#D95F0E", linkColour = "#FEC44F", nodeColour = "#D95F0E")
+d3Tree(List = CanadaPC, fontsize = 10, diameter = 500,
+       textColour = "#D95F0E", linkColour = "#FEC44F", 
+       nodeColour = "#D95F0E")
 ```
 
 
@@ -295,11 +296,25 @@ d3Tree(List = CanadaPC, fontsize = 9, diameter = 500,
 <br>
 <br>
 
-<h3 id="ClusterDendro><code>d3ClusterDendro</code></h3>
+<h3 id="ClusterDendro"><code>d3ClusterDendro</code></h3>
+
+We can use the same <a href="#TreeDataSt">type of data</a> to create cluster dendrograms using the `d3ClusterDendro` command. Again it's aesthetic arguments are similar to the other commands. Here is an example using the `CanadaPC` data from above:
+
+
+```r
+d3ClusterDendro(List = CanadaPC)
+```
+
+
+<iframe src='img/DendroFlare.html' height=535 width=515></iframe>
+
+
+It currently doesn't support mouse over zooming, but I plan to add it in an upcoming release.
 
 <br>
 <br>
 
+<hr>
 
 <h2 id="standAlone">d3Network in stand alone documents</h2>
 
