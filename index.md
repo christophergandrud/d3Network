@@ -290,7 +290,7 @@ d3Tree(List = CanadaPC, fontsize = 10, diameter = 500,
 ```
 
 
-<iframe src='img/CanadaTree.html' height=481.5 width=515></iframe>
+<iframe src='img/CanadaTree.html' height=561.8 width=566.5></iframe>
 
 
 <br>

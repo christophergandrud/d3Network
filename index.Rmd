@@ -281,7 +281,7 @@ d3Tree(List = CanadaPC, fontsize = 10, diameter = 500,
 ```{r echo=FALSE, results='asis'}
 d3Tree(List = CanadaPC, fontsize = 10, diameter = 500,
        textColour = "#D95F0E", linkColour = "#FEC44F", nodeColour = "#D95F0E",
-       width = 500, height = 450,
+       width = 550, height = 525,
        file = "img/CanadaTree.html", iframe = TRUE)
 ```
 
