@@ -233,7 +233,7 @@ d3Tree(List = Flare, fontsize = 8, diameter = 800)
 ```
 
 
-<iframe src='img/FlareTree.html' height=802.5 width=746.8></iframe>
+<iframe src='img/FlareTree.html' height=802.5 width=721></iframe>
 
 
 Mouse over the nodes to enlarge the labels.
@@ -290,7 +290,7 @@ d3Tree(List = CanadaPC, fontsize = 10, diameter = 500,
 ```
 
 
-<iframe src='img/CanadaTree.html' height=642 width=592.2></iframe>
+<iframe src='img/CanadaTree.html' height=615.2 width=566.5></iframe>
 
 
 <br>
@@ -302,11 +302,11 @@ We can use the same <a href="#TreeDataSt">type of data</a> to create cluster den
 
 
 ```r
-d3ClusterDendro(List = CanadaPC)
+d3ClusterDendro(List = CanadaPC, fontsize = 12)
 ```
 
 
-<iframe src='img/DendroFlare.html' height=588.5 width=540.8></iframe>
+<iframe src='img/DendroFlare.html' height=588.5 width=566.5></iframe>
 
 
 It currently doesn't support mouse over zooming, but I plan to add it in an upcoming release.

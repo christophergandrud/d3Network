@@ -224,7 +224,7 @@ Flare <- getURL(URL)
 Flare <- rjson::fromJSON(Flare)
 
 # Create Graph
-d3Tree(List = Flare, fontsize = 8, width = 725, height = 750, diameter = 800,
+d3Tree(List = Flare, fontsize = 8, width = 700, height = 750, diameter = 800,
                file = "img/FlareTree.html", iframe = TRUE)
 ```
 
@@ -281,7 +281,7 @@ d3Tree(List = CanadaPC, fontsize = 10, diameter = 500,
 ```{r echo=FALSE, results='asis'}
 d3Tree(List = CanadaPC, fontsize = 10, diameter = 500,
        textColour = "#D95F0E", linkColour = "#FEC44F", nodeColour = "#D95F0E",
-       width = 575, height = 600,
+       width = 550, height = 575,
        file = "img/CanadaTree.html", iframe = TRUE)
 ```
 
@@ -293,11 +293,12 @@ d3Tree(List = CanadaPC, fontsize = 10, diameter = 500,
 We can use the same <a href="#TreeDataSt">type of data</a> to create cluster dendrograms using the `d3ClusterDendro` command. Again it's aesthetic arguments are similar to the other commands. Here is an example using the `CanadaPC` data from above:
 
 ```{r eval=FALSE, tidy=FALSE}
-d3ClusterDendro(List = CanadaPC)
+d3ClusterDendro(List = CanadaPC, fontsize = 12)
 ```
 
 ```{r echo=FALSE, results='asis'}
-d3ClusterDendro(List = CanadaPC, width = 525, height = 550,
+d3ClusterDendro(List = CanadaPC, fontsize = 12,
+       width = 550, height = 550,
        file = "img/DendroFlare.html", iframe = TRUE)
 ```
 

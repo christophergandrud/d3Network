@@ -255,7 +255,7 @@ Flare &lt;- rjson::fromJSON(Flare)
 d3Tree(List = Flare, fontsize = 8, diameter = 800)
 </code></pre>
 
-<iframe src='img/FlareTree.html' height=802.5 width=746.8></iframe>
+<iframe src='img/FlareTree.html' height=802.5 width=721></iframe>
 
 <p>Mouse over the nodes to enlarge the labels.</p>
 
@@ -305,7 +305,7 @@ d3Tree(List = Flare, fontsize = 8, diameter = 800)
        nodeColour = &quot;#D95F0E&quot;)
 </code></pre>
 
-<iframe src='img/CanadaTree.html' height=642 width=592.2></iframe>
+<iframe src='img/CanadaTree.html' height=615.2 width=566.5></iframe>
 
 <p><br>
 <br></p>
@@ -314,10 +314,10 @@ d3Tree(List = Flare, fontsize = 8, diameter = 800)
 
 <p>We can use the same <a href="#TreeDataSt">type of data</a> to create cluster dendrograms using the <code>d3ClusterDendro</code> command. Again it&#39;s aesthetic arguments are similar to the other commands. Here is an example using the <code>CanadaPC</code> data from above:</p>
 
-<pre><code class="r">d3ClusterDendro(List = CanadaPC)
+<pre><code class="r">d3ClusterDendro(List = CanadaPC, fontsize = 12)
 </code></pre>
 
-<iframe src='img/DendroFlare.html' height=588.5 width=540.8></iframe>
+<iframe src='img/DendroFlare.html' height=588.5 width=566.5></iframe>
 
 <p>It currently doesn&#39;t support mouse over zooming, but I plan to add it in an upcoming release.</p>
 
