@@ -23,6 +23,14 @@
   \item{width}{numeric width for the network graph's frame
   area in pixels.}
 
+  \item{heightCollapse}{numeric proportion of the overall
+  graph \code{height} to make the cluster dendrogram
+  shorter by.}
+
+  \item{widthCollapse}{numeric proportion of the overall
+  graph \code{width} to make the cluster dendrogram
+  narrower by.}
+
   \item{fontsize}{numeric font size in pixels for the node
   text labels.}
 
@@ -91,6 +99,7 @@ Flare <- rjson::fromJSON(Flare)
 # Recreate Bostock example from http://bl.ocks.org/mbostock/4063570
 d3ClusterDendro(List = Flare,
 		file = "FlareCluster.html", zoom = TRUE,
-       fontsize = 10, opacity = 0.9)
+       fontsize = 10, opacity = 0.9,
+       widthCollapse = 0.8)
 }
 

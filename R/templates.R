@@ -633,6 +633,8 @@ var node = svg.selectAll(\".node\")
 .enter().append(\"g\")
 .attr(\"class\", \"node\")
 .attr(\"transform\", function(d) { return \"translate(\" + d.y + \",\" + d.x + \")\"; })
+.on(\"mouseover\", mouseover) 
+.on(\"mouseout\", mouseout);
 
 node.append(\"circle\")
 .attr(\"r\", 4.5)
@@ -644,6 +646,27 @@ node.append(\"text\")
 .style(\"text-anchor\", function(d) { return d.children ? \"end\" : \"start\"; })
 .style(\"fill\", \"{{textColour}}\")
 .text(function(d) { return d.name; });
+
+function mouseover() { 
+d3.select(this).select(\"circle\").transition() 
+.duration(750) 
+.attr(\"r\", 9)
+d3.select(this).select(\"text\").transition()
+.duration(750)
+.style(\"stroke-width\", \".5px\")
+.style(\"font\", \"{{fontsizeBig}}px serif\")
+.style(\"opacity\", 1); 
+} 
+
+function mouseout() { 
+d3.select(this).select(\"circle\").transition() 
+.duration(750) 
+.attr(\"r\", 4.5)
+d3.select(this).select(\"text\").transition()
+.duration(750)
+.style(\"font\", \"{{fontsize}}px serif\")
+.style(\"opacity\", {{opacity}}); 
+} 
 
 d3.select(self.frameElement).style(\"height\", height + \"px\");
 
@@ -708,6 +731,8 @@ var node = vis.selectAll(\".node\")
 .enter().append(\"g\")
 .attr(\"class\", \"node\")
 .attr(\"transform\", function(d) { return \"translate(\" + d.y + \",\" + d.x + \")\"; })
+.on(\"mouseover\", mouseover) 
+.on(\"mouseout\", mouseout);
 
 node.append(\"circle\")
 .attr(\"r\", 4.5)
@@ -719,6 +744,27 @@ node.append(\"svg:text\")
 .style(\"text-anchor\", function(d) { return d.children ? \"end\" : \"start\"; })
 .style(\"fill\", \"{{textColour}}\")
 .text(function(d) { return d.name; });
+
+function mouseover() { 
+d3.select(this).select(\"circle\").transition() 
+.duration(750) 
+.attr(\"r\", 9)
+d3.select(this).select(\"text\").transition()
+.duration(750)
+.style(\"stroke-width\", \".5px\")
+.style(\"font\", \"{{fontsizeBig}}px serif\")
+.style(\"opacity\", 1); 
+} 
+
+function mouseout() { 
+d3.select(this).select(\"circle\").transition() 
+.duration(750) 
+.attr(\"r\", 4.5)
+d3.select(this).select(\"text\").transition()
+.duration(750)
+.style(\"font\", \"{{fontsize}}px serif\")
+.style(\"opacity\", {{opacity}}); 
+} 
 
 d3.select(self.frameElement).style(\"height\", height + \"px\");
 

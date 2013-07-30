@@ -1,3 +1,9 @@
+v0.3.1 
+
+Collapse and expand clustered dendrograms.
+
+Mouse over zooming with clustered dendrograms.
+
 v0.3
 
 Added Reingold–Tilford Tree graph with `d3Tree`.

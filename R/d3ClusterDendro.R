@@ -5,8 +5,8 @@
 
 #' @param height numeric height for the network graph's frame area in pixels.
 #' @param width numeric width for the network graph's frame area in pixels.
-#' @heightCollapse numeric proportion of the overall graph \code{height} to make the cluster dendrogram shorter by.
-#' @widthCollapse numeric proportion of the overall graph \code{width} to make the cluster dendrogram narrower by.
+#' @param heightCollapse numeric proportion of the overall graph \code{height} to make the cluster dendrogram shorter by.
+#' @param widthCollapse numeric proportion of the overall graph \code{width} to make the cluster dendrogram narrower by.
 #' @param fontsize numeric font size in pixels for the node text labels.
 #' @param linkColour character string specifying the colour you want the link lines to be. Multiple formats supported (e.g. hexadecimal).
 #' @param nodeColour character string specifying the colour you want the node circles to be. Multiple formats supported (e.g. hexadecimal).
@@ -32,7 +32,8 @@
 #' # Recreate Bostock example from http://bl.ocks.org/mbostock/4063570
 #' d3ClusterDendro(List = Flare, 
 #'		file = "FlareCluster.html", zoom = TRUE,
-#'        fontsize = 10, opacity = 0.9)
+#'        fontsize = 10, opacity = 0.9, 
+#'        widthCollapse = 0.8)
 #' 
 #' @source 
 #' 
@@ -55,6 +56,9 @@ d3ClusterDendro <- function(List, height = 2200, width = 900, heightCollapse = 0
 	# Create iframe dimensions larger than graph dimensions
 	FrameHeight <- height + height * 0.07
 	FrameWidth <- width + width * 0.03
+
+	# Create mouseover font size
+	fontsizeBig <- fontsize * 1.9
 
 	# Create link opacity at 50% of overall opacity
 	linkOpacity <- opacity * 0.5
