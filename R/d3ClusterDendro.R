@@ -5,6 +5,8 @@
 
 #' @param height numeric height for the network graph's frame area in pixels.
 #' @param width numeric width for the network graph's frame area in pixels.
+#' @heightCollapse numeric proportion of the overall graph \code{height} to make the cluster dendrogram shorter by.
+#' @widthCollapse numeric proportion of the overall graph \code{width} to make the cluster dendrogram narrower by.
 #' @param fontsize numeric font size in pixels for the node text labels.
 #' @param linkColour character string specifying the colour you want the link lines to be. Multiple formats supported (e.g. hexadecimal).
 #' @param nodeColour character string specifying the colour you want the node circles to be. Multiple formats supported (e.g. hexadecimal).
@@ -40,7 +42,7 @@
 #' @importFrom rjson toJSON
 #' @export
 #' 
-d3ClusterDendro <- function(List, height = 2200, width = 900, fontsize = 10, linkColour = "#ccc", nodeColour = "#3182bd", textColour = "#3182bd", opacity = 0.8, diameter = 980, zoom = FALSE, standAlone = TRUE, file = NULL, iframe = FALSE, d3Script = "http://d3js.org/d3.v3.min.js"){
+d3ClusterDendro <- function(List, height = 2200, width = 900, heightCollapse = 0, widthCollapse = 0.5, fontsize = 10, linkColour = "#ccc", nodeColour = "#3182bd", textColour = "#3182bd", opacity = 0.8, diameter = 980, zoom = FALSE, standAlone = TRUE, file = NULL, iframe = FALSE, d3Script = "http://d3js.org/d3.v3.min.js"){
 	if (!isTRUE(standAlone) & isTRUE(iframe)){
 		stop("If iframe = TRUE then standAlone must be TRUE.")
 	}

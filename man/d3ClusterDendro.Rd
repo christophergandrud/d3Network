@@ -6,10 +6,11 @@
 }
 \usage{
   d3ClusterDendro(List, height = 2200, width = 900,
-    fontsize = 10, linkColour = "#ccc",
-    nodeColour = "#3182bd", textColour = "#3182bd",
-    opacity = 0.8, diameter = 980, zoom = FALSE,
-    standAlone = TRUE, file = NULL, iframe = FALSE,
+    heightCollapse = 0, widthCollapse = 0.5, fontsize = 10,
+    linkColour = "#ccc", nodeColour = "#3182bd",
+    textColour = "#3182bd", opacity = 0.8, diameter = 980,
+    zoom = FALSE, standAlone = TRUE, file = NULL,
+    iframe = FALSE,
     d3Script = "http://d3js.org/d3.v3.min.js")
 }
 \arguments{

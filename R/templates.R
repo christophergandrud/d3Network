@@ -600,7 +600,7 @@ MainClusterDendro1 <- function(){
 height = {{height}};
 
 var cluster = d3.layout.cluster()
-.size([height, width - 160]);
+.size([height - height * {{heightCollapse}}, width - width * {{widthCollapse}}]);
 
 var diagonal = d3.svg.diagonal()
 .projection(function(d) { return [d.y, d.x]; });
@@ -661,7 +661,7 @@ ZoomClusterDendro1 <- function(){
 height = {{height}};
 
 var cluster = d3.layout.cluster()
-.size([height, width - 160]);
+.size([height - height * {{heightCollapse}}, width - width * {{widthCollapse}}]);
 
 var diagonal = d3.svg.diagonal()
 .projection(function(d) { return [d.y, d.x]; });
