@@ -12,7 +12,7 @@
 
 ### Tools for creating D3 JavaScript force directed network graphs from R.
 
-### v0.3
+### v0.3.1
 
 
 ---
@@ -298,18 +298,21 @@ d3Tree(List = CanadaPC, fontsize = 10, diameter = 500,
 
 <h3 id="ClusterDendro"><code>d3ClusterDendro</code></h3>
 
-We can use the same <a href="#TreeDataSt">type of data</a> to create cluster dendrograms using the `d3ClusterDendro` command. Again it's aesthetic arguments are similar to the other commands. Here is an example using the `CanadaPC` data from above:
+We can use the same <a href="#TreeDataSt">type of data</a> to create cluster dendrograms using the `d3ClusterDendro` command. Again it's aesthetic arguments are similar to the other commands. You can change the width and height of the graph (rather than the graph area) with the `widthCollapse` and `heightCollapse` arguments. These are the proportion of the total graph area `width` and `height` that you would like it to be reduced by. For example, `widthCollapse = 0.5` would reduce the graph by 50% of the overall `width`.
+
+Here is an example using the `CanadaPC` data from above:
 
 
 ```r
-d3ClusterDendro(List = CanadaPC, fontsize = 12)
+d3ClusterDendro(List = CanadaPC, fontsize = 12, 
+                zoom = TRUE, widthCollapse = 0.8)
 ```
 
 
-<iframe src='img/DendroFlare.html' height=588.5 width=566.5></iframe>
+<iframe src='img/DendroFlare.html' height=588.5 width=515></iframe>
 
 
-It currently doesn't support mouse over zooming, but I plan to add it in an upcoming release.
+The graph is zoom-able with the scroll-wheel and can be dragged about.
 
 <br>
 <br>
