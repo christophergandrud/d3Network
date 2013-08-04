@@ -1,3 +1,7 @@
+v0.3.2
+
+Change examples for `d3ClusterDendro` so that they run on Windows.
+
 v0.3.1 
 
 Collapse and expand clustered dendrograms.
@@ -8,7 +12,7 @@ v0.3
 
 Added Reingold–Tilford Tree graph with `d3Tree`.
 
-Added Cluster Denograms with `d3ClusterDeno`.
+Added Cluster Denograms with `d3ClusterDendro`.
 
 v0.2.1
 

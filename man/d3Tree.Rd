@@ -121,16 +121,17 @@ CanadaPC <- list(name = "Canada", children = list(list(name = "Newfoundland",
 d3Tree(List = CanadaPC, fontsize = 10, diameter = 500)
 
 ## Create tree from JSON formatted data
-# Download JSON data
-library(RCurl)
-URL <- "https://raw.github.com/christophergandrud/d3Network/master/JSONdata/flare.json"
-Flare <- getURL(URL)
+## dontrun
+## Download JSON data
+# library(RCurl)
+# URL <- "https://raw.github.com/christophergandrud/d3Network/master/JSONdata/flare.json"
+# Flare <- getURL(URL)
 
-# Convert to list format
-Flare <- rjson::fromJSON(Flare)
+## Convert to list format
+# Flare <- rjson::fromJSON(Flare)
 
-# Recreate Bostock example from http://bl.ocks.org/mbostock/4063550
-d3Tree(List = Flare, file = "Flare.html",
-       fontsize = 10, opacity = 0.9, diameter = 1000)
+## Recreate Bostock example from http://bl.ocks.org/mbostock/4063550
+# d3Tree(List = Flare, file = "Flare.html",
+#        fontsize = 10, opacity = 0.9, diameter = 1000)
 }
 

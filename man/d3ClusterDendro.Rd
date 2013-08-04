@@ -88,18 +88,19 @@
   Create a D3 JavaScript Cluster Dendrogram graphs.
 }
 \examples{
-# Download JSON data
-library(RCurl)
-URL <- "https://raw.github.com/christophergandrud/d3Network/master/JSONdata/flare.json"
-Flare <- getURL(URL)
+# dontrun
+## Download JSON data
+# library(RCurl)
+# URL <- "https://raw.github.com/christophergandrud/d3Network/master/JSONdata/flare.json"
+# Flare <- getURL(URL)
 
-# Convert to list format
-Flare <- rjson::fromJSON(Flare)
+## Convert to list format
+# Flare <- rjson::fromJSON(Flare)
 
-# Recreate Bostock example from http://bl.ocks.org/mbostock/4063570
-d3ClusterDendro(List = Flare,
-		file = "FlareCluster.html", zoom = TRUE,
-       fontsize = 10, opacity = 0.9,
-       widthCollapse = 0.8)
+## Recreate Bostock example from http://bl.ocks.org/mbostock/4063570
+# d3ClusterDendro(List = Flare,
+#		file = "FlareCluster.html", zoom = TRUE,
+#        fontsize = 10, opacity = 0.9,
+#        widthCollapse = 0.8)
 }
 
