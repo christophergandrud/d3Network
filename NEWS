@@ -1,3 +1,7 @@
+v0.3.3
+
+`toJSONarray` no longer quotes integers. Thanks to Mark Gene.
+
 v0.3.2
 
 Change examples for `d3ClusterDendro` so that they run on Windows.
