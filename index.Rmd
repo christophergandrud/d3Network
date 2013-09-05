@@ -159,7 +159,7 @@ d3ForceNetwork(Links = MisLinks, Nodes = MisNodes,
                Source = "source", Target = "target", 
                Value = "value", NodeID = "name", 
                Group = "group", width = 550, height = 400, 
-               opacity = 0.9,)
+               opacity = 0.9)
 ```
 
 ```{r, echo=FALSE, results='asis'}
