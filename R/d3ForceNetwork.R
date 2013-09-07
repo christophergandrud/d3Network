@@ -45,7 +45,7 @@
 #' #                Group = "group", opacity = 0.4)
 #'
 #' @source 
-#' D3.js was created by Michael Bostock. See \url{http://d3js.org/} and, more specifically for force directed networks \url{https://github.com/mbostock/d3/wiki/Force-Layout}
+#' D3.js was created by Michael Bostock. See \url{http://d3js.org/} and, more specifically for force directed networks \url{https://github.com/mbostock/d3/wiki/Force-Layout}.
 #' 
 #' @importFrom whisker whisker.render
 #' 
@@ -54,13 +54,13 @@
 
 d3ForceNetwork <- function(Links, Nodes, Source, Target, Value = NULL, NodeID, Group, height = 600, width = 900, fontsize = 7, linkDistance = 50, charge = -120, linkColour = "#666", opacity = 0.6, zoom = FALSE, standAlone = TRUE, file = NULL, iframe = FALSE, d3Script = "http://d3js.org/d3.v3.min.js") 
 {
-if (!isTRUE(standAlone) & isTRUE(iframe)){
-    stop("If iframe = TRUE then standAlone must be TRUE.")
-  }
+	if (!isTRUE(standAlone) & isTRUE(iframe)){
+    	stop("If iframe = TRUE then standAlone must be TRUE.")
+  	}
 	# If no file name is specified create random name to avoid conflicts
 	if (is.null(file) & isTRUE(iframe)){
-	Random <- paste0(sample(c(0:9, letters, LETTERS), 5, replace=TRUE), collapse = "")
-	file <- paste0("NetworkGraph", Random, ".html")
+		Random <- paste0(sample(c(0:9, letters, LETTERS), 5, replace=TRUE), collapse = "")
+		file <- paste0("NetworkGraph", Random, ".html")
 	}
 
 	# Create iframe dimensions larger than graph dimensions
