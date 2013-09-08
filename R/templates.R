@@ -133,11 +133,9 @@ stroke-opacity: .5;
 }
 </style>
 
-<p id=\"#chart\"></p>
+<p id=\"chart\"></p>
 
-<script src={{d3Script}}></script>
-
-<script> \n"
+<script src={{d3Script}}></script>\n"
 }
 
 
@@ -287,7 +285,7 @@ var link = svg.selectAll(\".link\")
 var node = svg.selectAll(\".node\")
 .data(force.nodes())
 .enter().append(\"g\") 
-.attr(\"class\", \"node\")
+.attr(\"class\", \"node\")()
 .style(\"fill\", function(d) { return color(d.group); })
 .style(\"opacity\", {{opacity}})
 .on(\"mouseover\", mouseover) 
@@ -833,14 +831,15 @@ var svg = d3.select(\"#chart\").append(\"svg\")
 var sankey = d3.sankey()
 .nodes(d3.values(nodes)) 
 .links(links) 
-.nodeWidth(15)
-.nodePadding(10)
-.size([width, height]);
+.nodeWidth({{nodeWidth}})
+.nodePadding({{nodePadding}})
+.size([width, height])
+.layout(32);
 
 var path = sankey.link();
 
-var link = svg.selectAll(\".link\")
-.data(energy.links)
+var link = svg.append(\"g\").selectAll(\".link\")
+.data(sankey.links())
 .enter().append(\"path\")
 .attr(\"class\", \"link\")
 .attr(\"d\", path)
@@ -848,10 +847,10 @@ var link = svg.selectAll(\".link\")
 .sort(function(a, b) { return b.dy - a.dy; });
 
 link.append(\"title\")
-.text(function(d) { return d.source.name + \" → \" + d.target.name + \"\n\" + format(d.value); });
+.text(function(d) { return d.source.name + \" → \" + d.target.name + \"\\n\" + format(d.value); });
 
-var node = svg.selectAll(\".node\")
-.data(energy.nodes)
+var node = svg.append(\"g\").selectAll(\".node\")
+.data(sankey.nodes())
 .enter().append(\"g\")
 .attr(\"class\", \"node\")
 .attr(\"transform\", function(d) { return \"translate(\" + d.x + \",\" + d.y + \")\"; })
@@ -866,7 +865,7 @@ node.append(\"rect\")
 .style(\"fill\", function(d) { return d.color = color(d.name.replace(/ .*/, \"\")); })
 .style(\"stroke\", function(d) { return d3.rgb(d.color).darker(2); })
 .append(\"title\")
-.text(function(d) { return d.name + \"\n\" + format(d.value); });
+.text(function(d) { return d.name + \"\\n\" + format(d.value); });
 
 node.append(\"text\")
 .attr(\"x\", -6)

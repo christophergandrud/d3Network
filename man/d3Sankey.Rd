@@ -8,8 +8,9 @@
 }
 \usage{
   d3Sankey(Links, Nodes, Source, Target, Value = NULL,
-    height = 600, width = 900, fontsize = 7,
-    standAlone = TRUE, file = NULL, iframe = FALSE,
+    NodeID, height = 600, width = 900, fontsize = 7,
+    nodeWidth = 15, nodePadding = 10, standAlone = TRUE,
+    file = NULL, iframe = FALSE,
     d3Script = "http://d3js.org/d3.v3.min.js")
 }
 \arguments{
@@ -35,6 +36,9 @@
   \code{Links} data frame for how far away the nodes are
   from one another.}
 
+  \item{NodeID}{character string specifying the node IDs in
+  the \code{Nodes} data frame.}
+
   \item{height}{numeric height for the network graph's
   frame area in pixels.}
 
@@ -43,6 +47,11 @@
 
   \item{fontsize}{numeric font size in pixels for the node
   text labels.}
+
+  \item{nodeWidth}{numeric width of each node.}
+
+  \item{nodePadding}{numeric essentially influences the
+  width height.}
 
   \item{standAlone}{logical, whether or not to return a
   complete HTML document (with head and foot) or just the
@@ -74,5 +83,21 @@
 }
 \description{
   Create a D3 JavaScript Sankey diagram
+}
+\examples{
+# Recreate Bostock Sankey diagram: http://bost.ocks.org/mike/sankey/
+## dontrun
+# Load energy projection data
+# library(RCurl)
+# URL <- "https://raw.github.com/christophergandrud/d3Network/sankey/JSONdata/energy.json"
+# Energy <- getURL(URL, ssl.verifypeer = FALSE)
+# Convert to data frame
+# EngLinks <- JSONtoDF(jsonStr = Energy, array = "links")
+# EngNodes <- JSONtoDF(jsonStr = Energy, array = "nodes")
+
+# Plot
+# d3Sankey(Links = EngLinks, Nodes = EngNodes, Source = "source",
+#          Target = "target", Value = "value", NodeID = "name",
+#          fontsize = 12, nodeWidth = 30, file = "~/Desktop/TestSankey.html")
 }
 
