@@ -27,3 +27,13 @@ NULL
 #' @name flare
 #' 
 NULL
+
+#' JSON data file of a projection of UK energy production and consumption in 2050.
+#'
+#' @docType data
+#' @source See Mike Bostock \url{http://bost.ocks.org/mike/sankey/}.
+#' @keywords datasets
+#' @format A JSON file with two arrays \code{nodes} and \code{links}.
+#' @name energy
+#' 
+NULL

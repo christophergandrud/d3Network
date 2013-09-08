@@ -1,17 +1,14 @@
-\name{d3ForceNetwork}
-\alias{d3ForceNetwork}
-\title{Create a D3 JavaScript force directed network graph.}
+\name{d3Sankey}
+\alias{d3Sankey}
+\title{Create a D3 JavaScript Sankey diagram}
 \source{
   D3.js was created by Michael Bostock. See
-  \url{http://d3js.org/} and, more specifically for force
-  directed networks
-  \url{https://github.com/mbostock/d3/wiki/Force-Layout}.
+  \url{http://d3js.org/} and, more specifically for Sankey
+  diagrams \url{http://bost.ocks.org/mike/sankey/}.
 }
 \usage{
-  d3ForceNetwork(Links, Nodes, Source, Target,
-    Value = NULL, NodeID, Group, height = 600, width = 900,
-    fontsize = 7, linkDistance = 50, charge = -120,
-    linkColour = "#666", opacity = 0.6, zoom = FALSE,
+  d3Sankey(Links, Nodes, Source, Target, Value = NULL,
+    height = 600, width = 900, fontsize = 7,
     standAlone = TRUE, file = NULL, iframe = FALSE,
     d3Script = "http://d3js.org/d3.v3.min.js")
 }
@@ -38,12 +35,6 @@
   \code{Links} data frame for how far away the nodes are
   from one another.}
 
-  \item{NodeID}{character string specifying the node IDs in
-  the \code{Nodes} data frame.}
-
-  \item{Group}{character string specifying the group of
-  each node in the \code{Nodes} data frame.}
-
   \item{height}{numeric height for the network graph's
   frame area in pixels.}
 
@@ -52,25 +43,6 @@
 
   \item{fontsize}{numeric font size in pixels for the node
   text labels.}
-
-  \item{linkDistance}{numeric distance between the links in
-  pixels (actually arbitrary relative to the diagram's
-  size).}
-
-  \item{charge}{numeric value indicating either the
-  strength of the node repulsion (negative value) or
-  attraction (positive value).}
-
-  \item{linkColour}{character string specifying the colour
-  you want the link lines to be. Multiple formats supported
-  (e.g. hexadecimal).}
-
-  \item{opacity}{numeric value of the proportion opaque you
-  would like the graph elements to be.}
-
-  \item{zoom}{logical, whether or not to enable the ability
-  to use the mouse scroll-wheel to zoom in and out of the
-  graph.}
 
   \item{standAlone}{logical, whether or not to return a
   complete HTML document (with head and foot) or just the
@@ -101,30 +73,6 @@
   \url{http://d3js.org/d3.v3.min.js}.}
 }
 \description{
-  Create a D3 JavaScript force directed network graph.
-}
-\examples{
-#### Tabular data example.
-# Load data
-data(MisLinks)
-data(MisNodes)
-
-# Create graph
-d3ForceNetwork(Links = MisLinks, Nodes = MisNodes, Source = "source",
-               Target = "target", Value = "value", NodeID = "name",
-               Group = "group", opacity = 0.4)
-
-# dontrun
-#### JSON Data Example
-# Load data JSON formated data into two R data frames
-# library(RCurl)
-# MisJson <- getURL("http://bit.ly/1cc3anB")
-# MisLinks <- JSONtoDF(jsonStr = MisJson, array = "links")
-# MisNodes <- JSONtoDF(jsonStr = MisJson, array = "nodes")
-
-# Create graph
-# d3ForceNetwork(Links = MisLinks, Nodes = MisNodes, Source = "source",
-#                Target = "target", Value = "value", NodeID = "name",
-#                Group = "group", opacity = 0.4)
+  Create a D3 JavaScript Sankey diagram
 }
 
