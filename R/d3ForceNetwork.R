@@ -1,6 +1,6 @@
 #' Create a D3 JavaScript force directed network graph.
 #'
-#' @param Links a data frame object with the links between the nodes. It should have include the \code{Source} and \code{Target} for each link. An optional \code{Value} variable can be included to specify how close the nodes are to one another.
+#' @param Links a data frame object with the links between the nodes. It should include the \code{Source} and \code{Target} for each link. These should be numbered starting from 0. An optional \code{Value} variable can be included to specify how close the nodes are to one another.
 #' @param Nodes a data frame containing the node id and properties of the nodes. If no ID is specified then the nodes must be in the same order as the Source variable column in the \code{Links} data frame. Currently only a grouping variable is allowed.
 #' @param Source character string naming the network source variable in the \code{Links} data frame.
 #' @param Target character string naming the network target variable in the \code{Links} data frame. 
