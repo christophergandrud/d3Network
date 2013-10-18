@@ -17,10 +17,11 @@
 }
 \arguments{
   \item{Links}{a data frame object with the links between
-  the nodes. It should have include the \code{Source} and
-  \code{Target} for each link. An optional \code{Value}
-  variable can be included to specify how close the nodes
-  are to one another.}
+  the nodes. It should include the \code{Source} and
+  \code{Target} for each link. These should be numbered
+  starting from 0. An optional \code{Value} variable can be
+  included to specify how close the nodes are to one
+  another.}
 
   \item{Nodes}{a data frame containing the node id and
   properties of the nodes. If no ID is specified then the
