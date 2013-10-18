@@ -12,7 +12,7 @@
 
 ### Tools for creating D3 JavaScript force directed network graphs from R.
 
-### v0.3.1
+### v0.4.1
 
 
 ---
@@ -42,6 +42,8 @@ Currently **d3Network** only supports [force directed](http://en.wikipedia.org/w
 - <a href="#RTTree"><code>d3Tree</code></a>: Reingold-Tilford trees
 
 - <a href="#ClusterDendro"><code>d3ClusterDendro</code></a>: cluster dendogram
+
+- <a href="#Sankey"><code>d3Sankey</code></a>: Sankey diagram
 
 
 <br>
@@ -181,7 +183,7 @@ d3ForceNetwork(Links = MisLinks, Nodes = MisNodes,
                Source = "source", Target = "target", 
                Value = "value", NodeID = "name", 
                Group = "group", width = 550, height = 400, 
-               opacity = 0.9,)
+               opacity = 0.9)
 ```
 
 
@@ -313,6 +315,30 @@ d3ClusterDendro(List = CanadaPC, fontsize = 12,
 
 
 The graph is zoom-able with the scroll-wheel and can be dragged about.
+
+<h3 id="Sankey"><code>d3Sankey</code></h3>
+
+You can use `d3Sankey` to create basic [Sankey diagrams](http://en.wikipedia.org/wiki/Sankey_diagram). Here is an example:
+
+
+```r
+# Load energy projection data
+library(RCurl)
+URL <- "https://raw.github.com/christophergandrud/d3Network/sankey/JSONdata/energy.json"
+Energy <- getURL(URL, ssl.verifypeer = FALSE)
+# Convert to data frame
+EngLinks <- JSONtoDF(jsonStr = Energy, array = "links")
+EngNodes <- JSONtoDF(jsonStr = Energy, array = "nodes")
+
+# Plot
+d3Sankey(Links = EngLinks, Nodes = EngNodes, Source = "source",
+         Target = "target", Value = "value", NodeID = "name",
+         fontsize = 12, nodeWidth = 30, width = 700)
+```
+
+
+<iframe src='img/Sankey.html' height=642 width=721></iframe>
+
 
 <br>
 <br>

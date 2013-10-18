@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<!-- saved from url=(0014)about:internet -->
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
@@ -276,7 +275,7 @@ iframe {
 
 <h3>Tools for creating D3 JavaScript force directed network graphs from R.</h3>
 
-<h3>v0.3.1</h3>
+<h3>v0.4.1</h3>
 
 <hr/>
 
@@ -303,6 +302,7 @@ iframe {
 <li><p><a href="#forceDirect"><code>d3ForceDirected</code></a>: grouped force directed networks</p></li>
 <li><p><a href="#RTTree"><code>d3Tree</code></a>: Reingold-Tilford trees</p></li>
 <li><p><a href="#ClusterDendro"><code>d3ClusterDendro</code></a>: cluster dendogram</p></li>
+<li><p><a href="#Sankey"><code>d3Sankey</code></a>: Sankey diagram</p></li>
 </ul>
 
 <p><br></p>
@@ -527,6 +527,26 @@ d3Tree(List = Flare, fontsize = 8, diameter = 800)
 <iframe src='img/DendroFlare.html' height=588.5 width=515></iframe>
 
 <p>The graph is zoom-able with the scroll-wheel and can be dragged about.</p>
+
+<h3 id="Sankey"><code>d3Sankey</code></h3>
+
+<p>You can use <code>d3Sankey</code> to create basic <a href="http://en.wikipedia.org/wiki/Sankey_diagram">Sankey diagrams</a>. Here is an example:</p>
+
+<pre><code class="r"># Load energy projection data
+library(RCurl)
+URL &lt;- &quot;https://raw.github.com/christophergandrud/d3Network/sankey/JSONdata/energy.json&quot;
+Energy &lt;- getURL(URL, ssl.verifypeer = FALSE)
+# Convert to data frame
+EngLinks &lt;- JSONtoDF(jsonStr = Energy, array = &quot;links&quot;)
+EngNodes &lt;- JSONtoDF(jsonStr = Energy, array = &quot;nodes&quot;)
+
+# Plot
+d3Sankey(Links = EngLinks, Nodes = EngNodes, Source = &quot;source&quot;,
+         Target = &quot;target&quot;, Value = &quot;value&quot;, NodeID = &quot;name&quot;,
+         fontsize = 12, nodeWidth = 30, width = 700)
+</code></pre>
+
+<iframe src='img/Sankey.html' height=642 width=721></iframe>
 
 <p><br>
 <br></p>
