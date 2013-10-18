@@ -35,8 +35,7 @@
   variable in the \code{Links} data frame.}
 
   \item{Value}{character string naming the variable in the
-  \code{Links} data frame for how far away the nodes are
-  from one another.}
+  \code{Links} data frame for how wide the links are.}
 
   \item{NodeID}{character string specifying the node IDs in
   the \code{Nodes} data frame.}

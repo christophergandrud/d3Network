@@ -4,7 +4,7 @@
 #' @param Nodes a data frame containing the node id and properties of the nodes. If no ID is specified then the nodes must be in the same order as the Source variable column in the \code{Links} data frame. Currently only a grouping variable is allowed.
 #' @param Source character string naming the network source variable in the \code{Links} data frame.
 #' @param Target character string naming the network target variable in the \code{Links} data frame. 
-#' @param Value character string naming the variable in the \code{Links} data frame for how far away the nodes are from one another.
+#' @param Value character string naming the variable in the \code{Links} data frame for how wide the links are.
 #' @param NodeID character string specifying the node IDs in the \code{Nodes} data frame.
 #' @param Group character string specifying the group of each node in the \code{Nodes} data frame.
 #' @param height numeric height for the network graph's frame area in pixels.

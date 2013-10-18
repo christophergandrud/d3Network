@@ -428,7 +428,7 @@ d3.select(this).select(\"circle\").transition()
 </script>\n"
 }
 
-#' Mustache main (1) Reingold–Tilford Tree network graph template for d3Tree.
+#' Mustache main (1) Reingold-Tilford Tree network graph template for d3Tree.
 #' 
 #' @keywords internals
 #' @noRd
@@ -453,7 +453,7 @@ var svg = d3.select(\"body\").append(\"svg\")
 .attr(\"transform\", \"translate(\" + diameter / 2 + \",\" + diameter / 2 + \")\"); \n"
 }
 
-#' Mustache main (2) Reingold–Tilford Tree network graph template for d3Tree.
+#' Mustache main (2) Reingold-Tilford Tree network graph template for d3Tree.
 #' 
 #' @keywords internals
 #' @noRd
@@ -519,7 +519,7 @@ d3.select(self.frameElement).style(\"height\", diameter - 150 + \"px\");
 </script>\n"
 }
 
-#' Mustache Zooming (1) Reingold–Tilford Tree network graph template for d3Tree.
+#' Mustache Zooming (1) Reingold-Tilford Tree network graph template for d3Tree.
 #' 
 #' @keywords internals
 #' @noRd
@@ -560,7 +560,7 @@ vis.attr(\"transform\",
 \n"
 }
 
-#' Mustache Zooming (2) Reingold–Tilford Tree network graph template for d3Tree.
+#' Mustache Zooming (2) Reingold-Tilford Tree network graph template for d3Tree.
 #' 
 #' @keywords internals
 #' @noRd
@@ -847,7 +847,7 @@ var link = svg.append(\"g\").selectAll(\".link\")
 .sort(function(a, b) { return b.dy - a.dy; });
 
 link.append(\"title\")
-.text(function(d) { return d.source.name + \" → \" + d.target.name + \"\\n\" + format(d.value); });
+.text(function(d) { return d.source.name + \" \u2192 \" + d.target.name + \"\\n\" + format(d.value); });
 
 var node = svg.append(\"g\").selectAll(\".node\")
 .data(sankey.nodes())

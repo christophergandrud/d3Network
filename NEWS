@@ -1,3 +1,7 @@
+v0.4.1
+
+Improve `d3ForceNetwork` documentation.
+
 v0.4 
 
 Added `d3Sankey` to create Sankey diagrams. Thanks to Scott Chamberlain for the suggestion. 
