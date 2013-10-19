@@ -1,3 +1,7 @@
+v0.4.2 
+
+Minor bug fix for `d3ForceNetwork`.
+
 v0.4.1
 
 Improve `d3ForceNetwork` documentation.
