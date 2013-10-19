@@ -12,7 +12,7 @@
 
 ### Tools for creating D3 JavaScript force directed network graphs from R.
 
-### v0.4.1
+### v0.4.2
 
 
 ---

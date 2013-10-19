@@ -12,7 +12,7 @@
 
 ### Tools for creating D3 JavaScript force directed network graphs from R.
 
-### v0.4.1
+### v0.4.2
 
 
 ---
@@ -357,7 +357,7 @@ d3SimpleNetwork(NetworkData, file = "ExampleGraph.html")
 
 This will create a new file called `ExampleGraph.html` in your working directory.
 
-You can open this file in any text editor and modify the code however you like. See the [D3 Force Layout Wiki](https://github.com/mbostock/d3/wiki/Force-Layout) for more customisation options.
+You can open this file in any text editor and modify the code however you like. For example, checkout the [D3 Force Layout Wiki](https://github.com/mbostock/d3/wiki/Force-Layout) for more force network graph customisation options.
 
 <h2 id="rep">d3Network in dynamic reproducible documents</h2>
 
