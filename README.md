@@ -3,7 +3,7 @@ d3Network
 
 Version: 0.4.2
 
-[![Build Status]()]()
+[![Build Status](https://travis-ci.org/christophergandrud/d3Network.png)](https://travis-ci.org/christophergandrud/d3Network)
 
 ### [Christopher Gandrud](http://christophergandrud.blogspot.com/p/biocontact.html)
 
