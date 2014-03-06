@@ -1,4 +1,9 @@
-# d3Network
+d3Network
+===
+
+Version: 0.4.2
+
+[![Build Status]()]()
 
 ### [Christopher Gandrud](http://christophergandrud.blogspot.com/p/biocontact.html)
 
