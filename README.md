@@ -6,8 +6,6 @@ Tools for creating D3 JavaScript directed network graphs from R.
 
 ---
 
----
-
 ## Minimal Example
 
 Click the image to see a working example:
@@ -16,7 +14,7 @@ Click the image to see a working example:
 
 This is the code to create the graph:
 
-```r
+```{S}
 # Create fake data
 Source <- c("A", "A", "A", "A", "B", "B", "C", "C", "D")
 Target <- c("B", "C", "D", "J", "E", "F", "G", "H", "I")
@@ -34,8 +32,8 @@ Many more examples can be found on the package's [main page](http://christopherg
 
 You can install *d3Network* using the [devtools](https://github.com/hadley/devtools) package and the following code:
 
-```r
-devtools::install_github("d3Network", "christophergandrud")
+```{S}
+devtools::install_github('d3Network/christophergandrud')
 ```
 
 
