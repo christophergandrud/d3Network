@@ -38,7 +38,7 @@ Many more examples can be found on the package's [main page](http://christopherg
 You can install *d3Network* using the [devtools](https://github.com/hadley/devtools) package and the following code:
 
 ```{S}
-devtools::install_github('d3Network/christophergandrud')
+devtools::install_github('christophergandrud/d3Network')
 ```
 
 
