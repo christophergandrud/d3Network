@@ -1,6 +1,5 @@
-###### Ignore #######
-
-.DS_Store
-.Rhistory
 .Rproj.user
-d3Network.Rproj
+.Rhistory
+.RData
+*.Rproj
+.DS_Store

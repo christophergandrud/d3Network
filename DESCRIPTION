@@ -1,0 +1,30 @@
+Package: d3Network
+Title: Tools for creating D3 JavaScript network and tree graphs from R
+Description: This packages is intended to make it easy to create D3 JavaScript
+    network and tree graphs from R using data frames.
+Version: 0.4.2
+Date: 2013-10-19
+Author: Christopher Gandrud
+Maintainer: Christopher Gandrud <christopher.gandrud@gmail.com>
+URL: http://christophergandrud.github.io/d3Network/
+BugReports: https://github.com/christophergandrud/d3Network/issues
+License: GPL (>= 3)
+Depends:
+    R (>= 3.0.0)
+Imports:
+    plyr,
+    rjson,
+    whisker
+Suggests:
+    RCurl
+Collate:
+    'DataDescriptions.R'
+    'd3ForceNetwork.R'
+    'd3ClusterDendro.R'
+    'd3Sankey.R'
+    'd3SimpleNetwork.R'
+    'd3Tree.R'
+    'd3Network.R'
+    'plugins.R'
+    'templates.R'
+    'utils.R'
