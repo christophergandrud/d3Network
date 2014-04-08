@@ -12,9 +12,9 @@
 
 <h1 id="top">d3Network</h1> <img src="img/Logo.png"></img>
 
-### Tools for creating D3 JavaScript force directed network graphs from R.
+Tools for creating D3 JavaScript force directed network graphs from R.
 
-### v0.4.2 ###
+**v0.4.2** [![Build Status](https://travis-ci.org/christophergandrud/d3Network.png)](https://travis-ci.org/christophergandrud/d3Network)
 
 
 ---
