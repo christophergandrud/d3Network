@@ -13,19 +13,21 @@
    }
 
    pre .literal {
-     color: rgb(88, 72, 246)
+     color: #990073
    }
 
    pre .number {
-     color: rgb(0, 0, 205);
+     color: #099;
    }
 
    pre .comment {
-     color: rgb(76, 136, 107);
+     color: #998;
+     font-style: italic
    }
 
    pre .keyword {
-     color: rgb(0, 0, 255);
+     color: #900;
+     font-weight: bold
    }
 
    pre .identifier {
@@ -33,7 +35,7 @@
    }
 
    pre .string {
-     color: rgb(3, 106, 7);
+     color: #d14;
    }
 </style>
 
@@ -44,7 +46,7 @@ hljs.initHighlightingOnLoad();
 </script>
 
 <!-- MathJax scripts -->
-<script type="text/javascript" src="https://c328740.ssl.cf1.rackcdn.com/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+<script type="text/javascript" src="https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
 
 
@@ -54,7 +56,7 @@ body {
   font-family: "Helvetica Neue", Helvetica, sans-serif;
   margin: 1em auto 4em auto;
   position: relative;
-  width: 80%;
+  width: 65%;
 }
 
 h1 {
@@ -65,7 +67,8 @@ h1 {
 }
 
 h2 {
-  margin-top: 2em;
+  margin-top: 20%;
+  
   font-size: 30px;
 }
 
@@ -116,11 +119,11 @@ li {
 #navlist li {
   display: inline;
   list-style-type: none;
-  padding-right: 20%;
+  padding-right: 15%;
 }
 
 a {
-  color: #E34A33;
+  color: #D67236;
 }
 
 a:not(:hover) {
@@ -265,7 +268,8 @@ iframe {
 
 <p><link rel="stylesheet" href="assets/css/styles.css"></p>
 
-<p><a href="https://github.com/christophergandrud/d3Network"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub"></a></p>
+<p><a href="https://github.com/christophergandrud/d3Network"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub"></a>
+<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet"></p>
 
 <p><a href="http://christophergandrud.blogspot.com/p/biocontact.html">Christopher Gandrud</a></p>
 
@@ -281,9 +285,9 @@ iframe {
 
 <div id="navcontainer">
 <ul id="navlist">
-<li><a href="#commands">Commands</a></li> 
-<li><a href="#standAlone">Output</a></li> 
-<li><a href="#install">Install</a></li>
+<li><a href="#commands"><i class="fa fa-code"></i> Commands</a></li> 
+<li><a href="#standAlone"><i class="fa fa-play"></i> Output</a></li> 
+<li><a href="#install"><i class="fa fa-download"></i> Install</a></li>
 </ul>
 </div>
 
@@ -291,9 +295,7 @@ iframe {
 
 <p><a href="http://bost.ocks.org/mike/">Mike Bostock</a>&#39;s <a href="http://d3js.org/">D3.js</a> is great for creating <a href="http://bl.ocks.org/mbostock/4062045">interactive network graphs</a> with JavaScript.  The <a href="https://github.com/christophergandrud/d3Network">d3Network</a> package makes it easy to create these network graphs from <a href="http://www.r-project.org/">R</a>. The main idea is that you should able to take an R data frame with information about the relationships between members of a network and create full network graphs with one command.</p>
 
-<p>Currently <strong>d3Network</strong> only supports <a href="http://en.wikipedia.org/wiki/Force-directed_graph_drawing">force directed</a> network graphs. This basically means that D3 assigns &#39;forces&#39; to the nodes and edges (links between the nodes) to arrange their placement and simulate movement. </p>
-
-<h2 id="commands">Commands</h2>
+<h2 id="commands"><i class="fa fa-code"></i> Commands</h2>
 
 <p><strong>d3Network</strong> currently has four commands for creating network graphs: </p>
 
@@ -304,8 +306,6 @@ iframe {
 <li><p><a href="#ClusterDendro"><code>d3ClusterDendro</code></a>: cluster dendogram</p></li>
 <li><p><a href="#Sankey"><code>d3Sankey</code></a>: Sankey diagram</p></li>
 </ul>
-
-<p><br></p>
 
 <h3 id="simple"><code>d3SimpleNetwork</code></h3>
 
@@ -355,9 +355,6 @@ NetworkData &lt;- data.frame(Source, Target)
 <p>This is a weaker charge than what we have seen so far (the default is -200). A weak negative charge means that the nodes do not repel each other as strongly. They are closer together than if there was a larger negative charge. Positive charges make the nodes attracted to one another. Basically, you will get a clump of nodes. Also, in the above example the text was a little small so I increased the <em>font size</em> to 12.</p>
 
 <p>Have a look at the <code>d3SimpleNetwork</code> documentation for more customisation options.</p>
-
-<p><br>
-<br></p>
 
 <h3 id="forceDirect"><code>d3ForceDirected</code></h3>
 
@@ -436,9 +433,6 @@ head(MisNodes)
 
 <iframe src='img/ForcedZoom.html' height=428 width=566.5></iframe>
 
-<p><br>
-<br></p>
-
 <h3 id="RTTree"><code>d3Tree</code></h3>
 
 <p>A clean way to present hierarchical data is with modified <a href="http://ieeexplore.ieee.org/xpl/login.jsp?tp=&amp;arnumber=1702828&amp;userType=&amp;url=http%3A%2F%2Fieeexplore.ieee.org%2Fstamp%2Fstamp.jsp%3Ftp%3D%26arnumber%3D1702828%26userType%3D">Reingold-Tilford</a> Trees. Use these types of trees when you have a single root connected to hierarchically organized child nodes. </p>
@@ -511,9 +505,6 @@ d3Tree(List = Flare, fontsize = 8, diameter = 800)
 
 <iframe src='img/CanadaTree.html' height=615.2 width=566.5></iframe>
 
-<p><br>
-<br></p>
-
 <h3 id="ClusterDendro"><code>d3ClusterDendro</code></h3>
 
 <p>We can use the same <a href="#TreeDataSt">type of data</a> to create cluster dendrograms using the <code>d3ClusterDendro</code> command. Again it&#39;s aesthetic arguments are similar to the other commands. You can change the width and height of the graph (rather than the graph area) with the <code>widthCollapse</code> and <code>heightCollapse</code> arguments. These are the proportion of the total graph area <code>width</code> and <code>height</code> that you would like it to be reduced by. For example, <code>widthCollapse = 0.5</code> would reduce the graph by 50% of the overall <code>width</code>.</p>
@@ -548,12 +539,9 @@ d3Sankey(Links = EngLinks, Nodes = EngNodes, Source = &quot;source&quot;,
 
 <iframe src='img/Sankey.html' height=642 width=721></iframe>
 
-<p><br>
-<br></p>
-
 <hr>
 
-<h2 id="standAlone">d3Network in stand alone documents</h2>
+<h2 id="standAlone"><i class="fa fa-play"></i> d3Network in stand alone documents</h2>
 
 <p>So far we have only seen the basic syntax for how to create the network graphs. If you&#39;ve been following along you&#39;ll notice that running a <strong>d3Network</strong> command spits out the HTML and JavaScript code needed to create the graph into your R console. If you want to save it to a file creating a stand alone HTML file (i.e. one you can just double click on and it will open in your browser) use the <code>file</code> option. For example:</p>
 
@@ -564,15 +552,15 @@ d3Sankey(Links = EngLinks, Nodes = EngNodes, Source = &quot;source&quot;,
 
 <p>You can open this file in any text editor and modify the code however you like. For example, checkout the <a href="https://github.com/mbostock/d3/wiki/Force-Layout">D3 Force Layout Wiki</a> for more force network graph customisation options.</p>
 
-<h2 id="rep">d3Network in dynamic reproducible documents</h2>
+<h2 id="rep"><i class="fa fa-play"></i> d3Network in dynamic reproducible documents</h2>
 
 <p>If you would like to include network graphs in a <a href="http://yihui.name/knitr/">knitr</a> <a href="http://daringfireball.net/projects/markdown/">Markdown</a> dynamically reproducible document just place your <strong>d3Network</strong> code in a code chunk with the option <code>results=&#39;asis&#39;</code>. Also set the argument <code>iframe = TRUE</code> and specify a file name with <code>file</code> as before. </p>
 
-<h2 id="install">Install</h2>
+<h2 id="install"><i class="fa fa-download"></i> Install</h2>
 
 <p><strong>d3Network</strong> is available for download on <a href="http://cran.r-project.org/web/packages/d3Network/">CRAN</a>. You can also install the latest development build using the <a href="https://github.com/hadley/devtools">devtools</a> package and the following code:</p>
 
-<pre><code class="r">devtools::install_github(&quot;d3Network&quot;, &quot;christophergandrud&quot;)
+<pre><code class="r">devtools::install_github(&quot;christophergandrud/d3Network&quot;)
 </code></pre>
 
 <p><br>
@@ -605,9 +593,7 @@ dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
 
 <div style="float:right"><a href="#top">Back to Top</a></div>
 
-<p><a href="http://christophergandrud.blogspot.com/p/biocontact.html">Christopher Gandrud</a></p>
-
-<p><a href="https://twitter.com/ChrisGandrud"><img src="https://raw.github.com/christophergandrud/RepResR-RStudio/gh-pages/img/twitter-bird-Logo.png" alt="@ChrisGandrud" height="45" width="45"></a> <a href="https://github.com/christophergandrud"><img src="https://raw.github.com/christophergandrud/RepResR-RStudio/gh-pages/img/Octocat.png" alt="Gandrud GitHub page" height="33" width="37"></a></p>
+<p><a href="http://christophergandrud.blogspot.com/p/biocontact.html">Christopher Gandrud</a> <a href="https://github.com/christophergandrud"><i class="fa fa-github fa-lg"></i></a> <a href="https://twitter.com/ChrisGandrud"><i class="fa fa-twitter"></i></a></p>
 
 <p></footer></p>
 

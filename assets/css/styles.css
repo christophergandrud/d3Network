@@ -3,7 +3,7 @@ body {
   font-family: "Helvetica Neue", Helvetica, sans-serif;
   margin: 1em auto 4em auto;
   position: relative;
-  width: 80%;
+  width: 65%;
 }
 
 h1 {
@@ -14,7 +14,7 @@ h1 {
 }
 
 h2 {
-  margin-top: 2em;
+  margin-top: 20%;
   font-size: 30px;
 }
 
@@ -27,6 +27,10 @@ h2 a {
   left: -20px;
   position: absolute;
   width: 80%;
+}
+
+h3 {
+  margin-top: 15%;
 }
 
 section {
@@ -65,11 +69,11 @@ li {
 #navlist li {
   display: inline;
   list-style-type: none;
-  padding-right: 20%;
+  padding-right: 15%;
 }
 
 a {
-  color: #E34A33;
+  color: #D67236;
 }
 
 a:not(:hover) {

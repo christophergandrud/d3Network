@@ -3,6 +3,8 @@
 <link rel="stylesheet" href="assets/css/styles.css">
 
 <a href="https://github.com/christophergandrud/d3Network"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub"></a>
+<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+
 
 [Christopher Gandrud](http://christophergandrud.blogspot.com/p/biocontact.html)
 
@@ -19,9 +21,9 @@
 
 <div id="navcontainer">
 <ul id="navlist">
-<li><a href="#commands">Commands</a></li> 
-<li><a href="#standAlone">Output</a></li> 
-<li><a href="#install">Install</a></li>
+<li><a href="#commands"><i class="fa fa-code"></i> Commands</a></li> 
+<li><a href="#standAlone"><i class="fa fa-play"></i> Output</a></li> 
+<li><a href="#install"><i class="fa fa-download"></i> Install</a></li>
 </ul>
 </div>
 
@@ -29,9 +31,7 @@
 
 [Mike Bostock](http://bost.ocks.org/mike/)'s [D3.js](http://d3js.org/) is great for creating [interactive network graphs](http://bl.ocks.org/mbostock/4062045) with JavaScript.  The [d3Network](https://github.com/christophergandrud/d3Network) package makes it easy to create these network graphs from [R](http://www.r-project.org/). The main idea is that you should able to take an R data frame with information about the relationships between members of a network and create full network graphs with one command.
 
-Currently **d3Network** only supports [force directed](http://en.wikipedia.org/wiki/Force-directed_graph_drawing) network graphs. This basically means that D3 assigns 'forces' to the nodes and edges (links between the nodes) to arrange their placement and simulate movement. 
-
-<h2 id="commands">Commands</h2>
+<h2 id="commands"><i class="fa fa-code"></i> Commands</h2>
 
 **d3Network** currently has four commands for creating network graphs: 
 
@@ -44,9 +44,6 @@ Currently **d3Network** only supports [force directed](http://en.wikipedia.org/w
 - <a href="#ClusterDendro"><code>d3ClusterDendro</code></a>: cluster dendogram
 
 - <a href="#Sankey"><code>d3Sankey</code></a>: Sankey diagram
-
-
-<br>
 
 <h3 id="simple"><code>d3SimpleNetwork</code></h3>
 
@@ -118,9 +115,6 @@ This is a weaker charge than what we have seen so far (the default is -200). A w
 
 Have a look at the `d3SimpleNetwork` documentation for more customisation options.
 
-<br>
-<br>
-
 <h3 id="forceDirect"><code>d3ForceDirected</code></h3>
 
 If you want to make more complex force directed graph structures use `d3ForceNetwork`. It allows you to use individual link and node properties to change the distance between individual nodes and the colour of the nodes depending on their membership in specific groups.
@@ -191,9 +185,6 @@ d3ForceNetwork(Links = MisLinks, Nodes = MisNodes, Source = "source",
                 Group = "group", width = 550, height = 400, opacity = 0.9,
                file = "img/ForcedZoom.html", iframe = TRUE, zoom = TRUE)
 ```
-
-<br>
-<br>
 
 <h3 id="RTTree"><code>d3Tree</code></h3>
 
@@ -287,9 +278,6 @@ d3Tree(List = CanadaPC, fontsize = 10, diameter = 500,
        file = "img/CanadaTree.html", iframe = TRUE)
 ```
 
-<br>
-<br>
-
 <h3 id="ClusterDendro"><code>d3ClusterDendro</code></h3>
 
 We can use the same <a href="#TreeDataSt">type of data</a> to create cluster dendrograms using the `d3ClusterDendro` command. Again it's aesthetic arguments are similar to the other commands. You can change the width and height of the graph (rather than the graph area) with the `widthCollapse` and `heightCollapse` arguments. These are the proportion of the total graph area `width` and `height` that you would like it to be reduced by. For example, `widthCollapse = 0.5` would reduce the graph by 50% of the overall `width`.
@@ -344,12 +332,9 @@ d3Sankey(Links = EngLinks, Nodes = EngNodes, Source = "source",
          file = "img/Sankey.html", iframe = TRUE)
 ```
 
-<br>
-<br>
-
 <hr>
 
-<h2 id="standAlone">d3Network in stand alone documents</h2>
+<h2 id="standAlone"><i class="fa fa-play"></i> d3Network in stand alone documents</h2>
 
 So far we have only seen the basic syntax for how to create the network graphs. If you've been following along you'll notice that running a **d3Network** command spits out the HTML and JavaScript code needed to create the graph into your R console. If you want to save it to a file creating a stand alone HTML file (i.e. one you can just double click on and it will open in your browser) use the `file` option. For example:
 
@@ -361,17 +346,17 @@ This will create a new file called `ExampleGraph.html` in your working directory
 
 You can open this file in any text editor and modify the code however you like. For example, checkout the [D3 Force Layout Wiki](https://github.com/mbostock/d3/wiki/Force-Layout) for more force network graph customisation options.
 
-<h2 id="rep">d3Network in dynamic reproducible documents</h2>
+<h2 id="rep"><i class="fa fa-play"></i> d3Network in dynamic reproducible documents</h2>
 
 If you would like to include network graphs in a [knitr](http://yihui.name/knitr/) [Markdown](http://daringfireball.net/projects/markdown/) dynamically reproducible document just place your **d3Network** code in a code chunk with the option `results='asis'`. Also set the argument `iframe = TRUE` and specify a file name with `file` as before. 
 
-<h2 id="install">Install</h2>
+<h2 id="install"><i class="fa fa-download"></i> Install</h2>
 
 **d3Network** is available for download on [CRAN](http://cran.r-project.org/web/packages/d3Network/). You can also install the latest development build using the [devtools](https://github.com/hadley/devtools) package and the following code:
 
 
 ```{r eval=FALSE}
-devtools::install_github("d3Network", "christophergandrud")
+devtools::install_github('christophergandrud/d3Network')
 ```
 
 <br>
@@ -402,9 +387,7 @@ dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
 
 <div style="float:right"><a href="#top">Back to Top</a></div>
 
-[Christopher Gandrud](http://christophergandrud.blogspot.com/p/biocontact.html)
-
-<a href="https://twitter.com/ChrisGandrud"><img src="https://raw.github.com/christophergandrud/RepResR-RStudio/gh-pages/img/twitter-bird-Logo.png" alt="@ChrisGandrud" height="45" width="45"></a> <a href="https://github.com/christophergandrud"><img src="https://raw.github.com/christophergandrud/RepResR-RStudio/gh-pages/img/Octocat.png" alt="Gandrud GitHub page" height="33" width="37"></a>
+[Christopher Gandrud](http://christophergandrud.blogspot.com/p/biocontact.html) <a href="https://github.com/christophergandrud"><i class="fa fa-github fa-lg"></i></a> <a href="https://twitter.com/ChrisGandrud"><i class="fa fa-twitter"></i></a>
 
 </footer>
 
