@@ -21,8 +21,8 @@ Tools for creating D3 JavaScript force directed network graphs from R.
 
 <div id="navcontainer">
 <ul id="navlist">
-<li><a href="#commands"><i class="fa fa-code"></i> Commands</a></li> 
-<li><a href="#standAlone"><i class="fa fa-play"></i> Output</a></li> 
+<li><a href="#commands"><i class="fa fa-code"></i> Commands</a></li>
+<li><a href="#standAlone"><i class="fa fa-play"></i> Output</a></li>
 <li><a href="#install"><i class="fa fa-download"></i> Install</a></li>
 </ul>
 </div>
@@ -33,7 +33,7 @@ Tools for creating D3 JavaScript force directed network graphs from R.
 
 <h2 id="commands"><i class="fa fa-code"></i> Commands</h2>
 
-**d3Network** currently has four commands for creating network graphs: 
+**d3Network** currently has four commands for creating network graphs:
 
 - <a href="#simple"><code>d3SimpleNetwork</code></a>: simple force directed networks.
 
@@ -47,9 +47,9 @@ Tools for creating D3 JavaScript force directed network graphs from R.
 
 <h3 id="simple"><code>d3SimpleNetwork</code></h3>
 
-`d3SimpleNetwork` is designed to take a simple data frame that has two columns specifying the *sources* and *targets* of the nodes in a network and turn it into a graph. You can easily customise the look and feel of the graph. Let's do an example. 
+`d3SimpleNetwork` is designed to take a simple data frame that has two columns specifying the *sources* and *targets* of the nodes in a network and turn it into a graph. You can easily customise the look and feel of the graph. Let's do an example.
 
-First make some fake data. 
+First make some fake data.
 
 
 ```r
@@ -59,7 +59,7 @@ NetworkData <- data.frame(Source, Target)
 ```
 
 
-It's important to note that the *Source* variable is the first variable and the *Target* is the second. We can use `d3SimpleNetwork`'s `Source` and `Target` arguments to specify which variables are which, if the data is in another order.  
+It's important to note that the *Source* variable is the first variable and the *Target* is the second. We can use `d3SimpleNetwork`'s `Source` and `Target` arguments to specify which variables are which, if the data is in another order.
 
 Now we can simply stick the `NetworkData` data frame into `d3SimpleNetwork`:
 
@@ -80,8 +80,8 @@ There are many options for customising the look and feel of the graph. For examp
 
 
 ```r
-d3SimpleNetwork(NetworkData, width = 400, height = 250, 
-                textColour = "orange", linkColour = "red", 
+d3SimpleNetwork(NetworkData, width = 400, height = 250,
+                textColour = "orange", linkColour = "red",
                 nodeColor = "orange", opacity = 0.9)
 ```
 
@@ -91,12 +91,12 @@ d3SimpleNetwork(NetworkData, width = 400, height = 250,
 
 There are many different ways you can specify the colours other than just their names (as in this example). One way to select more specific colours is with [hexadecimal colour values](http://en.wikipedia.org/wiki/Web_colors#Shorthand_hexadecimal_form). A nice resource for choosing colour palates is the [Color Brewer](http://colorbrewer2.org/) website. The next example uses hexadecimal colour values.
 
-Other important ways to customise a force directed graph are to change the *link distance* and *charge*. Link distance is simply the distance between the nodes. Charge specifies how strong the force either repelling or pulling together the nodes is. Here is an example with a charge of -50: 
+Other important ways to customise a force directed graph are to change the *link distance* and *charge*. Link distance is simply the distance between the nodes. Charge specifies how strong the force either repelling or pulling together the nodes is. Here is an example with a charge of -50:
 
 
 ```r
-d3SimpleNetwork(NetworkData, width = 400, height = 250, 
-                textColour = "#D95F0E", linkColour = "#FEC44F", 
+d3SimpleNetwork(NetworkData, width = 400, height = 250,
+                textColour = "#D95F0E", linkColour = "#FEC44F",
                 nodeColour = "#D95F0E", opacity = 0.9,
                 charge = -50, fontsize = 12)
 ```
@@ -123,7 +123,7 @@ To start out let's gather the data and create two data frames with it. One of th
 library(RCurl)
 
 # Gather raw JSON formatted data
-URL <- "https://raw.github.com/christophergandrud/d3Network/master/JSONdata/miserables.json"
+URL <- "https://raw.githubusercontent.com/christophergandrud/d3Network/master/JSONdata/miserables.json"
 MisJson <- getURL(URL, ssl.verifypeer = FALSE)
 
 # Convert JSON arrays into data frames
@@ -173,10 +173,10 @@ To make the network graph we just need to tell `d3ForceNetork` where the data fr
 
 
 ```r
-d3ForceNetwork(Links = MisLinks, Nodes = MisNodes, 
-               Source = "source", Target = "target", 
-               Value = "value", NodeID = "name", 
-               Group = "group", width = 550, height = 400, 
+d3ForceNetwork(Links = MisLinks, Nodes = MisNodes,
+               Source = "source", Target = "target",
+               Value = "value", NodeID = "name",
+               Group = "group", width = 550, height = 400,
                opacity = 0.9)
 ```
 
@@ -192,10 +192,10 @@ You can also use the `zoom` option to create a graph that you can zoom in and ou
 
 
 ```r
-d3ForceNetwork(Links = MisLinks, Nodes = MisNodes, 
-               Source = "source", Target = "target", 
-               Value = "value", NodeID = "name", 
-               Group = "group", width = 550, height = 400, 
+d3ForceNetwork(Links = MisLinks, Nodes = MisNodes,
+               Source = "source", Target = "target",
+               Value = "value", NodeID = "name",
+               Group = "group", width = 550, height = 400,
                opacity = 0.9, zoom = TRUE)
 ```
 
@@ -205,7 +205,7 @@ d3ForceNetwork(Links = MisLinks, Nodes = MisNodes,
 
 <h3 id="RTTree"><code>d3Tree</code></h3>
 
-A clean way to present hierarchical data is with modified [Reingold-Tilford](http://ieeexplore.ieee.org/xpl/login.jsp?tp=&arnumber=1702828&userType=&url=http%3A%2F%2Fieeexplore.ieee.org%2Fstamp%2Fstamp.jsp%3Ftp%3D%26arnumber%3D1702828%26userType%3D) Trees. Use these types of trees when you have a single root connected to hierarchically organized child nodes. 
+A clean way to present hierarchical data is with modified [Reingold-Tilford](http://ieeexplore.ieee.org/xpl/login.jsp?tp=&arnumber=1702828&userType=&url=http%3A%2F%2Fieeexplore.ieee.org%2Fstamp%2Fstamp.jsp%3Ftp%3D%26arnumber%3D1702828%26userType%3D) Trees. Use these types of trees when you have a single root connected to hierarchically organized child nodes.
 
 Use the `d3Tree` command to create the trees. Many of the aesthetic arguments are the same as with the force directed commands above. Zooming is allowed as above. The major difference is that there is only one data argument `List`. This is a list type object that has a particular structure that we'll look at <a href="#TreeDataSt">later</a>. Also, instead of `charge` and `linkDistance` the spacing of `d3Tree` nodes can be set by changing the diameter of the whole graph with the `diameter` argument.
 
@@ -215,7 +215,7 @@ Let's recreate Mike Bostock's [Reingold-Tilford tree example](http://bl.ocks.org
 ```r
 # Download JSON data
 library(RCurl)
-URL <- "https://raw.github.com/christophergandrud/d3Network/master/JSONdata/flare.json"
+URL <- "https://raw.githubusercontent.com/christophergandrud/d3Network/master/JSONdata/flare.json"
 Flare <- getURL(URL)
 
 # Convert to list format
@@ -237,7 +237,7 @@ Data for `d3Tree` needs to be in a hierarchical list with one root node and a nu
 
 
 ```r
-CanadaPC <- list(name = "Canada", 
+CanadaPC <- list(name = "Canada",
              children = list(list(name = "Newfoundland",
                                   children = list(list(name = "St. John's"))),
                              list(name = "PEI",
@@ -249,8 +249,8 @@ CanadaPC <- list(name = "Canada",
                              list(name = "Quebec",
                                   children = list(list(name = "Montreal"),
                                                   list(name = "Quebec City"))),
-                             list(name = "Ontario", 
-                                  children = list(list(name = "Toronto"), 
+                             list(name = "Ontario",
+                                  children = list(list(name = "Toronto"),
                                                   list(name = "Ottawa"))),
                              list(name = "Manitoba",
                                   children = list(list(name = "Winnipeg"))),
@@ -278,7 +278,7 @@ Anyways, let's create a tree graph for the `CanadaPC` data:
 
 ```r
 d3Tree(List = CanadaPC, fontsize = 10, diameter = 500,
-       textColour = "#D95F0E", linkColour = "#FEC44F", 
+       textColour = "#D95F0E", linkColour = "#FEC44F",
        nodeColour = "#D95F0E")
 ```
 
@@ -294,7 +294,7 @@ Here is an example using the `CanadaPC` data from above:
 
 
 ```r
-d3ClusterDendro(List = CanadaPC, fontsize = 12, 
+d3ClusterDendro(List = CanadaPC, fontsize = 12,
                 zoom = TRUE, widthCollapse = 0.8)
 ```
 
@@ -312,7 +312,7 @@ You can use `d3Sankey` to create basic [Sankey diagrams](http://en.wikipedia.org
 ```r
 # Load energy projection data
 library(RCurl)
-URL <- "https://raw.github.com/christophergandrud/d3Network/sankey/JSONdata/energy.json"
+URL <- "https://raw.githubusercontent.com/christophergandrud/d3Network/sankey/JSONdata/energy.json"
 Energy <- getURL(URL, ssl.verifypeer = FALSE)
 # Convert to data frame
 EngLinks <- JSONtoDF(jsonStr = Energy, array = "links")
@@ -346,7 +346,7 @@ You can open this file in any text editor and modify the code however you like. 
 
 <h2 id="rep"><i class="fa fa-play"></i> d3Network in dynamic reproducible documents</h2>
 
-If you would like to include network graphs in a [knitr](http://yihui.name/knitr/) [Markdown](http://daringfireball.net/projects/markdown/) dynamically reproducible document just place your **d3Network** code in a code chunk with the option `results='asis'`. Also set the argument `iframe = TRUE` and specify a file name with `file` as before. 
+If you would like to include network graphs in a [knitr](http://yihui.name/knitr/) [Markdown](http://daringfireball.net/projects/markdown/) dynamically reproducible document just place your **d3Network** code in a code chunk with the option `results='asis'`. Also set the argument `iframe = TRUE` and specify a file name with `file` as before.
 
 <h2 id="install"><i class="fa fa-download"></i> Install</h2>
 
@@ -377,7 +377,7 @@ dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
 </script>
 <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-    
+
 
 </section>
 
@@ -404,4 +404,3 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 })();
 
 </script>
-
