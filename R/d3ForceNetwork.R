@@ -52,7 +52,7 @@
 #'
 #' @export
 
-d3ForceNetwork <- function(Links, Nodes, Source, Target, Value = NULL, NodeID, Group, height = 600, width = 900, fontsize = 7, linkDistance = 50, charge = -120, linkColour = "#666", opacity = 0.6, zoom = FALSE, standAlone = TRUE, file = NULL, iframe = FALSE, d3Script = "http://d3js.org/d3.v3.min.js") 
+d3ForceNetwork <- function(Links, Nodes, Source, Target, Value = NULL, NodeID, Group, height = 600, width = 900, fontsize = 7, linkDistance = 50, charge = -120, linkColour = "#666", opacity = 0.6, zoom = FALSE, standAlone = TRUE, file = NULL, iframe = FALSE, d3Script = "http://d3js.org/d3.v3.min.js", parentElem = "\"body\"") 
 {
 	if (!isTRUE(standAlone) & isTRUE(iframe)){
     	stop("If iframe = TRUE then standAlone must be TRUE.")
