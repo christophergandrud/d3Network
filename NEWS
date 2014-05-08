@@ -4,6 +4,8 @@ v0.5
 to specify the resulting svg graph's parent element. This is esspecially handy 
 for use with Shiny server. Thanks to John Harrison.
 
+Minor documentation improvements.
+
 Internal code cleaning.
 
 v0.4.2 

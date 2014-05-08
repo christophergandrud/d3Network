@@ -1,14 +1,23 @@
 #' Read a link-node structured JSON file into R as two data frames.
 #' 
-#' \code{JSONtoDF} reads a JSON data file into R and converts part of it to a data frame.
+#' \code{JSONtoDF} reads a JSON data file into R and converts part of it to a 
+#' data frame.
 #'
-#' @param jsonStr a JSON object to convert. Note if \code{jsonStr} is specified, then \code{file} must be \code{NULL}.
-#' @param file character string of the JSON file name. Note if \code{file} is specified, then \code{jsonStr} must be \code{NULL}.
-#' @param array character string specifying the name of the JSON array to extract. (JSON arrays are delimited by square brackets).
+#' @param jsonStr a JSON object to convert. Note if \code{jsonStr} is specified, 
+#' then \code{file} must be \code{NULL}.
+#' @param file character string of the JSON file name. Note if \code{file} is 
+#' specified, then \code{jsonStr} must be \code{NULL}.
+#' @param array character string specifying the name of the JSON array to 
+#' extract. (JSON arrays are delimited by square brackets).
 #'
-#' @details \code{JSONtoDF} is intended to load JSON files into R and convert them to data frames that can be used to create network graphs. The command converts the files into R lists and then extracts the JSON array the user would like to make into a data frame.
+#' @details \code{JSONtoDF} is intended to load JSON files into R and convert 
+#' them to data frames that can be used to create network graphs. The command 
+#' converts the files into R lists and then extracts the JSON array the user 
+#' would like to make into a data frame.
 #'
-#' @source Part of the idea for the command comes from mropa's comment on StackExchange: \url{http://stackoverflow.com/questions/4227223/r-list-to-data-frame}.
+#' @source Part of the idea for the command comes from mropa's comment on 
+#' StackExchange: 
+#' \url{http://stackoverflow.com/questions/4227223/r-list-to-data-frame}.
 #' 
 #' @importFrom rjson fromJSON
 #' @importFrom plyr ldply
@@ -32,7 +41,8 @@ JSONtoDF <- function(jsonStr = NULL, file = NULL, array){
 #' Internal function from Wei Luo to convert a data frame to a JSON array
 #' 
 #' @param dtf a data frame object.
-#' @source Function from: \url{http://theweiluo.wordpress.com/2011/09/30/r-to-json-for-d3-js-and-protovis/}
+#' @source Function from: 
+#' \url{http://theweiluo.wordpress.com/2011/09/30/r-to-json-for-d3-js-and-protovis/}
 #' @keywords internal
 #' @noRd
 toJSONarray <- function(dtf){
@@ -45,7 +55,8 @@ toJSONarray <- function(dtf){
     }
     paste('"', i, '" : ', quote, dtf[,i], quote, sep='')
   }
-  objs <- apply(sapply(clnms, name.value), 1, function(x){paste(x, collapse=', ')})
+  objs <- apply(sapply(clnms, name.value), 1, function(x){paste(x, 
+                                                          collapse=', ')})
   objs <- paste('{', objs, '}')
   
   res <- paste('[', paste(objs, collapse=', '), ']')
@@ -56,7 +67,8 @@ toJSONarray <- function(dtf){
 
 #' Read a text file into a single string
 #' 
-#' @source Code taken directly from Ramnath Vaidyanathan's Slidify \url{https://github.com/ramnathv/slidify}.
+#' @source Code taken directly from Ramnath Vaidyanathan's Slidify 
+#' \url{https://github.com/ramnathv/slidify}.
 #' @param doc path to text document
 #' @return string with document contents
 #' @keywords internal

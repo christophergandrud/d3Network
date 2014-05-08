@@ -61,7 +61,7 @@ graph elements to be.}
 \item{zoom}{logical, whether or not to enable the ability to use the mouse
 scroll-wheel to zoom in and out of the graph.}
 
-\item{parantElement}{character string specifying the parent element for the
+\item{parentElement}{character string specifying the parent element for the
 resulting svg network graph. This effectively allows the user to specify
 where on the html page the graph will be placed. By default the parent
 element is \code{body}.}
@@ -101,17 +101,18 @@ d3ForceNetwork(Links = MisLinks, Nodes = MisNodes, Source = "source",
                Target = "target", Value = "value", NodeID = "name",
                Group = "group", opacity = 0.4)
 
-# dontrun
+\dontrun{
 #### JSON Data Example
 # Load data JSON formated data into two R data frames
-# library(RCurl)
-# MisJson <- getURL("http://bit.ly/1cc3anB")
-# MisLinks <- JSONtoDF(jsonStr = MisJson, array = "links")
-# MisNodes <- JSONtoDF(jsonStr = MisJson, array = "nodes")
+library(RCurl)
+MisJson <- getURL("http://bit.ly/1cc3anB")
+MisLinks <- JSONtoDF(jsonStr = MisJson, array = "links")
+MisNodes <- JSONtoDF(jsonStr = MisJson, array = "nodes")
 
 # Create graph
-# d3ForceNetwork(Links = MisLinks, Nodes = MisNodes, Source = "source",
-#                Target = "target", Value = "value", NodeID = "name",
-#                Group = "group", opacity = 0.4)
+d3ForceNetwork(Links = MisLinks, Nodes = MisNodes, Source = "source",
+               Target = "target", Value = "value", NodeID = "name",
+               Group = "group", opacity = 0.4)
+}
 }
 
