@@ -1,7 +1,7 @@
 d3Network
 ===
 
-Version: 0.4.2
+Version: 0.5
 
 [![Build Status](https://travis-ci.org/christophergandrud/d3Network.png)](https://travis-ci.org/christophergandrud/d3Network)
 
