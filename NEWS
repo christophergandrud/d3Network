@@ -1,3 +1,13 @@
+v0.5
+
+`parentElement` argument added to all d3Network functions. It allows the user 
+to specify the resulting svg graph's parent element. This is esspecially handy 
+for use with Shiny server. Thanks to John Harrison.
+
+Minor documentation improvements.
+
+Internal code cleaning.
+
 v0.4.2 
 
 Minor bug fix for `d3ForceNetwork`.
@@ -8,7 +18,8 @@ Improve `d3ForceNetwork` documentation.
 
 v0.4 
 
-Added `d3Sankey` to create Sankey diagrams. Thanks to Scott Chamberlain for the suggestion. 
+Added `d3Sankey` to create Sankey diagrams. Thanks to Scott Chamberlain for the 
+suggestion. 
 
 v0.3.3
 
@@ -32,19 +43,25 @@ Added Cluster Denograms with `d3ClusterDendro`.
 
 v0.2.1
 
-Added ability to zoom into and out of graphs with `zoom` option for `d3ForceNetwork`.
+Added ability to zoom into and out of graphs with `zoom` option for 
+`d3ForceNetwork`.
 
 `d3ForceNetwork` example now uses tabular data. 
 
 v0.2
 
-Added `d3ForceNetwork` for creating force directed network graphs where link distance and group changes the graphs attributes.
+Added `d3ForceNetwork` for creating force directed network graphs where link 
+distance and group changes the graphs attributes.
 
-`d3SimpleNetwork` and `d3Network` are now the same and have improved aesthetic customisability. `d3Network` is depricated. This is in advance of creating functions for force directed and other types of networks.
+`d3SimpleNetwork` and `d3Network` are now the same and have improved aesthetic 
+customisability. `d3Network` is depricated. This is in advance of creating 
+functions for force directed and other types of networks.
 
-`JSONtoDF` command added for reading a JSON data file into R. It converts a specified array in the JSON data  into a data frame.
+`JSONtoDF` command added for reading a JSON data file into R. It converts a 
+specified array in the JSON data  into a data frame.
 
-Improvements to the internal workings of the commands. Now uses mustache templates to create the graphs.
+Improvements to the internal workings of the commands. Now uses mustache 
+templates to create the graphs.
 
 Documentation and minor bug fixes.
 

@@ -1,6 +1,7 @@
 #' D3 Sankey Plugin
 #'
-#' @source Michael Bostock. See \url{https://github.com/d3/d3-plugins/tree/master/sankey}.
+#' @source Michael Bostock. See 
+#' \url{https://github.com/d3/d3-plugins/tree/master/sankey}.
 #' @keywords internals
 #' @noRd
 
