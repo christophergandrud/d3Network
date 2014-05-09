@@ -9,8 +9,6 @@ Version: 0.5
 
 [![Build Status](https://travis-ci.org/christophergandrud/d3Network.png)](https://travis-ci.org/christophergandrud/d3Network)
 
----
-
 ## Minimal Example
 
 Click the image to see a working example:
@@ -30,8 +28,6 @@ d3SimpleNetwork(NetworkDatad3, height = 300, width = 700)
 ```
 
 Many more examples can be found on the package's [main page](http://christophergandrud.github.io/d3Network/).
-
----
 
 ## Installation
 
