@@ -10,12 +10,12 @@ h1 {
   font-size: 64px;
   font-weight: 300;
   letter-spacing: -2px;
-  margin: .3em 0 .1em 0;
 }
 
 h2 {
-  margin-top: 20%;
+  margin-top: 5%;
   font-size: 30px;
+  border-bottom: 1px solid;
 }
 
 h1, h2 {
@@ -30,7 +30,7 @@ h2 a {
 }
 
 h3 {
-  margin-top: 15%;
+  margin-top: 5%;
 }
 
 section {

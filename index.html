@@ -51,7 +51,7 @@ hljs.initHighlightingOnLoad();
 
 
 <style type="text/css">
-assets/css/stylesheet.css
+assets/css/style.css
 </style>
 
 
@@ -66,7 +66,7 @@ assets/css/stylesheet.css
 <p><a href="https://github.com/christophergandrud/d3Network"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub"></a>
 <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet"></p>
 
-<p><a href="http://christophergandrud.blogspot.com/p/biocontact.html">Christopher Gandrud</a></p>
+<p><a href="http://christophergandrud.blogspot.com/p/biocontact.html">Christopher Gandrud</a> <a href="https://twitter.com/ChrisGandrud"><i class="fa fa-twitter"></i></a></p>
 
 <p><section></p>
 
@@ -74,7 +74,7 @@ assets/css/stylesheet.css
 
 <p>Tools for creating D3 JavaScript force directed network graphs from R.</p>
 
-<p><strong>v0.4.2</strong> <a href="https://travis-ci.org/christophergandrud/d3Network"><img src="https://travis-ci.org/christophergandrud/d3Network.png" alt="Build Status"/></a></p>
+<p><strong>v0.5</strong> <a href="https://travis-ci.org/christophergandrud/d3Network"><img src="https://travis-ci.org/christophergandrud/d3Network.png" alt="Build Status"/></a></p>
 
 <hr/>
 
@@ -122,7 +122,136 @@ NetworkData &lt;- data.frame(Source, Target)
 
 <p>You&#39;ll notice that I added the <code>width</code> and <code>height</code> arguments. These change the size of the graph area. They are in pixels. Here is the result:</p>
 
-<iframe src='img/FirstNetwork.html' height=267.5 width=412></iframe>
+<div id="plainNetwork">
+<style> 
+.link {  
+stroke: #666;
+opacity: 0.6;
+stroke-width: 1.5px; 
+} 
+.node circle { 
+stroke: #fff; 
+opacity: 0.6;
+stroke-width: 1.5px; 
+} 
+text { 
+font: 7px serif; 
+opacity: 0.6;
+pointer-events: none; 
+} 
+</style> 
+
+<script src=http://d3js.org/d3.v3.min.js></script>
+
+<script> 
+ var links = [ { "source" : "A", "target" : "B" }, { "source" : "A", "target" : "C" }, { "source" : "A", "target" : "D" }, { "source" : "A", "target" : "J" }, { "source" : "B", "target" : "E" }, { "source" : "B", "target" : "F" }, { "source" : "C", "target" : "G" }, { "source" : "C", "target" : "H" }, { "source" : "D", "target" : "I" } ] ; 
+ var nodes = {}
+
+// Compute the distinct nodes from the links.
+links.forEach(function(link) {
+link.source = nodes[link.source] || 
+(nodes[link.source] = {name: link.source});
+link.target = nodes[link.target] || 
+(nodes[link.target] = {name: link.target});
+link.value = +link.value;
+});
+
+var width = 400
+height = 250;
+
+var force = d3.layout.force() 
+.nodes(d3.values(nodes)) 
+.links(links) 
+.size([width, height]) 
+.linkDistance(50) 
+.charge(-200) 
+.on("tick", tick) 
+.start(); 
+
+var svg = d3.select("#plainNetwork").append("svg") 
+.attr("width", width) 
+.attr("height", height); 
+
+var link = svg.selectAll(".link") 
+.data(force.links()) 
+.enter().append("line") 
+.attr("class", "link"); 
+
+var node = svg.selectAll(".node") 
+.data(force.nodes()) 
+.enter().append("g") 
+.attr("class", "node") 
+.on("mouseover", mouseover) 
+.on("mouseout", mouseout) 
+.on("click", click)
+.on("dblclick", dblclick)
+.call(force.drag); 
+
+node.append("circle") 
+.attr("r", 8)
+.style("fill", "#3182bd");
+
+node.append("text") 
+.attr("x", 12) 
+.attr("dy", ".35em") 
+.style("fill", "#3182bd")
+.text(function(d) { return d.name; }); 
+
+function tick() { 
+link 
+.attr("x1", function(d) { return d.source.x; }) 
+.attr("y1", function(d) { return d.source.y; }) 
+.attr("x2", function(d) { return d.target.x; }) 
+.attr("y2", function(d) { return d.target.y; }); 
+
+node.attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; }); 
+} 
+
+function mouseover() { 
+d3.select(this).select("circle").transition() 
+.duration(750) 
+.attr("r", 16); 
+} 
+
+function mouseout() { 
+d3.select(this).select("circle").transition() 
+.duration(750) 
+.attr("r", 8); 
+} 
+// action to take on mouse click
+function click() {
+d3.select(this).select("text").transition()
+.duration(750)
+.attr("x", 22)
+.style("stroke-width", ".5px")
+.style("opacity", 1)
+.style("fill", "#E34A33")
+.style("font", "17.5px serif");
+d3.select(this).select("circle").transition()
+.duration(750)
+.style("fill", "#E34A33")
+.attr("r", 16)
+}
+
+// action to take on mouse double click
+function dblclick() {
+d3.select(this).select("circle").transition()
+.duration(750)
+.attr("r", 6)
+.style("fill", "#E34A33");
+d3.select(this).select("text").transition()
+.duration(750)
+.attr("x", 12)
+.style("stroke", "none")
+.style("fill", "#E34A33")
+.style("stroke", "none")
+.style("opacity", 0.6)
+.style("font", "7px serif");
+}
+
+</script>
+
+</div>
 
 <p>Play around with this graph. Notice that when you click on the nodes the text expands and changes colour.</p>
 

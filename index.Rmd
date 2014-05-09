@@ -6,7 +6,7 @@
 <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 
 
-[Christopher Gandrud](http://christophergandrud.blogspot.com/p/biocontact.html)
+[Christopher Gandrud](http://christophergandrud.blogspot.com/p/biocontact.html) <a href="https://twitter.com/ChrisGandrud"><i class="fa fa-twitter"></i></a>
 
 <section>
 
@@ -14,7 +14,7 @@
 
 Tools for creating D3 JavaScript force directed network graphs from R.
 
-**v0.4.2** [![Build Status](https://travis-ci.org/christophergandrud/d3Network.png)](https://travis-ci.org/christophergandrud/d3Network)
+**v0.5** [![Build Status](https://travis-ci.org/christophergandrud/d3Network.png)](https://travis-ci.org/christophergandrud/d3Network)
 
 
 ---
@@ -67,11 +67,15 @@ d3SimpleNetwork(NetworkData, width = 400, height = 250)
 
 You'll notice that I added the `width` and `height` arguments. These change the size of the graph area. They are in pixels. Here is the result:
 
+<div id="plainNetwork">
 ```{r, echo=FALSE, results='asis'}
 library(d3Network)
 d3SimpleNetwork(NetworkData, width = 400, height = 250,
-                iframe = TRUE, file = "img/FirstNetwork.html")
+                standAlone = FALSE, parentElement = '#plainNetwork')
+#d3SimpleNetwork(NetworkData, width = 400, height = 250,
+#                iframe = TRUE, file = "img/FirstNetwork.html")
 ```
+</div>
 
 Play around with this graph. Notice that when you click on the nodes the text expands and changes colour.
 
