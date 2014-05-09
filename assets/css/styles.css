@@ -55,6 +55,7 @@ p {
   line-height: 1.75em;
   width: 99%;
   font-size: 17px;
+  text-align: justify;
 }
 
 blockquote {
