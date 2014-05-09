@@ -66,7 +66,7 @@ assets/css/style.css
 <p><a href="https://github.com/christophergandrud/d3Network"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub"></a>
 <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet"></p>
 
-<p><a href="http://christophergandrud.blogspot.com/p/biocontact.html">Christopher Gandrud</a> <a href="https://twitter.com/ChrisGandrud"><i class="fa fa-twitter"></i></a></p>
+<p><a href="http://christophergandrud.blogspot.com/p/biocontact.html">Christopher Gandrud</a> <a href="https://github.com/christophergandrud"><i class="fa fa-github fa-lg"></i></a> <a href="https://twitter.com/ChrisGandrud"><i class="fa fa-twitter"></i></a></p>
 
 <p><section></p>
 
@@ -80,9 +80,9 @@ assets/css/style.css
 
 <div id="navcontainer">
 <ul id="navlist">
-<li><a href="#commands"><i class="fa fa-code"></i> Commands</a></li>
-<li><a href="#standAlone"><i class="fa fa-play"></i> Output</a></li>
-<li><a href="#install"><i class="fa fa-download"></i> Install</a></li>
+  <li><a href="#commands"><i class="fa fa-code"></i> Commands</a></li>
+  <li><a href="#standAlone"><i class="fa fa-play"></i> Output</a></li>
+  <li><a href="#install"><i class="fa fa-download"></i> Install</a></li>
 </ul>
 </div>
 
@@ -122,133 +122,7 @@ NetworkData &lt;- data.frame(Source, Target)
 
 <p>You&#39;ll notice that I added the <code>width</code> and <code>height</code> arguments. These change the size of the graph area. They are in pixels. Here is the result:</p>
 
-<style> 
-.link {  
-stroke: #666;
-opacity: 0.6;
-stroke-width: 1.5px; 
-} 
-.node circle { 
-stroke: #fff; 
-opacity: 0.6;
-stroke-width: 1.5px; 
-} 
-text { 
-font: 7px serif; 
-opacity: 0.6;
-pointer-events: none; 
-} 
-</style> 
-
-<script src=http://d3js.org/d3.v3.min.js></script>
-
-<script> 
- var links = [ { "source" : "A", "target" : "B" }, { "source" : "A", "target" : "C" }, { "source" : "A", "target" : "D" }, { "source" : "A", "target" : "J" }, { "source" : "B", "target" : "E" }, { "source" : "B", "target" : "F" }, { "source" : "C", "target" : "G" }, { "source" : "C", "target" : "H" }, { "source" : "D", "target" : "I" } ] ; 
- var nodes = {}
-
-// Compute the distinct nodes from the links.
-links.forEach(function(link) {
-link.source = nodes[link.source] || 
-(nodes[link.source] = {name: link.source});
-link.target = nodes[link.target] || 
-(nodes[link.target] = {name: link.target});
-link.value = +link.value;
-});
-
-var width = 400
-height = 250;
-
-var force = d3.layout.force() 
-.nodes(d3.values(nodes)) 
-.links(links) 
-.size([width, height]) 
-.linkDistance(50) 
-.charge(-200) 
-.on("tick", tick) 
-.start(); 
-
-var svg = d3.select("#plainNetwork").append("svg") 
-.attr("width", width) 
-.attr("height", height); 
-
-var link = svg.selectAll(".link") 
-.data(force.links()) 
-.enter().append("line") 
-.attr("class", "link"); 
-
-var node = svg.selectAll(".node") 
-.data(force.nodes()) 
-.enter().append("g") 
-.attr("class", "node") 
-.on("mouseover", mouseover) 
-.on("mouseout", mouseout) 
-.on("click", click)
-.on("dblclick", dblclick)
-.call(force.drag); 
-
-node.append("circle") 
-.attr("r", 8)
-.style("fill", "#3182bd");
-
-node.append("text") 
-.attr("x", 12) 
-.attr("dy", ".35em") 
-.style("fill", "#3182bd")
-.text(function(d) { return d.name; }); 
-
-function tick() { 
-link 
-.attr("x1", function(d) { return d.source.x; }) 
-.attr("y1", function(d) { return d.source.y; }) 
-.attr("x2", function(d) { return d.target.x; }) 
-.attr("y2", function(d) { return d.target.y; }); 
-
-node.attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; }); 
-} 
-
-function mouseover() { 
-d3.select(this).select("circle").transition() 
-.duration(750) 
-.attr("r", 16); 
-} 
-
-function mouseout() { 
-d3.select(this).select("circle").transition() 
-.duration(750) 
-.attr("r", 8); 
-} 
-// action to take on mouse click
-function click() {
-d3.select(this).select("text").transition()
-.duration(750)
-.attr("x", 22)
-.style("stroke-width", ".5px")
-.style("opacity", 1)
-.style("fill", "#E34A33")
-.style("font", "17.5px serif");
-d3.select(this).select("circle").transition()
-.duration(750)
-.style("fill", "#E34A33")
-.attr("r", 16)
-}
-
-// action to take on mouse double click
-function dblclick() {
-d3.select(this).select("circle").transition()
-.duration(750)
-.attr("r", 6)
-.style("fill", "#E34A33");
-d3.select(this).select("text").transition()
-.duration(750)
-.attr("x", 12)
-.style("stroke", "none")
-.style("fill", "#E34A33")
-.style("stroke", "none")
-.style("opacity", 0.6)
-.style("font", "7px serif");
-}
-
-</script>
+<iframe src='img/FirstNetwork.html' height=267.5 width=412></iframe>
 
 <p>Play around with this graph. Notice that when you click on the nodes the text expands and changes colour.</p>
 
@@ -476,6 +350,87 @@ d3Sankey(Links = EngLinks, Nodes = EngNodes, Source = &quot;source&quot;,
 <h2 id="rep"><i class="fa fa-play"></i> d3Network in dynamic reproducible documents</h2>
 
 <p>If you would like to include network graphs in a <a href="http://yihui.name/knitr/">knitr</a> <a href="http://daringfireball.net/projects/markdown/">Markdown</a> dynamically reproducible document just place your <strong>d3Network</strong> code in a code chunk with the option <code>results=&#39;asis&#39;</code>. Also set the argument <code>iframe = TRUE</code> and specify a file name with <code>file</code> as before.</p>
+
+<h2 id="shiny"><i class="fa fa-play"></i> d3Network in Shiny web apps</h2>
+
+<p>From version 0.5, <strong>d3Network</strong> graphs can also be used in <a href="http://shiny.rstudio.com/">Shiny web apps</a>. A full working example can be found at <a href="https://github.com/christophergandrud/d3ShinyExample">https://github.com/christophergandrud/d3ShinyExample</a>. This example creates a very simple app that allows a user to change the node opacity for the <a href="#forceDirect"><code>d3ForceDirected</code></a> graph we saw earlier.</p>
+
+<p>Here is the <em>ui.R</em> code from the example:</p>
+
+<pre><code class="r">library(shiny)
+
+shinyUI(fluidPage(
+
+    # Load d3.js
+    tags$head(
+        tags$script(src = &#39;http://d3js.org/d3.v3.min.js&#39;)
+    ),
+
+    # Application title
+    titlePanel(&#39;d3Network Shiny Example&#39;),
+    p(&#39;This is an example of using&#39;,
+    a(href = &#39;http://christophergandrud.github.io/d3Network/&#39;, &#39;d3Network&#39;),
+        &#39;with&#39;,
+        a(href = &#39;http://shiny.rstudio.com/&#39;, &#39;Shiny&#39;, &#39;web apps.&#39;)
+    ),
+
+    # Sidebar with a slider input for node opacity
+    sidebarLayout(
+        sidebarPanel(
+            sliderInput(&#39;slider&#39;, label = &#39;Choose node opacity&#39;,
+                min = 0, max = 1, step = 0.01, value = 0.5
+            )
+    ),
+
+    # Show network graph
+    mainPanel(
+        htmlOutput(&#39;networkPlot&#39;)
+    )
+  )
+))
+</code></pre>
+
+<p>And the <em>server.R</em>:</p>
+
+<pre><code class="r"># Load packages
+library(RCurl)
+library(d3Network)
+
+# Load data once
+URL &lt;- &quot;https://raw.githubusercontent.com/christophergandrud/d3Network/master/JSONdata/miserables.json&quot;
+MisJson &lt;- getURL(URL, ssl.verifypeer = FALSE)
+
+# Convert JSON arrays into data frames
+MisLinks &lt;- JSONtoDF(jsonStr = MisJson, array = &quot;links&quot;)
+MisNodes &lt;- JSONtoDF(jsonStr = MisJson, array = &quot;nodes&quot;)
+
+# Create individual ID
+MisNodes$ID &lt;- 1:nrow(MisNodes)
+
+#### Shiny ####
+shinyServer(function(input, output) {
+
+    output$networkPlot &lt;- renderPrint({
+        d3ForceNetwork(Nodes = MisNodes, Links = MisLinks, Source = &quot;source&quot;, 
+            Target = &quot;target&quot;, Value = &quot;value&quot;, NodeID = &quot;name&quot;, Group = &quot;group&quot;, 
+            width = 400, height = 500, opacity = input$slider, standAlone = FALSE, 
+            parentElement = &quot;#networkPlot&quot;)
+    })
+})
+</code></pre>
+
+<p>There are few quick points to note. First, we told the app how to access d3.js by starting the <code>shinyUI</code> with:</p>
+
+<pre><code class="r">tags$head(
+        tags$script(src = &#39;http://d3js.org/d3.v3.min.js&#39;)
+    ),
+</code></pre>
+
+<p>Also in the <code>shinyUI</code> we output the <code>networkPlot</code> using the Shiny <code>htmlOutput</code> function.</p>
+
+<p>In our <code>d3ForceNetwork</code> call in the <code>shinyServer</code> we added the argument <code>parentElement = #networkPlot</code>. This attaches the graph to the <a href="http://www.w3schools.com/tags/tag_div.asp">div tag</a> created by <code>htmlOutput</code>. If we do not specify this argument, <strong>d3Network</strong> attaches the plot to the page&#39;s <a href="http://www.w3schools.com/tags/tag_body.asp">body tag</a> by default. In effect this will place it at the end of the page.</p>
+
+<p><strong>Warning</strong>: you will likely run into trouble if you include more than one network graph in a single Shiny app page, especially if they have conflicting styles.</p>
 
 <h2 id="install"><i class="fa fa-download"></i> Install</h2>
 

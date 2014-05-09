@@ -66,6 +66,11 @@ li {
   width: 680px;
 }
 
+#navlist {
+  margin-left: 20%;
+  margin-right: 20%;
+}
+
 #navlist li {
   display: inline;
   list-style-type: none;
