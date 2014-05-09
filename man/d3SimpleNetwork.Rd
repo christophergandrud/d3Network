@@ -12,7 +12,7 @@ d3SimpleNetwork(Data, Source = NULL, Target = NULL, height = 600,
   width = 900, fontsize = 7, linkDistance = 50, charge = -200,
   linkColour = "#666", nodeColour = "#3182bd",
   nodeClickColour = "#E34A33", textColour = "#3182bd", opacity = 0.6,
-  parentElement = "body", standAlone = TRUE, file = NULL,
+  parentElement = "body", standAlone = TRUE, div = FALSE, file = NULL,
   iframe = FALSE, d3Script = "http://d3js.org/d3.v3.min.js")
 }
 \arguments{
@@ -73,7 +73,9 @@ external file in the working directory and an HTML \code{iframe} linking to
 the file is printed to the console. This is useful if you are using Slidify
 and many other HTML slideshow framworks and want to include the graph in the
 resulting page. If you set the knitr code chunk \code{results='asis'} then
-the graph will be rendered in the output. Usually, you can use \code{iframe = FALSE} if you are creating simple knitr Markdown or HTML pages. Note: you do not
+the graph will be rendered in the output. Usually, you can use
+\code{iframe = FALSE} if you are creating simple knitr Markdown or HTML
+pages. Note: you do not
 need to specify the file name if \code{iframe = TRUE}, however if you do, do
 not include the file path.}
 
