@@ -362,7 +362,7 @@ library(shiny)
 
 shinyUI(fluidPage(
 
-    # Load d3.js
+    # Load D3.js
     tags$head(
         tags$script(src = 'http://d3js.org/d3.v3.min.js')
     ),
@@ -424,7 +424,7 @@ shinyServer(function(input, output) {
 })
 ```
 
-There are few quick points to note. First, we told the app how to access d3.js by starting the `shinyUI` with:
+There are few quick points to note. First, we told the app how to access D3.js by starting the `shinyUI` with:
 
 ```{r, eval=FALSE}
 tags$head(
