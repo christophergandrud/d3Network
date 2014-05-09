@@ -76,30 +76,16 @@ d3SimpleNetwork <- function(Data, Source = NULL, Target = NULL, height = 600,
     width = 900, fontsize = 7, linkDistance = 50, charge = -200, 
     linkColour = "#666", nodeColour = "#3182bd", nodeClickColour = "#E34A33", 
     textColour = "#3182bd", opacity = 0.6, parentElement = "body", 
-    standAlone = TRUE, div = FALSE, file = NULL, iframe = FALSE, 
+    standAlone = TRUE, file = NULL, iframe = FALSE, 
     d3Script = "http://d3js.org/d3.v3.min.js")
 {
-    # Create random number to avoid file/div conflicts
-    Random <- paste0(sample(c(0:9, letters, LETTERS), 5, replace = TRUE), 
-                    collapse = "")
-
-    if (!isTRUE(standAlone) & isTRUE(div)){
-        standAlone <- FALSE
-        file <- NULL
-        warning('If div = TRUE then standAlone set to FALSE and file is NULL.\n', 
-            call. = FALSE)
-        if (parentElement == 'body'){
-            parentElement <- paste0('#Network', Random)
-            message(paste0('parentElement set to: ', parentElement, '.\n'))  
-        } 
-    }
-
-    if (!isTRUE(standAlone) & isTRUE(iframe)){
-        standAlone <- TRUE
-        warning("If iframe = TRUE then standAlone set to TRUE.\n", call. = FALSE)
-    }
+  if (!isTRUE(standAlone) & isTRUE(iframe)){
+    stop("If iframe = TRUE then standAlone must be TRUE.")
+  }
     # If no file name is specified create random name to avoid conflicts
     if (is.null(file) & isTRUE(iframe)){
+        Random <- paste0(sample(c(0:9, letters, LETTERS), 5, replace=TRUE), 
+                        collapse = "")
         file <- paste0("NetworkGraph", Random, ".html")
     }
 
@@ -112,7 +98,7 @@ d3SimpleNetwork <- function(Data, Source = NULL, Target = NULL, height = 600,
 
     # Subset data frame for network graph
     if (class(Data) != "data.frame"){
-        stop("Data must be a data frame class object.\n", call. = FALSE)
+        stop("Data must be a data frame class object.")
     }
 
     if (is.null(Source) & is.null(Target)){
@@ -158,10 +144,5 @@ d3SimpleNetwork <- function(Data, Source = NULL, Target = NULL, height = 600,
             "</body>", file = file)
         cat("<iframe src=\'", file, "\'", " height=", FrameHeight, " width=",
             FrameWidth, "></iframe>", sep="")  
-    }
-    else if (isTRUE(div)){
-        parentElementStripped <- gsub('^#', '', parentElement)
-        divHead <- paste0('<div id=\"', parentElementStripped, '\">')
-        cat(divHead, NetworkCSS, LinkData, MainScript, "</div>", sep = '')    
     }
 }
