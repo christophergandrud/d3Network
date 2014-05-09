@@ -71,7 +71,7 @@ d3SimpleNetwork(NetworkData, width = 400, height = 250)
 
 You'll notice that I added the `width` and `height` arguments. These change the size of the graph area. They are in pixels. Here is the result:
 
-<div id="plainNetwork">
+
 <style> 
 .link {  
 stroke: #666;
@@ -200,7 +200,7 @@ d3.select(this).select("text").transition()
 
 </script>
 
-</div>
+
 
 Play around with this graph. Notice that when you click on the nodes the text expands and changes colour.
 

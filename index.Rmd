@@ -67,15 +67,15 @@ d3SimpleNetwork(NetworkData, width = 400, height = 250)
 
 You'll notice that I added the `width` and `height` arguments. These change the size of the graph area. They are in pixels. Here is the result:
 
-<div id="plainNetwork">
-```{r, echo=FALSE, results='asis'}
+
+```{r, echo=FALSE, warning=FALSE, results='asis'}
 library(d3Network)
-d3SimpleNetwork(NetworkData, width = 400, height = 250,
+d3SimpleNetwork(NetworkData, width = 400, height = 250, div = TRUE,
                 standAlone = FALSE, parentElement = '#plainNetwork')
 #d3SimpleNetwork(NetworkData, width = 400, height = 250,
 #                iframe = TRUE, file = "img/FirstNetwork.html")
 ```
-</div>
+
 
 Play around with this graph. Notice that when you click on the nodes the text expands and changes colour.
 
