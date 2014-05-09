@@ -1,13 +1,13 @@
 d3Network
 ===
 
+Tools for creating D3 JavaScript directed network graphs from R.
+
+[Christopher Gandrud](http://christophergandrud.blogspot.com/p/biocontact.html)
+
 Version: 0.5
 
 [![Build Status](https://travis-ci.org/christophergandrud/d3Network.png)](https://travis-ci.org/christophergandrud/d3Network)
-
-### [Christopher Gandrud](http://christophergandrud.blogspot.com/p/biocontact.html)
-
-Tools for creating D3 JavaScript directed network graphs from R.
 
 ---
 
