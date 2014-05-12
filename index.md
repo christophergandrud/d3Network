@@ -351,7 +351,7 @@ If you would like to include network graphs in a [knitr](http://yihui.name/knitr
 
 <h2 id="shiny"><i class="fa fa-play"></i> d3Network in Shiny web apps</h2>
 
-From version 0.5, **d3Network** graphs can also be used in [Shiny web apps](http://shiny.rstudio.com/). A full working example can be found at <https://github.com/christophergandrud/d3ShinyExample>. This example creates a very simple app that allows a user to change the node opacity for the <a href="#forceDirect"><code>d3ForceDirected</code></a> graph we saw earlier.
+From version 0.5, **d3Network** graphs can also be used in [Shiny web apps](http://shiny.rstudio.com/). A full working example can be found at [christophergandrud/d3ShinyExample](https://github.com/christophergandrud/d3ShinyExample). This example creates a very simple app that allows a user to change the node opacity for the <a href="#forceDirect"><code>d3ForceDirected</code></a> graph we saw earlier.
 
 Here is the *ui.R* code from the example:
 
@@ -361,7 +361,7 @@ library(shiny)
 
 shinyUI(fluidPage(
 
-    # Load d3.js
+    # Load D3.js
     tags$head(
         tags$script(src = 'http://d3js.org/d3.v3.min.js')
     ),
@@ -423,7 +423,7 @@ shinyServer(function(input, output) {
 ```
 
 
-There are few quick points to note. First, we told the app how to access d3.js by starting the `shinyUI` with:
+There are few quick points to note. First, we told the app how to access D3.js by starting the `shinyUI` with:
 
 
 ```r

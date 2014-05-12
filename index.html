@@ -567,7 +567,7 @@ d3Sankey(Links = EngLinks, Nodes = EngNodes, Source = &quot;source&quot;,
 
 <h2 id="shiny"><i class="fa fa-play"></i> d3Network in Shiny web apps</h2>
 
-<p>From version 0.5, <strong>d3Network</strong> graphs can also be used in <a href="http://shiny.rstudio.com/">Shiny web apps</a>. A full working example can be found at <a href="https://github.com/christophergandrud/d3ShinyExample">https://github.com/christophergandrud/d3ShinyExample</a>. This example creates a very simple app that allows a user to change the node opacity for the <a href="#forceDirect"><code>d3ForceDirected</code></a> graph we saw earlier.</p>
+<p>From version 0.5, <strong>d3Network</strong> graphs can also be used in <a href="http://shiny.rstudio.com/">Shiny web apps</a>. A full working example can be found at <a href="https://github.com/christophergandrud/d3ShinyExample">christophergandrud/d3ShinyExample</a>. This example creates a very simple app that allows a user to change the node opacity for the <a href="#forceDirect"><code>d3ForceDirected</code></a> graph we saw earlier.</p>
 
 <p>Here is the <em>ui.R</em> code from the example:</p>
 
@@ -575,7 +575,7 @@ d3Sankey(Links = EngLinks, Nodes = EngNodes, Source = &quot;source&quot;,
 
 shinyUI(fluidPage(
 
-    # Load d3.js
+    # Load D3.js
     tags$head(
         tags$script(src = &#39;http://d3js.org/d3.v3.min.js&#39;)
     ),
@@ -633,7 +633,7 @@ shinyServer(function(input, output) {
 })
 </code></pre>
 
-<p>There are few quick points to note. First, we told the app how to access d3.js by starting the <code>shinyUI</code> with:</p>
+<p>There are few quick points to note. First, we told the app how to access D3.js by starting the <code>shinyUI</code> with:</p>
 
 <pre><code class="r">tags$head(
         tags$script(src = &#39;http://d3js.org/d3.v3.min.js&#39;)
