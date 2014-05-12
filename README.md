@@ -1,7 +1,7 @@
 d3Network
 ===
 
-Tools for creating D3 JavaScript directed network graphs from R.
+Tools for creating D3 JavaScript network, tree, dendrogram, and Sankey graphs from R.
 
 [Christopher Gandrud](http://christophergandrud.blogspot.com/p/biocontact.html)
 
