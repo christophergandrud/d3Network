@@ -347,9 +347,13 @@ This will create a new file called `ExampleGraph.html` in your working directory
 
 You can open this file in any text editor and modify the code however you like. For example, checkout the [D3 Force Layout Wiki](https://github.com/mbostock/d3/wiki/Force-Layout) for more force network graph customisation options.
 
-<h2 id="rep"><i class="fa fa-play"></i> d3Network in dynamic reproducible documents</h2>
+<h2 id="rep"><i class="fa fa-play"></i> d3Network in dynamic knitr reproducible documents</h2>
 
 If you would like to include network graphs in a [knitr](http://yihui.name/knitr/) [Markdown](http://daringfireball.net/projects/markdown/) dynamically reproducible document just place your **d3Network** code in a code chunk with the option `results='asis'`. Also set the argument `iframe = TRUE` and specify a file name with `file` as before.
+
+<h2 id="ipython"><i class="fa fa-play"></i> d3Network in IPython notebooks</h2>
+
+Check out [Spencer Boucher's](http://spencerboucher.com/about/) [helpful example](http://spencerboucher.com/sankey/) of how to use d3Network inside of [IPython Notebooks](http://ipython.org/notebook.html).
 
 <h2 id="shiny"><i class="fa fa-play"></i> d3Network in Shiny web apps</h2>
 
