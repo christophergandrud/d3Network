@@ -24,7 +24,7 @@ Target <- c("B", "C", "D", "J", "E", "F", "G", "H", "I")
 NetworkData <- data.frame(Source, Target)
 
 # Make network graph 
-d3SimpleNetwork(NetworkDatad, height = 300, width = 700)
+d3SimpleNetwork(NetworkData, height = 300, width = 700)
 ```
 
 Many more examples can be found on the package's [main page](http://christophergandrud.github.io/d3Network/).
