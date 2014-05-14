@@ -69,7 +69,8 @@ d3Network <- function(Data, Source = NULL, Target = NULL, height = 600,
     standAlone = TRUE, file = NULL, iframe = FALSE, 
     d3Script = "http://d3js.org/d3.v3.min.js")
 {
-  message("NOTE: d3Network is depricated. Please use d3SimpleNetwork.")
+  warning("NOTE: d3Network is depricated. Please use d3SimpleNetwork.", 
+        call. = FALSE)
   if (!isTRUE(standAlone) & isTRUE(iframe)){
     stop("If iframe = TRUE then standAlone must be TRUE.")
   }
