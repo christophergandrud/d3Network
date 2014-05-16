@@ -438,7 +438,7 @@ tags$head(
 
 Also in the `shinyUI` we output the `networkPlot` using the Shiny `htmlOutput` function.
 
-In our `d3ForceNetwork` call in the `shinyServer` we added the argument `parentElement = #networkPlot`. This attaches the graph to the [div tag](http://www.w3schools.com/tags/tag_div.asp) created by `htmlOutput`. If we do not specify this argument, **d3Network** attaches the plot to the page's [body tag](http://www.w3schools.com/tags/tag_body.asp) by default. In effect this will place it at the end of the page.
+In our `d3ForceNetwork` call in the `shinyServer` we added the argument `parentElement = #networkPlot`. This attaches the graph to the [div tag](http://www.w3schools.com/tags/tag_div.asp) created by `htmlOutput`. Note that `networkPlot` is used in `htmlOutput` and `output$networkPlot`. We can use whatever name we like, as long as we specify it in these three places. If we do not specify this argument, **d3Network** attaches the plot to the page's [body tag](http://www.w3schools.com/tags/tag_body.asp) by default. In effect this will place it at the end of the page.
 
 **Warning**: you will likely run into trouble if you include more than one network graph in a single Shiny app page, especially if they have conflicting styles.
 

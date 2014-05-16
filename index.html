@@ -51,7 +51,7 @@ hljs.initHighlightingOnLoad();
 
 
 <style type="text/css">
-assets/css/style.css
+assets/css/stylesheet.css
 </style>
 
 
@@ -432,7 +432,7 @@ shinyServer(function(input, output) {
 
 <p>Also in the <code>shinyUI</code> we output the <code>networkPlot</code> using the Shiny <code>htmlOutput</code> function.</p>
 
-<p>In our <code>d3ForceNetwork</code> call in the <code>shinyServer</code> we added the argument <code>parentElement = #networkPlot</code>. This attaches the graph to the <a href="http://www.w3schools.com/tags/tag_div.asp">div tag</a> created by <code>htmlOutput</code>. If we do not specify this argument, <strong>d3Network</strong> attaches the plot to the page&#39;s <a href="http://www.w3schools.com/tags/tag_body.asp">body tag</a> by default. In effect this will place it at the end of the page.</p>
+<p>In our <code>d3ForceNetwork</code> call in the <code>shinyServer</code> we added the argument <code>parentElement = #networkPlot</code>. This attaches the graph to the <a href="http://www.w3schools.com/tags/tag_div.asp">div tag</a> created by <code>htmlOutput</code>. Note that <code>networkPlot</code> is used in <code>htmlOutput</code> and <code>output$networkPlot</code>. We can use whatever name we like, as long as we specify it in these three places. If we do not specify this argument, <strong>d3Network</strong> attaches the plot to the page&#39;s <a href="http://www.w3schools.com/tags/tag_body.asp">body tag</a> by default. In effect this will place it at the end of the page.</p>
 
 <p><strong>Warning</strong>: you will likely run into trouble if you include more than one network graph in a single Shiny app page, especially if they have conflicting styles.</p>
 
