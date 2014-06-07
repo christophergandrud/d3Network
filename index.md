@@ -69,7 +69,7 @@ d3SimpleNetwork(NetworkData, width = 400, height = 250)
 
 You'll notice that I added the `width` and `height` arguments. These change the size of the graph area. They are in pixels. Here is the result:
 
-<iframe src='img/FirstNetwork.html' height=267.5 width=412></iframe>
+<iframe src='img/FirstNetwork.html' height=272.5 width=420></iframe>
 
 Play around with this graph. Notice that when you click on the nodes the text expands and changes colour.
 
@@ -82,7 +82,7 @@ d3SimpleNetwork(NetworkData, width = 400, height = 250,
                 nodeColor = "orange", opacity = 0.9)
 ```
 
-<iframe src='img/SecondNetwork.html' height=267.5 width=412></iframe>
+<iframe src='img/SecondNetwork.html' height=272.5 width=420></iframe>
 
 
 There are many different ways you can specify the colours other than just their names (as in this example). One way to select more specific colours is with [hexadecimal colour values](http://en.wikipedia.org/wiki/Web_colors#Shorthand_hexadecimal_form). A nice resource for choosing colour palates is the [Color Brewer](http://colorbrewer2.org/) website. The next example uses hexadecimal colour values.
@@ -97,7 +97,7 @@ d3SimpleNetwork(NetworkData, width = 400, height = 250,
                 charge = -50, fontsize = 12)
 ```
 
-<iframe src='img/ThirdNetwork.html' height=267.5 width=412></iframe>
+<iframe src='img/ThirdNetwork.html' height=272.5 width=420></iframe>
 
 This is a weaker charge than what we have seen so far (the default is -200). A weak negative charge means that the nodes do not repel each other as strongly. They are closer together than if there was a larger negative charge. Positive charges make the nodes attracted to one another. Basically, you will get a clump of nodes. Also, in the above example the text was a little small so I increased the *font size* to 12.
 
