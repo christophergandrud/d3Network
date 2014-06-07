@@ -9,6 +9,8 @@ Improved documentation to demonstrate how a JavaScript function can be added to
 
 Thanks to Kevin Keenan for the suggestion.
 
+Improvements to `iframe` width/height calculation for `d3SimpleNetwork`.
+
 ## v0.5
 
 `parentElement` argument added to all d3Network functions. It allows the user
