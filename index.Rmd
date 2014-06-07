@@ -14,7 +14,7 @@
 
 Tools for creating D3 JavaScript network, tree, dendrogram, and Sankey graphs from R.
 
-**v0.5** [![Build Status](https://travis-ci.org/christophergandrud/d3Network.png)](https://travis-ci.org/christophergandrud/d3Network)
+**v0.5.1** [![Build Status](https://travis-ci.org/christophergandrud/d3Network.png)](https://travis-ci.org/christophergandrud/d3Network)
 
 
 ---
@@ -120,7 +120,7 @@ Have a look at the `d3SimpleNetwork` documentation for more customisation option
 
 If you want to make more complex force directed graph structures use `d3ForceNetwork`. It allows you to use individual link and node properties to change the distance between individual nodes and the colour of the nodes depending on their membership in specific groups.
 
-Maybe it's better to understand this with an example. We'll use `d3ForceDirected`  to recreate an [example](http://bl.ocks.org/mbostock/4062045) by Mike Bostock. The network graph will show *Les Misérables*' charcters co-occurance (the original data was gathered by [Donald Knuth](http://www-cs-faculty.stanford.edu/~uno/sgb.html)). The link distances are based on how close the characters are to one another and the colours symbolise different character groups.
+Maybe it's better to understand this with an example. We'll use `d3ForceDirected`  to recreate an [example](http://bl.ocks.org/mbostock/4062045) by Mike Bostock. The network graph will show *Les Misérables*' characters co-occurance (the original data was gathered by [Donald Knuth](http://www-cs-faculty.stanford.edu/~uno/sgb.html)). The link distances are based on how close the characters are to one another and the colours symbolise different character groups.
 
 To start out let's gather the data and create two data frames with it. One of the data frames will have information on the links, similar to what we have worked with so far. The other will have information on individual nodes; in this case *Les Misérables* characters.
 
@@ -145,7 +145,7 @@ head(MisLinks)
 head(MisNodes)
 ```
 
-You can see in the `MisLinks` data frame that we again have `source` and `target` columns. Notice that the data frame is sorted by `source`. We also have a new column: `value`. This will be used to determine the link distances.
+You can see in the `MisLinks` data frame that we again have `source` and `target` columns. Notice that the data frame is sorted by `source`. We also have a new column: `value`. This can be used to determine the link widths and distances.
 
 In the `MisNodes` data frame we have two columns: `name` and `group`. There is one record for each character (node) in the network. They are in the same order as the `source` column in `MisLinks`. The `group` column simply specifies what group each character is in. This will be used to set the nodes' colours.
 
@@ -167,6 +167,11 @@ d3ForceNetwork(Links = MisLinks, Nodes = MisNodes, Source = "source",
 ```
 
 Mouse over the nodes to see the characters' names.
+
+#### Link Weighting
+
+The arguments `linkDistance` and `linkWidth` allow you to set how far apart the nodes are and how wide the links are, respectively. You can set these at fix numeric values, or enter JavaScript functions in order to weight the distances/widths by the `value`. For example, the default `linkWidth` is set as the function `linkWidth = "function(d) { return Math.sqrt(d.value)}"`. This finds the square root of each `value` and uses it to set the width.  
+
 
 #### Zooming
 
@@ -417,11 +422,11 @@ MisNodes$ID <- 1:nrow(MisNodes)
 shinyServer(function(input, output) {
 
     output$networkPlot <- renderPrint({
-        d3ForceNetwork(Nodes = MisNodes, 
-                        Links = MisLinks,  
-                        Source = "source", Target = "target", 
-                        Value = "value", NodeID = "name", 
-                        Group = "group", width = 400, height = 500, 
+        d3ForceNetwork(Nodes = MisNodes,
+                        Links = MisLinks,
+                        Source = "source", Target = "target",
+                        Value = "value", NodeID = "name",
+                        Group = "group", width = 400, height = 500,
                         opacity = input$slider, standAlone = FALSE,
                         parentElement = '#networkPlot')
     })

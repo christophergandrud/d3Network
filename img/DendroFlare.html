@@ -1,27 +1,27 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <meta charset="utf-8">
 <body> 
- <style> 
-.link {  
-fill: none; 
+ <style>
+.link {
+fill: none;
 stroke: #ccc;
 opacity: 0.4;
-stroke-width: 1.5px; 
-} 
-.node circle { 
-stroke: #fff; 
+stroke-width: 1.5px;
+}
+.node circle {
+stroke: #fff;
 opacity: 0.8;
-stroke-width: 1.5px; 
-} 
+stroke-width: 1.5px;
+}
 .node:not(:hover) .nodetext {
 display: none;
 }
-text { 
-font: 12px serif; 
+text {
+font: 12px serif;
 opacity: 0.8;
-pointer-events: none; 
-} 
-</style> 
+pointer-events: none;
+}
+</style>
 
 <script src=http://d3js.org/d3.v3.min.js></script>
 
@@ -70,7 +70,7 @@ var node = vis.selectAll(".node")
 .enter().append("g")
 .attr("class", "node")
 .attr("transform", function(d) { return "translate(" + d.y + "," + d.x + ")"; })
-.on("mouseover", mouseover) 
+.on("mouseover", mouseover)
 .on("mouseout", mouseout);
 
 node.append("circle")
@@ -84,26 +84,26 @@ node.append("svg:text")
 .style("fill", "#3182bd")
 .text(function(d) { return d.name; });
 
-function mouseover() { 
-d3.select(this).select("circle").transition() 
-.duration(750) 
+function mouseover() {
+d3.select(this).select("circle").transition()
+.duration(750)
 .attr("r", 9)
 d3.select(this).select("text").transition()
 .duration(750)
 .style("stroke-width", ".5px")
 .style("font", "22.8px serif")
-.style("opacity", 1); 
-} 
+.style("opacity", 1);
+}
 
-function mouseout() { 
-d3.select(this).select("circle").transition() 
-.duration(750) 
+function mouseout() {
+d3.select(this).select("circle").transition()
+.duration(750)
 .attr("r", 4.5)
 d3.select(this).select("text").transition()
 .duration(750)
 .style("font", "12px serif")
-.style("opacity", 0.8); 
-} 
+.style("opacity", 0.8);
+}
 
 d3.select(self.frameElement).style("height", height + "px");
 

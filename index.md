@@ -14,7 +14,7 @@
 
 Tools for creating D3 JavaScript network, tree, dendrogram, and Sankey graphs from R.
 
-**v0.5** [![Build Status](https://travis-ci.org/christophergandrud/d3Network.png)](https://travis-ci.org/christophergandrud/d3Network)
+**v0.5.1** [![Build Status](https://travis-ci.org/christophergandrud/d3Network.png)](https://travis-ci.org/christophergandrud/d3Network)
 
 
 ---
@@ -58,7 +58,6 @@ Target <- c("B", "C", "D", "J", "E", "F", "G", "H", "I")
 NetworkData <- data.frame(Source, Target)
 ```
 
-
 It's important to note that the *Source* variable is the first variable and the *Target* is the second. We can use `d3SimpleNetwork`'s `Source` and `Target` arguments to specify which variables are which, if the data is in another order.
 
 Now we can simply stick the `NetworkData` data frame into `d3SimpleNetwork`:
@@ -68,11 +67,9 @@ Now we can simply stick the `NetworkData` data frame into `d3SimpleNetwork`:
 d3SimpleNetwork(NetworkData, width = 400, height = 250)
 ```
 
-
 You'll notice that I added the `width` and `height` arguments. These change the size of the graph area. They are in pixels. Here is the result:
 
 <iframe src='img/FirstNetwork.html' height=267.5 width=412></iframe>
-
 
 Play around with this graph. Notice that when you click on the nodes the text expands and changes colour.
 
@@ -85,9 +82,7 @@ d3SimpleNetwork(NetworkData, width = 400, height = 250,
                 nodeColor = "orange", opacity = 0.9)
 ```
 
-
 <iframe src='img/SecondNetwork.html' height=267.5 width=412></iframe>
-
 
 
 There are many different ways you can specify the colours other than just their names (as in this example). One way to select more specific colours is with [hexadecimal colour values](http://en.wikipedia.org/wiki/Web_colors#Shorthand_hexadecimal_form). A nice resource for choosing colour palates is the [Color Brewer](http://colorbrewer2.org/) website. The next example uses hexadecimal colour values.
@@ -102,9 +97,7 @@ d3SimpleNetwork(NetworkData, width = 400, height = 250,
                 charge = -50, fontsize = 12)
 ```
 
-
 <iframe src='img/ThirdNetwork.html' height=267.5 width=412></iframe>
-
 
 This is a weaker charge than what we have seen so far (the default is -200). A weak negative charge means that the nodes do not repel each other as strongly. They are closer together than if there was a larger negative charge. Positive charges make the nodes attracted to one another. Basically, you will get a clump of nodes. Also, in the above example the text was a little small so I increased the *font size* to 12.
 
@@ -114,7 +107,7 @@ Have a look at the `d3SimpleNetwork` documentation for more customisation option
 
 If you want to make more complex force directed graph structures use `d3ForceNetwork`. It allows you to use individual link and node properties to change the distance between individual nodes and the colour of the nodes depending on their membership in specific groups.
 
-Maybe it's better to understand this with an example. We'll use `d3ForceDirected`  to recreate an [example](http://bl.ocks.org/mbostock/4062045) by Mike Bostock. The network graph will show *Les Misérables*' charcters co-occurance (the original data was gathered by [Donald Knuth](http://www-cs-faculty.stanford.edu/~uno/sgb.html)). The link distances are based on how close the characters are to one another and the colours symbolise different character groups.
+Maybe it's better to understand this with an example. We'll use `d3ForceDirected`  to recreate an [example](http://bl.ocks.org/mbostock/4062045) by Mike Bostock. The network graph will show *Les Misérables*' characters co-occurance (the original data was gathered by [Donald Knuth](http://www-cs-faculty.stanford.edu/~uno/sgb.html)). The link distances are based on how close the characters are to one another and the colours symbolise different character groups.
 
 To start out let's gather the data and create two data frames with it. One of the data frames will have information on the links, similar to what we have worked with so far. The other will have information on individual nodes; in this case *Les Misérables* characters.
 
@@ -131,7 +124,6 @@ MisJson <- getURL(URL, ssl.verifypeer = FALSE)
 MisLinks <- JSONtoDF(jsonStr = MisJson, array = "links")
 MisNodes <- JSONtoDF(jsonStr = MisJson, array = "nodes")
 ```
-
 
 In this example we converted a [JSON](http://en.wikipedia.org/wiki/JSON)-formatted file into two data frames. You can of course just work with R data frames. Now let's look inside these data frames:
 
@@ -151,7 +143,6 @@ head(MisLinks)
 ```
 
 ```r
-
 head(MisNodes)
 ```
 
@@ -165,8 +156,7 @@ head(MisNodes)
 ## 6        Geborand     1
 ```
 
-
-You can see in the `MisLinks` data frame that we again have `source` and `target` columns. Notice that the data frame is sorted by `source`. We also have a new column: `value`. This will be used to determine the link distances.
+You can see in the `MisLinks` data frame that we again have `source` and `target` columns. Notice that the data frame is sorted by `source`. We also have a new column: `value`. This can be used to determine the link widths and distances.
 
 In the `MisNodes` data frame we have two columns: `name` and `group`. There is one record for each character (node) in the network. They are in the same order as the `source` column in `MisLinks`. The `group` column simply specifies what group each character is in. This will be used to set the nodes' colours.
 
@@ -181,11 +171,14 @@ d3ForceNetwork(Links = MisLinks, Nodes = MisNodes,
                opacity = 0.9)
 ```
 
-
 <iframe src='img/Forced.html' height=428 width=566.5></iframe>
 
-
 Mouse over the nodes to see the characters' names.
+
+#### Link Weighting
+
+The arguments `linkDistance` and `linkWidth` allow you to set how far apart the nodes are and how wide the links are, respectively. You can set these at fix numeric values, or enter JavaScript functions in order to weight the distances/widths by the `value`. For example, the default `linkWidth` is set as the function `linkWidth = "function(d) { return Math.sqrt(d.value)}"`. This finds the square root of each `value` and uses it to set the width.  
+
 
 #### Zooming
 
@@ -200,9 +193,7 @@ d3ForceNetwork(Links = MisLinks, Nodes = MisNodes,
                opacity = 0.9, zoom = TRUE)
 ```
 
-
 <iframe src='img/ForcedZoom.html' height=428 width=566.5></iframe>
-
 
 <h3 id="RTTree"><code>d3Tree</code></h3>
 
@@ -226,9 +217,7 @@ Flare <- rjson::fromJSON(Flare)
 d3Tree(List = Flare, fontsize = 8, diameter = 800)
 ```
 
-
 <iframe src='img/FlareTree.html' height=802.5 width=721></iframe>
-
 
 Mouse over the nodes to enlarge the labels.
 
@@ -271,7 +260,6 @@ CanadaPC <- list(name = "Canada",
              ))
 ```
 
-
 Clearly, R doesn't make it super easy to create these types of lists. As we saw in the previous example, you can always just import correctly formatted JSON files into R and use those instead.
 
 Anyways, let's create a tree graph for the `CanadaPC` data:
@@ -283,9 +271,7 @@ d3Tree(List = CanadaPC, fontsize = 10, diameter = 500,
        nodeColour = "#D95F0E")
 ```
 
-
 <iframe src='img/CanadaTree.html' height=615.2 width=566.5></iframe>
-
 
 <h3 id="ClusterDendro"><code>d3ClusterDendro</code></h3>
 
@@ -299,9 +285,7 @@ d3ClusterDendro(List = CanadaPC, fontsize = 12,
                 zoom = TRUE, widthCollapse = 0.8)
 ```
 
-
 <iframe src='img/DendroFlare.html' height=588.5 width=515></iframe>
-
 
 The graph is zoom-able with the scroll-wheel and can be dragged about.
 
@@ -325,9 +309,7 @@ d3Sankey(Links = EngLinks, Nodes = EngNodes, Source = "source",
          fontsize = 12, nodeWidth = 30, width = 700)
 ```
 
-
 <iframe src='img/Sankey.html' height=642 width=721></iframe>
-
 
 <hr>
 
@@ -339,7 +321,6 @@ So far we have only seen the basic syntax for how to create the network graphs. 
 ```r
 d3SimpleNetwork(NetworkData, file = "ExampleGraph.html")
 ```
-
 
 This will create a new file called `ExampleGraph.html` in your working directory.
 
@@ -394,7 +375,6 @@ shinyUI(fluidPage(
 ))
 ```
 
-
 And the *server.R*:
 
 
@@ -416,16 +396,18 @@ MisNodes$ID <- 1:nrow(MisNodes)
 
 #### Shiny ####
 shinyServer(function(input, output) {
-    
+
     output$networkPlot <- renderPrint({
-        d3ForceNetwork(Nodes = MisNodes, Links = MisLinks, Source = "source", 
-            Target = "target", Value = "value", NodeID = "name", Group = "group", 
-            width = 400, height = 500, opacity = input$slider, standAlone = FALSE, 
-            parentElement = "#networkPlot")
+        d3ForceNetwork(Nodes = MisNodes,
+                        Links = MisLinks,
+                        Source = "source", Target = "target",
+                        Value = "value", NodeID = "name",
+                        Group = "group", width = 400, height = 500,
+                        opacity = input$slider, standAlone = FALSE,
+                        parentElement = '#networkPlot')
     })
 })
 ```
-
 
 There are few quick points to note. First, we told the app how to access D3.js by starting the `shinyUI` with:
 
@@ -435,7 +417,6 @@ tags$head(
         tags$script(src = 'http://d3js.org/d3.v3.min.js')
     ),
 ```
-
 
 Also in the `shinyUI` we output the `networkPlot` using the Shiny `htmlOutput` function.
 
@@ -450,9 +431,8 @@ In our `d3ForceNetwork` call in the `shinyServer` we added the argument `parentE
 
 
 ```r
-devtools::install_github("christophergandrud/d3Network")
+devtools::install_github('christophergandrud/d3Network')
 ```
-
 
 <br>
 <br>

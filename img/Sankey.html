@@ -1,26 +1,26 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <meta charset="utf-8">
 <body> 
  <style>
-#chart {  
+#chart {
 height: 500px;
 }
-.node rect {  
-cursor: move;  
-fill-opacity: .9;  
+.node rect {
+cursor: move;
+fill-opacity: .9;
 shape-rendering: crispEdges;
 }
-.node text {  
+.node text {
 font: 12px serif;
-pointer-events: none;  
+pointer-events: none;
 text-shadow: 0 1px 0 #fff;
 }
-.link {  
-fill: none;  
-stroke: #000;  
+.link {
+fill: none;
+stroke: #000;
 stroke-opacity: .2;
 }
-.link:hover {  
+.link:hover {
 stroke-opacity: .5;
 }
 </style>
@@ -342,8 +342,8 @@ var svg = d3.select("#chart").append("svg")
 .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
 var sankey = d3.sankey()
-.nodes(d3.values(nodes)) 
-.links(links) 
+.nodes(d3.values(nodes))
+.links(links)
 .nodeWidth(30)
 .nodePadding(10)
 .size([width, height])

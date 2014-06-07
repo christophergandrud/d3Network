@@ -1,27 +1,27 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <meta charset="utf-8">
 <body> 
- <style> 
-.link {  
-fill: none; 
+ <style>
+.link {
+fill: none;
 stroke: #ccc;
 opacity: 0.45;
-stroke-width: 1.5px; 
-} 
-.node circle { 
-stroke: #fff; 
+stroke-width: 1.5px;
+}
+.node circle {
+stroke: #fff;
 opacity: 0.9;
-stroke-width: 1.5px; 
-} 
+stroke-width: 1.5px;
+}
 .node:not(:hover) .nodetext {
 display: none;
 }
-text { 
-font: 8px serif; 
+text {
+font: 8px serif;
 opacity: 0.9;
-pointer-events: none; 
-} 
-</style> 
+pointer-events: none;
+}
+</style>
 
 <script src=http://d3js.org/d3.v3.min.js></script>
 
@@ -58,7 +58,7 @@ var node = svg.selectAll(".node")
 .enter().append("g")
 .attr("class", "node")
 .attr("transform", function(d) { return "rotate(" + (d.x - 90) + ")translate(" + d.y + ")"; })
-.on("mouseover", mouseover) 
+.on("mouseover", mouseover)
 .on("mouseout", mouseout);
 
 node.append("circle")
@@ -72,9 +72,9 @@ node.append("text")
 .style("fill", "#3182bd")
 .text(function(d) { return d.name; });
 
-function mouseover() { 
-d3.select(this).select("circle").transition() 
-.duration(750) 
+function mouseover() {
+d3.select(this).select("circle").transition()
+.duration(750)
 .attr("r", 9)
 d3.select(this).select("text").transition()
 .duration(750)
@@ -83,12 +83,12 @@ d3.select(this).select("text").transition()
 .attr("transform", function(d) { return d.x < 180 ? "translate(8)" : "rotate(180)translate(-8)"; })
 .style("stroke-width", ".5px")
 .style("font", "15.2px serif")
-.style("opacity", 1); 
-} 
+.style("opacity", 1);
+}
 
-function mouseout() { 
-d3.select(this).select("circle").transition() 
-.duration(750) 
+function mouseout() {
+d3.select(this).select("circle").transition()
+.duration(750)
 .attr("r", 4.5)
 d3.select(this).select("text").transition()
 .duration(750)
@@ -96,8 +96,8 @@ d3.select(this).select("text").transition()
 .attr("text-anchor", function(d) { return d.x < 180 ? "start" : "end"; })
 .attr("transform", function(d) { return d.x < 180 ? "translate(8)" : "rotate(180)translate(-8)"; })
 .style("font", "8px serif")
-.style("opacity", 0.9); 
-} 
+.style("opacity", 0.9);
+}
 
 d3.select(self.frameElement).style("height", diameter - 150 + "px");
 
