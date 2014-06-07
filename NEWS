@@ -1,7 +1,13 @@
 ## v0.5.1
 
-Added `linkWeightFun` to `d3ForceNetwork` in order to set the function for link
-weighting.
+Added `linkWidth` to `d3ForceNetwork` in order to set the link width. An
+absolute numeric width can be set as well as a JavaScript function for weighting
+by `Value`.
+
+Improved documentation to demonstrate how a JavaScript function can be added to
+`linkDistance`, possibly to weight the distance by `Value`.
+
+Thanks to Kevin Keenan for the suggestion.
 
 ## v0.5
 

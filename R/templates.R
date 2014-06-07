@@ -280,7 +280,7 @@ var link = svg.selectAll(\".link\")
 .data(force.links())
 .enter().append(\"line\")
 .attr(\"class\", \"link\")
-.style(\"stroke-width\", function(d) { return Math.{{linkWeightFun}}(d.value); });
+.style(\"stroke-width\", {{linkWidth}});
 
 var node = svg.selectAll(\".node\")
 .data(force.nodes())
@@ -376,7 +376,7 @@ var link = vis.selectAll(\".link\")
 .data(force.links())
 .enter().append(\"line\")
 .attr(\"class\", \"link\")
-.style(\"stroke-width\", function(d) { return Math.{{linkWeightFun}}(d.value); });
+.style(\"stroke-width\", {{linkWidth}});
 
 var node = vis.selectAll(\".node\")
 .data(force.nodes())

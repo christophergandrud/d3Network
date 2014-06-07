@@ -21,17 +21,19 @@
 #' @param height numeric height for the network graph's frame area in pixels.
 #' @param width numeric width for the network graph's frame area in pixels.
 #' @param fontsize numeric font size in pixels for the node text labels.
-#' @param linkDistance numeric distance between the links in pixels (actually
-#' arbitrary relative to the diagram's size).
+#' @param linkDistance numeric or character string. Either numberic fixed
+#' distance between the links in pixels (actually arbitrary relative to the
+#' diagram's size). Or a JavaScript function, possibly to weight by
+#' \code{Value}. For example:
+#' \code{linkDistance = "function(d){return d.value * 10}"}.
+#' @param linkWidth numeric or character string. Can be a numeric fixed width in
+#' pixels (arbitrary relative to the diagram's size). Or a JavaScript function,
+#' possibly to weight by \code{Value}. The default is
+#' \code{linkWidth = "function(d) { return Math.sqrt(d.value); }"}.
 #' @param charge numeric value indicating either the strength of the node
 #' repulsion (negative value) or attraction (positive value).
 #' @param linkColour character string specifying the colour you want the link
 #' lines to be. Multiple formats supported (e.g. hexadecimal).
-#' @param linkWeightFun character string to specify the function to transform
-#' \code{Value} into the link weight. Any JavaScript \code{Math} object method
-#' can be used (see \url{http://www.w3schools.com/jsref/jsref_obj_math.asp}).
-#' The default is to take the square root of \code{Value}, i.e.
-#' \code{linkWeightFun = "sqrt"}.
 #' @param opacity numeric value of the proportion opaque you would like the
 #' graph elements to be.
 #' @param zoom logical, whether or not to enable the ability to use the mouse
@@ -92,13 +94,14 @@
 
 d3ForceNetwork <- function(Links, Nodes, Source, Target, Value = NULL, NodeID,
 	Group, height = 600, width = 900, fontsize = 7, linkDistance = 50,
-	charge = -120, linkColour = "#666", linkWeightFun = "sqrt", opacity = 0.6,
-	zoom = FALSE, parentElement = "body", standAlone = TRUE, file = NULL,
-	iframe = FALSE, d3Script = "http://d3js.org/d3.v3.min.js")
+	linkWidth = "function(d) { return Math.sqrt(d.value); }", charge = -120,
+	linkColour = "#666",opacity = 0.6, zoom = FALSE, parentElement = "body",
+	standAlone = TRUE, file = NULL, iframe = FALSE,
+	d3Script = "http://d3js.org/d3.v3.min.js")
 {
 	if (!isTRUE(standAlone) & isTRUE(iframe)){
-    	stop("If iframe = TRUE then standAlone must be TRUE.")
-  	}
+		stop("If iframe = TRUE then standAlone must be TRUE.")
+	}
 	# If no file name is specified create random name to avoid conflicts
 	if (is.null(file) & isTRUE(iframe)){
 		Random <- paste0(sample(c(0:9, letters, LETTERS), 5, replace=TRUE),

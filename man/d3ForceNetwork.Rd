@@ -10,10 +10,10 @@ specifically for force directed networks
 \usage{
 d3ForceNetwork(Links, Nodes, Source, Target, Value = NULL, NodeID, Group,
   height = 600, width = 900, fontsize = 7, linkDistance = 50,
-  charge = -120, linkColour = "#666", linkWeightFun = "sqrt",
-  opacity = 0.6, zoom = FALSE, parentElement = "body",
-  standAlone = TRUE, file = NULL, iframe = FALSE,
-  d3Script = "http://d3js.org/d3.v3.min.js")
+  linkWidth = "function(d) { return Math.sqrt(d.value); }", charge = -120,
+  linkColour = "#666", opacity = 0.6, zoom = FALSE,
+  parentElement = "body", standAlone = TRUE, file = NULL,
+  iframe = FALSE, d3Script = "http://d3js.org/d3.v3.min.js")
 }
 \arguments{
 \item{Links}{a data frame object with the links between the nodes. It should
@@ -47,20 +47,22 @@ data frame.}
 
 \item{fontsize}{numeric font size in pixels for the node text labels.}
 
-\item{linkDistance}{numeric distance between the links in pixels (actually
-arbitrary relative to the diagram's size).}
+\item{linkDistance}{numeric or character string. Either numberic fixed
+distance between the links in pixels (actually arbitrary relative to the
+diagram's size). Or a JavaScript function, possibly to weight by
+\code{Value}. For example:
+\code{linkDistance = "function(d){return d.value * 10}"}.}
+
+\item{linkWidth}{numeric or character string. Can be a numeric fixed width in
+pixels (arbitrary relative to the diagram's size). Or a JavaScript function,
+possibly to weight by \code{Value}. The default is
+\code{linkWidth = "function(d) { return Math.sqrt(d.value); }"}.}
 
 \item{charge}{numeric value indicating either the strength of the node
 repulsion (negative value) or attraction (positive value).}
 
 \item{linkColour}{character string specifying the colour you want the link
 lines to be. Multiple formats supported (e.g. hexadecimal).}
-
-\item{linkWeightFun}{character string to specify the function to transform
-\code{Value} into the link weight. Any JavaScript \code{Math} object method
-can be used (see \url{http://www.w3schools.com/jsref/jsref_obj_math.asp}).
-The default is to take the square root of \code{Value}, i.e.
-\code{linkWeightFun = "sqrt"}.}
 
 \item{opacity}{numeric value of the proportion opaque you would like the
 graph elements to be.}
