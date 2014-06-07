@@ -4,34 +4,34 @@
 #' @noRd
 
 BasicHead <- function(){
-"<!DOCTYPE html> 
+"<!DOCTYPE html>
 <meta charset=\"utf-8\">
 <body> \n"
 }
 
 #' Mustache basic CSS template for d3Network
-#' 
+#'
 #' @keywords internals
 #' @noRd
 
 BasicStyleSheet <- function(){
-"<style> 
-.link {  
+"<style>
+.link {
 stroke: {{linkColour}};
 opacity: {{opacity}};
-stroke-width: 1.5px; 
-} 
-.node circle { 
-stroke: #fff; 
+stroke-width: 1.5px;
+}
+.node circle {
+stroke: #fff;
 opacity: {{opacity}};
-stroke-width: 1.5px; 
-} 
-text { 
-font: {{fontsize}}px serif; 
+stroke-width: 1.5px;
+}
+text {
+font: {{fontsize}}px serif;
 opacity: {{opacity}};
-pointer-events: none; 
-} 
-</style> 
+pointer-events: none;
+}
+</style>
 
 <script src={{d3Script}}></script>
 
@@ -39,31 +39,31 @@ pointer-events: none;
 }
 
 #' Mustache CSS template for d3ForceNetwork
-#' 
+#'
 #' @keywords internals
 #' @noRd
 
 ForceMainStyleSheet <- function(){
-"<style> 
-.link {  
+"<style>
+.link {
 stroke: {{linkColour}};
 opacity: {{opacity}};
-stroke-width: 1.5px; 
-} 
-.node circle { 
-stroke: #fff; 
+stroke-width: 1.5px;
+}
+.node circle {
+stroke: #fff;
 opacity: {{opacity}};
-stroke-width: 1.5px; 
-} 
+stroke-width: 1.5px;
+}
 .node:not(:hover) .nodetext {
 display: none;
 }
-text { 
-font: {{fontsize}}px serif; 
+text {
+font: {{fontsize}}px serif;
 opacity: {{opacity}};
-pointer-events: none; 
-} 
-</style> 
+pointer-events: none;
+}
+</style>
 
 <script src={{d3Script}}></script>
 
@@ -71,32 +71,32 @@ pointer-events: none;
 }
 
 #' Mustache CSS template for d3ForceNetwork
-#' 
+#'
 #' @keywords internals
 #' @noRd
 
 TreeStyleSheet <- function(){
-"<style> 
-.link {  
-fill: none; 
+"<style>
+.link {
+fill: none;
 stroke: {{linkColour}};
 opacity: {{linkOpacity}};
-stroke-width: 1.5px; 
-} 
-.node circle { 
-stroke: #fff; 
+stroke-width: 1.5px;
+}
+.node circle {
+stroke: #fff;
 opacity: {{opacity}};
-stroke-width: 1.5px; 
-} 
+stroke-width: 1.5px;
+}
 .node:not(:hover) .nodetext {
 display: none;
 }
-text { 
-font: {{fontsize}}px serif; 
+text {
+font: {{fontsize}}px serif;
 opacity: {{opacity}};
-pointer-events: none; 
-} 
-</style> 
+pointer-events: none;
+}
+</style>
 
 <script src={{d3Script}}></script>
 
@@ -110,25 +110,25 @@ pointer-events: none;
 
 SankeyStylesheet <- function(){
 "<style>
-#chart {  
+#chart {
 height: 500px;
 }
-.node rect {  
-cursor: move;  
-fill-opacity: .9;  
+.node rect {
+cursor: move;
+fill-opacity: .9;
 shape-rendering: crispEdges;
 }
-.node text {  
+.node text {
 font: {{fontsize}}px serif;
-pointer-events: none;  
+pointer-events: none;
 text-shadow: 0 1px 0 #fff;
 }
-.link {  
-fill: none;  
-stroke: #000;  
+.link {
+fill: none;
+stroke: #000;
 stroke-opacity: .2;
 }
-.link:hover {  
+.link:hover {
 stroke-opacity: .5;
 }
 </style>
@@ -140,7 +140,7 @@ stroke-opacity: .5;
 
 
 #' Mustache basic Force Directed Network template for d3SimpleNetwork
-#' 
+#'
 #' @keywords internals
 #' @noRd
 
@@ -149,9 +149,9 @@ BasicForceJS <- function(){
 
 // Compute the distinct nodes from the links.
 links.forEach(function(link) {
-link.source = nodes[link.source] || 
+link.source = nodes[link.source] ||
 (nodes[link.source] = {name: link.source});
-link.target = nodes[link.target] || 
+link.target = nodes[link.target] ||
 (nodes[link.target] = {name: link.target});
 link.value = +link.value;
 });
@@ -159,65 +159,65 @@ link.value = +link.value;
 var width = {{width}}
 height = {{height}};
 
-var force = d3.layout.force() 
-.nodes(d3.values(nodes)) 
-.links(links) 
-.size([width, height]) 
-.linkDistance({{linkDistance}}) 
-.charge({{charge}}) 
-.on(\"tick\", tick) 
-.start(); 
+var force = d3.layout.force()
+.nodes(d3.values(nodes))
+.links(links)
+.size([width, height])
+.linkDistance({{linkDistance}})
+.charge({{charge}})
+.on(\"tick\", tick)
+.start();
 
-var svg = d3.select(\"{{parentElement}}\").append(\"svg\") 
-.attr(\"width\", width) 
-.attr(\"height\", height); 
+var svg = d3.select(\"{{parentElement}}\").append(\"svg\")
+.attr(\"width\", width)
+.attr(\"height\", height);
 
-var link = svg.selectAll(\".link\") 
-.data(force.links()) 
-.enter().append(\"line\") 
-.attr(\"class\", \"link\"); 
+var link = svg.selectAll(\".link\")
+.data(force.links())
+.enter().append(\"line\")
+.attr(\"class\", \"link\");
 
-var node = svg.selectAll(\".node\") 
-.data(force.nodes()) 
-.enter().append(\"g\") 
-.attr(\"class\", \"node\") 
-.on(\"mouseover\", mouseover) 
-.on(\"mouseout\", mouseout) 
+var node = svg.selectAll(\".node\")
+.data(force.nodes())
+.enter().append(\"g\")
+.attr(\"class\", \"node\")
+.on(\"mouseover\", mouseover)
+.on(\"mouseout\", mouseout)
 .on(\"click\", click)
 .on(\"dblclick\", dblclick)
-.call(force.drag); 
+.call(force.drag);
 
-node.append(\"circle\") 
+node.append(\"circle\")
 .attr(\"r\", 8)
 .style(\"fill\", \"{{nodeColour}}\");
 
-node.append(\"text\") 
-.attr(\"x\", 12) 
-.attr(\"dy\", \".35em\") 
+node.append(\"text\")
+.attr(\"x\", 12)
+.attr(\"dy\", \".35em\")
 .style(\"fill\", \"{{textColour}}\")
-.text(function(d) { return d.name; }); 
+.text(function(d) { return d.name; });
 
-function tick() { 
-link 
-.attr(\"x1\", function(d) { return d.source.x; }) 
-.attr(\"y1\", function(d) { return d.source.y; }) 
-.attr(\"x2\", function(d) { return d.target.x; }) 
-.attr(\"y2\", function(d) { return d.target.y; }); 
+function tick() {
+link
+.attr(\"x1\", function(d) { return d.source.x; })
+.attr(\"y1\", function(d) { return d.source.y; })
+.attr(\"x2\", function(d) { return d.target.x; })
+.attr(\"y2\", function(d) { return d.target.y; });
 
-node.attr(\"transform\", function(d) { return \"translate(\" + d.x + \",\" + d.y + \")\"; }); 
-} 
+node.attr(\"transform\", function(d) { return \"translate(\" + d.x + \",\" + d.y + \")\"; });
+}
 
-function mouseover() { 
-d3.select(this).select(\"circle\").transition() 
-.duration(750) 
-.attr(\"r\", 16); 
-} 
+function mouseover() {
+d3.select(this).select(\"circle\").transition()
+.duration(750)
+.attr(\"r\", 16);
+}
 
-function mouseout() { 
-d3.select(this).select(\"circle\").transition() 
-.duration(750) 
-.attr(\"r\", 8); 
-} 
+function mouseout() {
+d3.select(this).select(\"circle\").transition()
+.duration(750)
+.attr(\"r\", 8);
+}
 // action to take on mouse click
 function click() {
 d3.select(this).select(\"text\").transition()
@@ -253,7 +253,7 @@ d3.select(this).select(\"text\").transition()
 }
 
 #' Mustache main Force Directed Network template for d3ForceNetwork
-#' 
+#'
 #' @keywords internals
 #' @noRd
 
@@ -264,13 +264,13 @@ height = {{height}};
 var color = d3.scale.category20();
 
 var force = d3.layout.force()
-.nodes(d3.values(nodes)) 
-.links(links) 
-.size([width, height]) 
-.linkDistance({{linkDistance}}) 
-.charge({{charge}}) 
-.on(\"tick\", tick) 
-.start(); 
+.nodes(d3.values(nodes))
+.links(links)
+.size([width, height])
+.linkDistance({{linkDistance}})
+.charge({{charge}})
+.on(\"tick\", tick)
+.start();
 
 var svg = d3.select(\"{{parentElement}}\").append(\"svg\")
 .attr(\"width\", width)
@@ -280,19 +280,19 @@ var link = svg.selectAll(\".link\")
 .data(force.links())
 .enter().append(\"line\")
 .attr(\"class\", \"link\")
-.style(\"stroke-width\", function(d) { return Math.sqrt(d.value); });
+.style(\"stroke-width\", function(d) { return Math.{{linkWeightFun}}(d.value); });
 
 var node = svg.selectAll(\".node\")
 .data(force.nodes())
-.enter().append(\"g\") 
+.enter().append(\"g\")
 .attr(\"class\", \"node\")
 .style(\"fill\", function(d) { return color(d.group); })
 .style(\"opacity\", {{opacity}})
-.on(\"mouseover\", mouseover) 
-.on(\"mouseout\", mouseout) 
+.on(\"mouseover\", mouseover)
+.on(\"mouseout\", mouseout)
 .call(force.drag);
 
-node.append(\"circle\") 
+node.append(\"circle\")
 .attr(\"r\", 6)
 
 node.append(\"svg:text\")
@@ -301,39 +301,39 @@ node.append(\"svg:text\")
 .attr(\"dy\", \".35em\")
 .text(function(d) { return d.name });
 
-function tick() { 
-link 
-.attr(\"x1\", function(d) { return d.source.x; }) 
-.attr(\"y1\", function(d) { return d.source.y; }) 
-.attr(\"x2\", function(d) { return d.target.x; }) 
-.attr(\"y2\", function(d) { return d.target.y; }); 
+function tick() {
+link
+.attr(\"x1\", function(d) { return d.source.x; })
+.attr(\"y1\", function(d) { return d.source.y; })
+.attr(\"x2\", function(d) { return d.target.x; })
+.attr(\"y2\", function(d) { return d.target.y; });
 
-node.attr(\"transform\", function(d) { return \"translate(\" + d.x + \",\" + d.y + \")\"; }); 
-} 
+node.attr(\"transform\", function(d) { return \"translate(\" + d.x + \",\" + d.y + \")\"; });
+}
 
-function mouseover() { 
-d3.select(this).select(\"circle\").transition() 
-.duration(750) 
+function mouseover() {
+d3.select(this).select(\"circle\").transition()
+.duration(750)
 .attr(\"r\", 16);
 d3.select(this).select(\"text\").transition()
 .duration(750)
 .attr(\"x\", 13)
 .style(\"stroke-width\", \".5px\")
 .style(\"font\", \"{{clickTextSize}}px serif\")
-.style(\"opacity\", 1); 
-} 
+.style(\"opacity\", 1);
+}
 
-function mouseout() { 
-d3.select(this).select(\"circle\").transition() 
-.duration(750) 
-.attr(\"r\", 8); 
-} 
+function mouseout() {
+d3.select(this).select(\"circle\").transition()
+.duration(750)
+.attr(\"r\", 8);
+}
 
 </script>\n"
 }
 
 #' Mustache main Force Directed Network template for d3ForceNetwork with zooming capabilities.
-#' 
+#'
 #' @keywords internals
 #' @noRd
 
@@ -344,13 +344,13 @@ height = {{height}};
 var color = d3.scale.category20();
 
 var force = d3.layout.force()
-.nodes(d3.values(nodes)) 
-.links(links) 
-.size([width, height]) 
-.linkDistance({{linkDistance}}) 
-.charge({{charge}}) 
-.on(\"tick\", tick) 
-.start(); 
+.nodes(d3.values(nodes))
+.links(links)
+.size([width, height])
+.linkDistance({{linkDistance}})
+.charge({{charge}})
+.on(\"tick\", tick)
+.start();
 
 var svg = d3.select(\"{{parentElement}}\").append(\"svg\")
 .attr(\"width\", width)
@@ -376,19 +376,19 @@ var link = vis.selectAll(\".link\")
 .data(force.links())
 .enter().append(\"line\")
 .attr(\"class\", \"link\")
-.style(\"stroke-width\", function(d) { return Math.sqrt(d.value); });
+.style(\"stroke-width\", function(d) { return Math.{{linkWeightFun}}(d.value); });
 
 var node = vis.selectAll(\".node\")
 .data(force.nodes())
-.enter().append(\"g\") 
+.enter().append(\"g\")
 .attr(\"class\", \"node\")
 .style(\"fill\", function(d) { return color(d.group); })
 .style(\"opacity\", {{opacity}})
-.on(\"mouseover\", mouseover) 
-.on(\"mouseout\", mouseout) 
+.on(\"mouseover\", mouseover)
+.on(\"mouseout\", mouseout)
 .call(force.drag);
 
-node.append(\"circle\") 
+node.append(\"circle\")
 .attr(\"r\", 6)
 
 node.append(\"svg:text\")
@@ -397,39 +397,39 @@ node.append(\"svg:text\")
 .attr(\"dy\", \".35em\")
 .text(function(d) { return d.name });
 
-function tick() { 
-link 
-.attr(\"x1\", function(d) { return d.source.x; }) 
-.attr(\"y1\", function(d) { return d.source.y; }) 
-.attr(\"x2\", function(d) { return d.target.x; }) 
-.attr(\"y2\", function(d) { return d.target.y; }); 
+function tick() {
+link
+.attr(\"x1\", function(d) { return d.source.x; })
+.attr(\"y1\", function(d) { return d.source.y; })
+.attr(\"x2\", function(d) { return d.target.x; })
+.attr(\"y2\", function(d) { return d.target.y; });
 
-node.attr(\"transform\", function(d) { return \"translate(\" + d.x + \",\" + d.y + \")\"; }); 
-} 
+node.attr(\"transform\", function(d) { return \"translate(\" + d.x + \",\" + d.y + \")\"; });
+}
 
-function mouseover() { 
-d3.select(this).select(\"circle\").transition() 
-.duration(750) 
+function mouseover() {
+d3.select(this).select(\"circle\").transition()
+.duration(750)
 .attr(\"r\", 16);
 d3.select(this).select(\"text\").transition()
 .duration(750)
 .attr(\"x\", 13)
 .style(\"stroke-width\", \".5px\")
 .style(\"font\", \"{{clickTextSize}}px serif\")
-.style(\"opacity\", 1); 
-} 
+.style(\"opacity\", 1);
+}
 
-function mouseout() { 
-d3.select(this).select(\"circle\").transition() 
-.duration(750) 
-.attr(\"r\", 8); 
-} 
+function mouseout() {
+d3.select(this).select(\"circle\").transition()
+.duration(750)
+.attr(\"r\", 8);
+}
 
 </script>\n"
 }
 
 #' Mustache main (1) Reingold-Tilford Tree network graph template for d3Tree.
-#' 
+#'
 #' @keywords internals
 #' @noRd
 
@@ -454,7 +454,7 @@ var svg = d3.select(\"{{parentElement}}\").append(\"svg\")
 }
 
 #' Mustache main (2) Reingold-Tilford Tree network graph template for d3Tree.
-#' 
+#'
 #' @keywords internals
 #' @noRd
 
@@ -473,7 +473,7 @@ var node = svg.selectAll(\".node\")
 .enter().append(\"g\")
 .attr(\"class\", \"node\")
 .attr(\"transform\", function(d) { return \"rotate(\" + (d.x - 90) + \")translate(\" + d.y + \")\"; })
-.on(\"mouseover\", mouseover) 
+.on(\"mouseover\", mouseover)
 .on(\"mouseout\", mouseout);
 
 node.append(\"circle\")
@@ -487,9 +487,9 @@ node.append(\"text\")
 .style(\"fill\", \"{{textColour}}\")
 .text(function(d) { return d.name; });
 
-function mouseover() { 
-d3.select(this).select(\"circle\").transition() 
-.duration(750) 
+function mouseover() {
+d3.select(this).select(\"circle\").transition()
+.duration(750)
 .attr(\"r\", 9)
 d3.select(this).select(\"text\").transition()
 .duration(750)
@@ -498,12 +498,12 @@ d3.select(this).select(\"text\").transition()
 .attr(\"transform\", function(d) { return d.x < 180 ? \"translate(8)\" : \"rotate(180)translate(-8)\"; })
 .style(\"stroke-width\", \".5px\")
 .style(\"font\", \"{{fontsizeBig}}px serif\")
-.style(\"opacity\", 1); 
-} 
+.style(\"opacity\", 1);
+}
 
-function mouseout() { 
-d3.select(this).select(\"circle\").transition() 
-.duration(750) 
+function mouseout() {
+d3.select(this).select(\"circle\").transition()
+.duration(750)
 .attr(\"r\", 4.5)
 d3.select(this).select(\"text\").transition()
 .duration(750)
@@ -511,8 +511,8 @@ d3.select(this).select(\"text\").transition()
 .attr(\"text-anchor\", function(d) { return d.x < 180 ? \"start\" : \"end\"; })
 .attr(\"transform\", function(d) { return d.x < 180 ? \"translate(8)\" : \"rotate(180)translate(-8)\"; })
 .style(\"font\", \"{{fontsize}}px serif\")
-.style(\"opacity\", {{opacity}}); 
-} 
+.style(\"opacity\", {{opacity}});
+}
 
 d3.select(self.frameElement).style(\"height\", diameter - 150 + \"px\");
 
@@ -520,7 +520,7 @@ d3.select(self.frameElement).style(\"height\", diameter - 150 + \"px\");
 }
 
 #' Mustache Zooming (1) Reingold-Tilford Tree network graph template for d3Tree.
-#' 
+#'
 #' @keywords internals
 #' @noRd
 
@@ -561,7 +561,7 @@ vis.attr(\"transform\",
 }
 
 #' Mustache Zooming (2) Reingold-Tilford Tree network graph template for d3Tree.
-#' 
+#'
 #' @keywords internals
 #' @noRd
 
@@ -580,7 +580,7 @@ var node = vis.selectAll(\".node\")
 .enter().append(\"g\")
 .attr(\"class\", \"node\")
 .attr(\"transform\", function(d) { return \"rotate(\" + (d.x - 90) + \")translate(\" + d.y + \")\"; })
-.on(\"mouseover\", mouseover) 
+.on(\"mouseover\", mouseover)
 .on(\"mouseout\", mouseout)
 
 node.append(\"circle\")
@@ -594,9 +594,9 @@ node.append(\"svg:text\")
 .style(\"fill\", \"{{textColour}}\")
 .text(function(d) { return d.name; });
 
-function mouseover() { 
-d3.select(this).select(\"circle\").transition() 
-.duration(750) 
+function mouseover() {
+d3.select(this).select(\"circle\").transition()
+.duration(750)
 .attr(\"r\", 9)
 d3.select(this).select(\"text\").transition()
 .duration(750)
@@ -605,12 +605,12 @@ d3.select(this).select(\"text\").transition()
 .attr(\"transform\", function(d) { return d.x < 180 ? \"translate(8)\" : \"rotate(180)translate(-8)\"; })
 .style(\"stroke-width\", \".5px\")
 .style(\"font\", \"{{fontsizeBig}}px serif\")
-.style(\"opacity\", 1); 
-} 
+.style(\"opacity\", 1);
+}
 
-function mouseout() { 
-d3.select(this).select(\"circle\").transition() 
-.duration(750) 
+function mouseout() {
+d3.select(this).select(\"circle\").transition()
+.duration(750)
 .attr(\"r\", 4.5)
 d3.select(this).select(\"text\").transition()
 .duration(750)
@@ -618,8 +618,8 @@ d3.select(this).select(\"text\").transition()
 .attr(\"text-anchor\", function(d) { return d.x < 180 ? \"start\" : \"end\"; })
 .attr(\"transform\", function(d) { return d.x < 180 ? \"translate(8)\" : \"rotate(180)translate(-8)\"; })
 .style(\"font\", \"{{fontsize}}px serif\")
-.style(\"opacity\", {{opacity}}); 
-} 
+.style(\"opacity\", {{opacity}});
+}
 
 d3.select(self.frameElement).style(\"height\", diameter - 150 + \"px\");
 
@@ -627,7 +627,7 @@ d3.select(self.frameElement).style(\"height\", diameter - 150 + \"px\");
 }
 
 #' Mustache Main (1) Cluster Dendrogram graphs template for d3Cluster.
-#' 
+#'
 #' @keywords internals
 #' @noRd
 
@@ -650,7 +650,7 @@ var svg = d3.select(\"{{parentElement}}\").append(\"svg\")
 }
 
 #' Mustache Main (2) Cluster Dendrogram graphs template for d3Cluster.
-#' 
+#'
 #' @keywords internals
 #' @noRd
 
@@ -669,7 +669,7 @@ var node = svg.selectAll(\".node\")
 .enter().append(\"g\")
 .attr(\"class\", \"node\")
 .attr(\"transform\", function(d) { return \"translate(\" + d.y + \",\" + d.x + \")\"; })
-.on(\"mouseover\", mouseover) 
+.on(\"mouseover\", mouseover)
 .on(\"mouseout\", mouseout);
 
 node.append(\"circle\")
@@ -683,26 +683,26 @@ node.append(\"text\")
 .style(\"fill\", \"{{textColour}}\")
 .text(function(d) { return d.name; });
 
-function mouseover() { 
-d3.select(this).select(\"circle\").transition() 
-.duration(750) 
+function mouseover() {
+d3.select(this).select(\"circle\").transition()
+.duration(750)
 .attr(\"r\", 9)
 d3.select(this).select(\"text\").transition()
 .duration(750)
 .style(\"stroke-width\", \".5px\")
 .style(\"font\", \"{{fontsizeBig}}px serif\")
-.style(\"opacity\", 1); 
-} 
+.style(\"opacity\", 1);
+}
 
-function mouseout() { 
-d3.select(this).select(\"circle\").transition() 
-.duration(750) 
+function mouseout() {
+d3.select(this).select(\"circle\").transition()
+.duration(750)
 .attr(\"r\", 4.5)
 d3.select(this).select(\"text\").transition()
 .duration(750)
 .style(\"font\", \"{{fontsize}}px serif\")
-.style(\"opacity\", {{opacity}}); 
-} 
+.style(\"opacity\", {{opacity}});
+}
 
 d3.select(self.frameElement).style(\"height\", height + \"px\");
 
@@ -711,7 +711,7 @@ d3.select(self.frameElement).style(\"height\", height + \"px\");
 }
 
 #' Mustache Zoom (1) Cluster Dendrogram graphs template for d3Cluster.
-#' 
+#'
 #' @keywords internals
 #' @noRd
 
@@ -748,7 +748,7 @@ vis.attr(\"transform\",
 }
 
 #' Mustache Zoom (2) Cluster Dendrogram graphs template for d3Cluster.
-#' 
+#'
 #' @keywords internals
 #' @noRd
 
@@ -767,7 +767,7 @@ var node = vis.selectAll(\".node\")
 .enter().append(\"g\")
 .attr(\"class\", \"node\")
 .attr(\"transform\", function(d) { return \"translate(\" + d.y + \",\" + d.x + \")\"; })
-.on(\"mouseover\", mouseover) 
+.on(\"mouseover\", mouseover)
 .on(\"mouseout\", mouseout);
 
 node.append(\"circle\")
@@ -781,26 +781,26 @@ node.append(\"svg:text\")
 .style(\"fill\", \"{{textColour}}\")
 .text(function(d) { return d.name; });
 
-function mouseover() { 
-d3.select(this).select(\"circle\").transition() 
-.duration(750) 
+function mouseover() {
+d3.select(this).select(\"circle\").transition()
+.duration(750)
 .attr(\"r\", 9)
 d3.select(this).select(\"text\").transition()
 .duration(750)
 .style(\"stroke-width\", \".5px\")
 .style(\"font\", \"{{fontsizeBig}}px serif\")
-.style(\"opacity\", 1); 
-} 
+.style(\"opacity\", 1);
+}
 
-function mouseout() { 
-d3.select(this).select(\"circle\").transition() 
-.duration(750) 
+function mouseout() {
+d3.select(this).select(\"circle\").transition()
+.duration(750)
 .attr(\"r\", 4.5)
 d3.select(this).select(\"text\").transition()
 .duration(750)
 .style(\"font\", \"{{fontsize}}px serif\")
-.style(\"opacity\", {{opacity}}); 
-} 
+.style(\"opacity\", {{opacity}});
+}
 
 d3.select(self.frameElement).style(\"height\", height + \"px\");
 
@@ -809,7 +809,7 @@ d3.select(self.frameElement).style(\"height\", height + \"px\");
 }
 
 #' Mustache for d3Sankey.
-#' 
+#'
 #' @keywords internals
 #' @noRd
 
@@ -829,8 +829,8 @@ var svg = d3.select(\"#chart\").append(\"svg\")
 .attr(\"transform\", \"translate(\" + margin.left + \",\" + margin.top + \")\");
 
 var sankey = d3.sankey()
-.nodes(d3.values(nodes)) 
-.links(links) 
+.nodes(d3.values(nodes))
+.links(links)
 .nodeWidth({{nodeWidth}})
 .nodePadding({{nodePadding}})
 .size([width, height])

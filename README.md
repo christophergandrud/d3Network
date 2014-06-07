@@ -5,7 +5,7 @@ Tools for creating D3 JavaScript network, tree, dendrogram, and Sankey graphs fr
 
 [Christopher Gandrud](http://christophergandrud.blogspot.com/p/biocontact.html)
 
-Version: 0.5
+Version: 0.5.1
 
 [![Build Status](https://travis-ci.org/christophergandrud/d3Network.png)](https://travis-ci.org/christophergandrud/d3Network)
 
@@ -23,7 +23,7 @@ Source <- c("A", "A", "A", "A", "B", "B", "C", "C", "D")
 Target <- c("B", "C", "D", "J", "E", "F", "G", "H", "I")
 NetworkData <- data.frame(Source, Target)
 
-# Make network graph 
+# Make network graph
 d3SimpleNetwork(NetworkDatad3, height = 300, width = 700)
 ```
 
@@ -36,5 +36,3 @@ You can install *d3Network* using the [devtools](https://github.com/hadley/devto
 ```{S}
 devtools::install_github('christophergandrud/d3Network')
 ```
-
-
