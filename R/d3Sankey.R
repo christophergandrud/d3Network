@@ -48,7 +48,7 @@
 #' # Recreate Bostock Sankey diagram: http://bost.ocks.org/mike/sankey/
 #' # Load energy projection data
 #' library(RCurl)
-#' URL <- "https://raw.github.com/christophergandrud/d3Network/sankey/JSONdata/energy.json"
+#' URL <- "https://raw.githubusercontent.com/christophergandrud/d3Network/sankey/JSONdata/energy.json"
 #' Energy <- getURL(URL, ssl.verifypeer = FALSE)
 #' # Convert to data frame
 #' EngLinks <- JSONtoDF(jsonStr = Energy, array = "links")

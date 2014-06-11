@@ -11,6 +11,11 @@ Thanks to Kevin Keenan for the suggestion.
 
 Improvements to `iframe` width/height calculation for `d3SimpleNetwork`.
 
+Removed 'TWh' from `d3Sankey`'s number format. 
+Thanks to Enzo Martoglio for spotting this. 
+
+Documentation improvements.
+
 ## v0.5
 
 `parentElement` argument added to all d3Network functions. It allows the user
