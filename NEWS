@@ -1,3 +1,8 @@
+## v0.5.2
+
+Fixed a bug in `d3Sankey` that prevented the `parentElement` from being 
+customisable selected. Thanks to Bo Werth for identifying this.
+
 ## v0.5.1
 
 Added `linkWidth` to `d3ForceNetwork` in order to set the link width. An

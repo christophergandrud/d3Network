@@ -110,7 +110,7 @@ pointer-events: none;
 
 SankeyStylesheet <- function(){
 "<style>
-#chart {
+#{{parentElement}} {
 height: 500px;
 }
 .node rect {
@@ -133,7 +133,7 @@ stroke-opacity: .5;
 }
 </style>
 
-<p id=\"chart\"></p>
+<p id=\"{{parentElement}}\"></p>
 
 <script src={{d3Script}}></script>\n"
 }
@@ -822,7 +822,7 @@ var formatNumber = d3.format(\",.0f\"),
 format = function(d) { return formatNumber(d); },
 color = d3.scale.category20();
 
-var svg = d3.select(\"#chart\").append(\"svg\")
+var svg = d3.select(\"{{parentElement}}\").append(\"svg\")
 .attr(\"width\", width + margin.left + margin.right)
 .attr(\"height\", height + margin.top + margin.bottom)
 .append(\"g\")

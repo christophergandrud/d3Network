@@ -1,11 +1,14 @@
 d3Network
 ===
 
+> **Note:** Active development has moved to 
+[networkD3](http://christophergandrud.github.io/networkD3/).
+
 Tools for creating D3 JavaScript network, tree, dendrogram, and Sankey graphs from R.
 
 [Christopher Gandrud](http://christophergandrud.blogspot.com/p/biocontact.html)
 
-Version: 0.5.1
+Version: 0.5.2
 
 [![Build Status](https://travis-ci.org/christophergandrud/d3Network.png)](https://travis-ci.org/christophergandrud/d3Network)
 
