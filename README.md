@@ -9,7 +9,6 @@ Tools for creating D3 JavaScript network, tree, dendrogram, and Sankey graphs fr
 [Christopher Gandrud](http://christophergandrud.blogspot.com/p/biocontact.html)
 
 Version: 0.5.2
-
 [![Build Status](https://travis-ci.org/christophergandrud/d3Network.png)](https://travis-ci.org/christophergandrud/d3Network)
 
 ## Minimal Example
