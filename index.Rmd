@@ -1,6 +1,8 @@
-<title>D3network by christophergandrud</title>
-
-<link rel="stylesheet" href="assets/css/styles.css">
+---
+output:
+    html_document:
+        css: assets/css/styles.css
+---
 
 <a href="https://github.com/christophergandrud/d3Network"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub"></a>
 <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
@@ -11,6 +13,9 @@
 <section>
 
 <h1 id="top">d3Network</h1> <img src="img/Logo.png"></img>
+
+
+> **Attention**: Development has moved to [networkD3](http://christophergandrud.github.io/networkD3/). **d3Network** *is no longer supported.*  
 
 Tools for creating D3 JavaScript network, tree, dendrogram, and Sankey graphs from R.
 
