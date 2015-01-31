@@ -1,3 +1,7 @@
+## v0.5.2.1 
+
+Trivial change to deal with deficiency in CRAN Markdown processor.
+
 ## v0.5.2
 
 Fixed a bug in `d3Sankey` that prevented the `parentElement` from being 
