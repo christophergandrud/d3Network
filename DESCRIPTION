@@ -1,8 +1,8 @@
 Package: d3Network
-Title: Tools for creating D3 JavaScript network, tree, dendrogram, and Sankey
-    graphs from R
-Description: This packages is intended to make it easy to create D3 JavaScript
-    network, tree, dendrogram, and Sankey graphs from R using data frames.
+Title: The Old Package for Creating D3 JavaScript Network, Tree, Dendrogram, 
+    and Sankey Graphs
+Description: !!! NOTE: Active development has moved to the networkD3 
+    package. !!!
 Version: 0.5.2.1
 Date: 2015-01-31
 Author: Christopher Gandrud
